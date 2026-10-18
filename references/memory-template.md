@@ -9,7 +9,7 @@ Copy the block below into `STUDY-MEMORY.md` at the repository root and fill it i
 
 ```markdown
 # STUDY-MEMORY - <project name>
-<!-- Maintained by the mentor-amigo skill. Read the header every session; open sections only when needed. -->
+<!-- Maintained by the mentor-buddy skill. Read the header every session; open sections only when needed. -->
 
 ## Header
 - Conversation language: <pt | en>
