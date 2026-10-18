@@ -48,6 +48,7 @@ Watch for: a test that asserts nothing meaningful; hard-coded configuration.
 Typical steps:
 1. Turn each acceptance criterion into one or more vertical slices, ordered by dependency. Record the list in the plan.
 2. For each slice: input, logic, output, a test, then a commit with an English message describing the change.
+3. After each slice passes, offer a review drill ([code-review.md](code-review.md) section 4). The learner may skip it.
 
 Done when every acceptance criterion has a passing test and its commit.
 
@@ -78,6 +79,7 @@ Typical steps:
 3. Logging with useful context (structured logs for mid and senior), without sensitive data.
 4. Secrets only from the environment; confirm none is in the repository history.
 5. Walk the relevant items of the OWASP Top 10 for this app (injection, broken access control, and so on).
+6. One larger review drill on this phase's topics: validation, error handling, logging, secrets ([code-review.md](code-review.md) section 4).
 
 Done when invalid input gets a clear error, logs show useful context, and a search of the repository finds no secret.
 

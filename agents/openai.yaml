@@ -1,0 +1,7 @@
+interface:
+  display_name: "Mentor Buddy"
+  short_description: "Programming mentor that makes you write every line"
+  default_prompt: "Use $mentor-buddy to start or resume my study session."
+
+policy:
+  allow_implicit_invocation: false

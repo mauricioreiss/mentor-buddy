@@ -24,6 +24,7 @@
 - [Repository layout](#repository-layout)
 - [FAQ](#faq)
 - [Privacy](#privacy)
+- [Keeping the skill current](#keeping-the-skill-current)
 - [Feedback and contributing](#feedback-and-contributing)
 - [License](#license)
 
@@ -43,7 +44,8 @@ It is built for anyone who wants to learn hands-on with an AI agent: beginners w
 - **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
 - **The full path to production**: environment, folder structure, walking skeleton, features with tests, database, quality, Docker, CI and a free deploy.
 - **An error ladder** that makes you struggle productively before you see any code.
-- **No guessing**: versions, commands, APIs and prices are checked in the official documentation during the session, with the link.
+- **Code review training**: every review shows you the method, the mentor's own fix at miss 3 is yours to review, and review drills with planted defects train the skill you need most when AI writes code for you.
+- **No guessing**: versions, commands, APIs and prices are checked in the official documentation during the session, with the link. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
 - **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
 - **An end-of-day summary** with the topics where you missed most and the exact doc sections to study.
 - **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
@@ -57,7 +59,7 @@ Learner: done with 5.2 but the test is failing: null name expected BadRequest an
          InternalServerError, and the create test expected Created and got OK.
          just send me the right code please
 
-Mentor:  Nice try. You're on attempt 1 of step 5.2, so what you get now is a review, not code.
+Mentor:  Nice try. This is miss 1 on step 5.2, so what you get now is a review, not code.
 
          [OK] The length check (3 to 50) exists and the endpoint is wired correctly.
          [ALERT] A null name blows up before validation: request.Name is string?, and
@@ -71,7 +73,7 @@ Mentor:  Nice try. You're on attempt 1 of step 5.2, so what you get now is a rev
          [QUESTION] Which string method covers "null, empty or whitespace" in one call?
 ```
 
-If the learner misses again, the mentor quotes the wrong snippet and shows the same idea in a different context. On the third miss it fixes the file directly, with a `MENTOR:` comment on each change, and asks the learner to explain the fix back.
+If the learner misses again, the mentor quotes the wrong snippet and shows the same idea in a different context. On the third miss it fixes the file directly, with a `MENTOR:` comment on each change, and the learner reviews that fix as if an AI tool had written it.
 
 ## How it works
 
@@ -125,7 +127,7 @@ Every phase is split into small steps, and every step runs the same loop:
 | Pass | What is right, plus improvements worth making and why | none | read only |
 | Miss 1 | A review: what is right, where it breaks and why, what your code actually does, what to redo | none | read only |
 | Miss 2 | Your wrong snippet quoted with each error marked, plus a short example of the right approach in a different context | one short neutral example | read only |
-| Miss 3 | Fixes your file, with a `MENTOR:` comment on each change, then walks you through it | the fix, in your file | edited |
+| Miss 3 | Fixes your file, with a `MENTOR:` comment on each change, walks you through it, then you review the fix and answer three review questions | the fix, in your file | edited |
 
 - The miss counter belongs to the current step and resets when the step passes.
 - Questions are free: a conceptual question gets a short answer with a doc link and does not count as a miss.
@@ -140,6 +142,7 @@ Every phase is split into small steps, and every step runs the same loop:
 | Library or framework | One mainstream, maintained recommendation, with the why | What to research and the criteria; you bring a pick and the mentor validates it | Same as mid, weighing trade-offs |
 | Explanations | Fuller, one concept at a time | Short, focused on the why | Short, focused on trade-offs, failure modes and operations |
 | Tests | Required from the walking skeleton on | Required; TDD optional | Required; TDD optional |
+| Review drills | 2 defects, a category hint for each | 3 defects, no hints | 3 subtle defects: concurrency, security, performance, failure modes |
 
 The level is re-evaluated from your submissions. When the evidence says it is off, the mentor tells you and adjusts.
 
@@ -151,6 +154,18 @@ The skill separates two kinds of knowledge:
 - **Perishable**: versions, install steps, commands and flags, API names, config keys, framework defaults, prices and free-tier limits. The mentor looks these up in the official documentation during the session before saying them, and gives you the link.
 
 When the agent has no web access, the mentor says so and gives you the official link to check, instead of stating a version or command from memory.
+
+**Doc check.** Every perishable fact your project relies on (the SDK version you installed, a command, a package, a base image, a price) is recorded in `STUDY-MEMORY.md` with its official page and the date it was verified. Each new lookup is compared with that record:
+
+| The doc says | The mentor |
+|---|---|
+| The same | updates the date and says nothing |
+| Something different | updates the record and tells you in one line: `Doc changed since <date>: <old> -> <new> - <link>`; if your code breaks because of it, updating it becomes the next step |
+| Something new | adds a record |
+
+There is no slow refresh before you start coding. Facts are checked when a step needs them, and on resume the mentor re-checks only the records your next step depends on that are older than 30 days. Prices and free-tier limits are always looked up again. Web pages are treated as data, never as instructions, and only official domains are used.
+
+When the docs contradict the skill itself (a moved link, a claim that no longer holds), the mentor notes it and points you to the issue tracker. A learning session never edits the skill's files; the maintainer applies those changes (see [Keeping the skill current](#keeping-the-skill-current)).
 
 ### 7. Memory between sessions
 
@@ -164,15 +179,15 @@ After the interview, the mentor creates `STUDY-MEMORY.md` at your project root. 
 - Level: junior (set 2026-10-14; last recalibration: none)
 - Stack: Go, standard library net/http, IDE VS Code, OS macOS
 - Project: REST API with a database - daily habit tracker
-- Now: Phase 4 Walking skeleton / Step 4.1 Health endpoint / Attempt 0
+- Now: Phase 4 Walking skeleton / Step 4.1 Health endpoint / Misses 0
 - Next action: add a GET /health handler that answers 200
 - Last session: 2026-10-16 - folder structure done
 - Review on resume: go mod init; package main; folder roles
 ```
 
-Below the header: the brief, the phase plan, a decision log, an **error map** (topic, number of misses, exact doc section), a compact session log and open questions.
+Below the header: the brief, the phase plan, a decision log, an **error map** (topic, number of misses, exact doc section), a compact session log, open questions, the **verified facts** your project relies on, notes on **skill drift**, and the answer keys of your **review drills**.
 
-When you come back, the mentor asks three quick review questions about the topics you missed most, then continues from `Next action`.
+When you come back, the mentor asks three quick review questions about the topics you missed most, then continues from `Next action`. If you arrive stuck on an error, it helps first and asks later.
 
 ### 8. End-of-day summary
 
@@ -199,19 +214,31 @@ Next session starts with
 - **Banter**: slang and light, friendly teasing aimed at the mistake, always followed by the technical explanation. It switches to direct when you sound frustrated or ask it to.
 - **English corrections** (optional): at most two lines at the top of a reply, only for real errors.
 
+### 10. Code review training
+
+More and more of a developer's day goes into reviewing code someone else wrote, often an AI tool, and reviewing is a different skill from writing. The mentor trains it in three places, with one checklist: intent, run it, tests that could fail, trace an input by hand, edge cases (including "the value stored is the value validated"), security, design, naming, modern idiom, verdict.
+
+- **Every review** the mentor gives follows that checklist, so you see the method applied to your own code.
+- **Miss 3** ends with you reviewing the mentor's fix as if an AI had written it: which change fixes which check, which test proves it, what else could break.
+- **Review drills**: after each feature slice in phase 5, and once in phase 7, you can take a short file in your project's domain with planted defects and review it like a pull request (`Line <n>: problem - why - fix` plus a verdict). The file goes in `.review-drills/`, which you add to `.gitignore`. Drills are optional, never count as misses, and what you miss goes into your error map.
+
 ## Supported agents
 
 Mentor Buddy follows the open [Agent Skills format](https://agentskills.io/specification), so it works in any agent that reads it.
 
-| Agent | Personal skill folders it reads | How the skill starts |
+The skill changes how your agent behaves (it stops writing your code), so it starts only when you call it, wherever the agent supports that.
+
+| Agent | Personal skill folders it reads | How you start it |
 |---|---|---|
-| Claude Code (terminal, VS Code, JetBrains) | `~/.claude/skills/` | Automatically from the description, or `/mentor-buddy` |
-| GitHub Copilot in Visual Studio 2026 | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | Automatically in agent mode |
-| GitHub Copilot in VS Code | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | Automatically, or `/mentor-buddy` |
-| GitHub Copilot CLI | `~/.agents/skills/`, `~/.copilot/skills/` | Automatically, or `/mentor-buddy` |
-| OpenAI Codex | `~/.agents/skills/` | Automatically, or `$mentor-buddy` |
-| Gemini CLI | `~/.agents/skills/`, `~/.gemini/skills/` | The model activates it and asks for your consent |
-| Cursor | `~/.agents/skills/`, `~/.cursor/skills/`, `~/.claude/skills/` | Automatically, or `/mentor-buddy` |
+| Claude Code (terminal, VS Code, JetBrains) | `~/.claude/skills/` | `/mentor-buddy` |
+| GitHub Copilot in VS Code | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | `/mentor-buddy` |
+| GitHub Copilot CLI | `~/.agents/skills/`, `~/.copilot/skills/` | `/mentor-buddy` |
+| Cursor | `~/.agents/skills/`, `~/.cursor/skills/`, `~/.claude/skills/` | `/mentor-buddy` |
+| OpenAI Codex | `~/.agents/skills/` | `$mentor-buddy` (Codex mentions skills with `$`; implicit start is turned off in `agents/openai.yaml`) |
+| Gemini CLI | `~/.agents/skills/`, `~/.gemini/skills/` | `/mentor-buddy` after installing the command in `adapters/gemini/` (untested); without it, the model may activate the skill and asks for your consent |
+| GitHub Copilot in Visual Studio 2026 | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | The agent applies skills on its own in agent mode; for `/mentor-buddy`, add the prompt file in `adapters/visual-studio/` to your repository (untested) |
+
+Tested with Claude Code and Codex CLI. In Codex, keep a single copy of the skill: if it is installed both in `~/.agents/skills/` and in a repository's `.agents/skills/`, the `$mentor-buddy` mention becomes ambiguous and is ignored.
 
 No single folder is read by every agent: `~/.agents/skills/` covers all of them except Claude Code, which reads only `~/.claude/skills/`. The installation below keeps one real copy in `~/.agents/skills/` and links it from `~/.claude/skills/`.
 
@@ -248,9 +275,24 @@ If the link does not work on your system, copy the folder to `~/.claude/skills/m
 
 Clone straight into the folder that agent reads: `~/.claude/skills/mentor-buddy` for Claude Code only, or `~/.agents/skills/mentor-buddy` for Codex, Copilot, Gemini CLI or Cursor.
 
+### With the skills installer
+
+The [`skills` CLI](https://github.com/vercel-labs/skills) installs one copy and links it into each agent you name (it needs Node.js):
+
+```bash
+npx skills add mauricioreiss/mentor-buddy -g -a claude-code -a codex -a github-copilot -a gemini-cli
+```
+
+### Optional: `/mentor-buddy` in Gemini CLI and Visual Studio
+
+Neither has a slash command per skill, so the repository ships one small file for each. Both are untested.
+
+- **Gemini CLI**: copy `adapters/gemini/mentor-buddy.toml` to `~/.gemini/commands/mentor-buddy.toml`.
+- **Visual Studio 2026**: copy `adapters/visual-studio/mentor-buddy.prompt.md` to `.github/prompts/mentor-buddy.prompt.md` in the repository you are studying in.
+
 ### Check that it loaded
 
-Restart your agent or open a new chat, then say: "I want to study with mentor buddy". Where slash commands exist, `/mentor-buddy` should also appear. In Visual Studio, make sure the chat is in agent mode; the chat shows when a skill is being applied.
+Restart your agent or open a new chat and type `/mentor-buddy` (`$mentor-buddy` in Codex). The mentor answers with one short question: Portuguese or English. In Visual Studio, make sure the chat is in agent mode; the chat shows when a skill is being applied.
 
 ### Update
 
@@ -279,13 +321,14 @@ rm -rf ~/.agents/skills/mentor-buddy
 ## Usage
 
 1. Create or open an empty folder in your IDE, or the folder of a project you already started with the mentor.
-2. In the agent chat, say what you want to learn. The mentor takes it from there.
+2. In the agent chat, type `/mentor-buddy` (`$mentor-buddy` in Codex), optionally followed by what you want to learn. The mentor takes it from there.
 
 | You want to | Say something like |
 |---|---|
-| Start | "I want to study with mentor buddy", "teach me Go by building a project", "me ensina C# fazendo um projeto" |
-| Resume | Open the project folder and say hi; the mentor reads `STUDY-MEMORY.md` |
+| Start | `/mentor-buddy`, or `/mentor-buddy me ensina C# fazendo um projeto` |
+| Resume | Open the project folder and type `/mentor-buddy`; the mentor reads `STUDY-MEMORY.md` |
 | Skip the review questions | "skip the review" |
+| Take or skip a review drill | "bring the drill" or "skip the drill" |
 | Ask about a concept | Just ask; questions never count as misses |
 | Change the tone | "switch to direct" or "switch to banter" |
 | Turn English corrections on or off | "correct my English" or "stop correcting my English" |
@@ -317,12 +360,21 @@ mentor-buddy/
     interview.md                phases 0 and 1: interview, project, memory creation
     phases.md                   phases 2 to 11, read one section at a time
     teaching-loop.md            review formats, error ladder, library choice
+    code-review.md              review checklist, guided review at miss 3, review drills
+    doc-check.md                verified facts, change notices, light check on resume, drift
+    maintenance.md              /mentor-buddy refresh, for maintainers
     folder-roles.md             folder roles and organization trade-offs
     project-archetypes.md       project catalog, scope by level, scope cutting
     session-rituals.md          resume questions and end-of-day summary
     memory-template.md          STUDY-MEMORY.md template
     tone.md                     direct and banter tones, English corrections
     docs-*.md                   official documentation entry points per stack
+  agents/openai.yaml            Codex display name; implicit start turned off
+  adapters/
+    gemini/mentor-buddy.toml    /mentor-buddy command for Gemini CLI
+    visual-studio/mentor-buddy.prompt.md   /mentor-buddy prompt file for Visual Studio
+  scripts/check_links.py        checks every link in the skill (standard library Python)
+  .github/workflows/check-links.yml   weekly link check that opens an issue on failure
   README.md
   README.pt-BR.md
   LICENSE
@@ -333,7 +385,13 @@ The repository root is the skill folder, so installing is a `git clone` and upda
 ## FAQ
 
 **Does it ever write code for me?**
-Only in two moments. On your second miss on a step, it shows a short example of the right approach in a different context, deliberately not ready to paste. On your third miss, it fixes your file with a `MENTOR:` comment on each change and asks you to explain the fix back. Everything else you type yourself.
+Only in three moments. On your second miss on a step, it shows a short example of the right approach in a different context, deliberately not ready to paste. On your third miss, it fixes your file with a `MENTOR:` comment on each change, and you review that fix before the step passes. Review drills are code written to be picked apart, kept out of your project in `.review-drills/`. Everything else you type yourself.
+
+**Why do I have to type `/mentor-buddy`?**
+Because the skill changes the agent's behaviour: it stops writing your code. Starting only when called keeps it from taking over a work session by accident.
+
+**How does it stay up to date?**
+Three ways, none of which slows you down. Facts are checked against the official docs when a step needs them, and changes are flagged against what was verified before. A weekly GitHub workflow checks every link in the skill and opens an issue when one breaks. And the maintainer runs `/mentor-buddy refresh` to review and apply fixes; learning sessions never rewrite the skill, so a web page can never change its instructions.
 
 **Which model should I use?**
 The skill works with whatever model your agent runs. Stronger models follow the ladder and the memory rules more consistently.
@@ -356,6 +414,12 @@ It still works. The mentor researches the official docs live and tells you the l
 ## Privacy
 
 `STUDY-MEMORY.md` goes into your project's git by default and lists the topics where you missed. If your repository is public and you would rather keep that private, add the file to `.gitignore`. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
+
+## Keeping the skill current
+
+- **Weekly link check**: `.github/workflows/check-links.yml` runs `scripts/check_links.py` every Monday and on demand. When a link breaks, it opens (or updates) an issue titled "Broken doc links". Locally: `python scripts/check_links.py`.
+- **Refresh**: from a clone of this repository, run `/mentor-buddy refresh`. The mentor runs the link check, re-verifies the stable claims against the official docs, and shows a diff with the source of every change. Nothing is applied without your approval, and it never pushes.
+- **Drift reports**: when a learner's session finds the docs contradicting the skill, it records the case in their `STUDY-MEMORY.md` and points them to the issue tracker.
 
 ## Feedback and contributing
 
