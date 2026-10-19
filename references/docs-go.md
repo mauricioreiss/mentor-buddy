@@ -1,6 +1,6 @@
 # Go: official entry points
 
-Links checked on 2026-10-17. They are entry points: open the specific page for the learner's installed version before citing it.
+Links checked on 2026-10-18. They are entry points: open the specific page for the learner's installed version before citing it.
 
 | Topic | Official docs |
 |---|---|

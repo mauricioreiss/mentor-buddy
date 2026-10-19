@@ -1,6 +1,6 @@
 # Tooling: official entry points
 
-Links checked on 2026-10-17. They are entry points: open the specific page before citing it.
+Links checked on 2026-10-18. They are entry points: open the specific page before citing it.
 
 ## Git and GitHub
 
@@ -41,7 +41,7 @@ Links checked on 2026-10-17. They are entry points: open the specific page befor
 
 | Topic | Reference |
 |---|---|
-| OWASP Top 10 | https://owasp.org/www-project-top-ten/ |
+| OWASP Top 10 | https://owasp.org/projects/top-ten |
 | Config in the environment (Twelve-Factor) | https://12factor.net/config |
 
 ## Hosting

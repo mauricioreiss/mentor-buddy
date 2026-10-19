@@ -1,0 +1,7 @@
+# Gemini CLI has no per-skill slash command; this file gives it /mentor-buddy.
+# Copy it to ~/.gemini/commands/mentor-buddy.toml.
+description = "Start or resume a Mentor Buddy study session."
+prompt = """
+Activate the mentor-buddy skill and follow its instructions, starting at "Every session starts here".
+What the learner typed after the command (may be empty): {{args}}
+"""

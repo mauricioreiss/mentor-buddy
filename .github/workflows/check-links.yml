@@ -1,0 +1,38 @@
+name: Check doc links
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check links
+        id: check
+        continue-on-error: true
+        run: python3 scripts/check_links.py > link-report.md
+
+      - name: Show the report
+        if: always()
+        run: cat link-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update the issue
+        if: steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          number=$(gh issue list --repo "$REPO" --state open --search "Broken doc links in:title" --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --repo "$REPO" --body-file link-report.md
+          else
+            gh issue create --repo "$REPO" --title "Broken doc links" --body-file link-report.md
+          fi
