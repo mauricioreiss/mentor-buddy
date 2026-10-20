@@ -54,7 +54,7 @@ Grade each answer in one line. A wrong answer gets the explanation and the quest
 - No defect a compiler or linter would catch; real review finds what builds.
 - The drill covers a feature already done or one outside the brief, never a step still ahead, so it cannot become a shortcut.
 
-**Where**: save it as `.review-drills/<nn>-<topic>.<ext>` at the repository root. The leading dot keeps it out of builds and test runs (Go, for one, skips folders starting with a dot). The first time, the learner adds `.review-drills/` to `.gitignore` themselves. Where you cannot write files, show it in chat.
+**Where**: save it as `.review-drills/<nn>-<topic>.<ext>` at the project root. The leading dot keeps it out of builds and test runs (Go, for one, skips folders starting with a dot). The first time, if the project uses git, the learner adds `.review-drills/` to `.gitignore` themselves. Where you cannot write files, show it in chat.
 
 **Answer key**: write it in section `9. Review drills` of the memory before showing the drill, so grading survives the end of a session. Do not reveal it until they submit.
 

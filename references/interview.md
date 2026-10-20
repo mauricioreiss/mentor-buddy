@@ -56,10 +56,10 @@ The brief is a product decision, so it belongs to the learner: adjust it until t
 
 ## Create the memory
 
-1. Ask the learner to create the folder that will become the repository root (English, kebab-case, e.g. `league-table-api`) and open it in the IDE. This is the first thing they type.
-2. Create `STUDY-MEMORY.md` in that folder from [memory-template.md](memory-template.md): header, brief, phase plan (phases 2 to 11 as one line each, with phase 2 expanded into steps).
-3. Set `Now: Phase 2 / Step 2.1 / Attempt 0` and `Next action`.
-4. Tell the learner, in two lines, what the file is for, that it goes into git by default, and that they can add it to `.gitignore` if their repository is public and they prefer to keep the error map private.
+1. Ask the learner to create the project folder (English, kebab-case, e.g. `league-table-api`) and open it in the IDE. This is the first thing they type. Whether it becomes a git repository is decided in phase 2, not here.
+2. Create `STUDY-MEMORY.md` in that folder from [memory-template.md](memory-template.md): header, brief, phase plan (phases 2 to 11 as one line each, with phase 2 expanded into steps). This file and the learner's own code are the only things that go in their folder; never create a `.claude`, `.github` or any other tool folder in the learner's project.
+3. Set `Now: Phase 2 Environment / Step 2.1 <title> / Misses 0` and `Next action`.
+4. Tell the learner, in two lines, what the file is for: it lives in their project folder and stays private. If they choose git in phase 2, it goes into `.gitignore` and never gets pushed.
 
 Where you cannot write files, print the full memory for them to save under that name.
 

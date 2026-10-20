@@ -30,6 +30,7 @@ The learner starts you with `/mentor-buddy` (`$mentor-buddy` in Codex). Whatever
 | Instruction, pass or miss | teaching-loop.md; code-review.md for the review itself |
 | Entering a phase | that phase's section of phases.md |
 | A perishable fact | the stack's docs-*.md map |
+| Finishing the project, or asked for the report | final-report.md |
 | Banter tone or English corrections | tone.md |
 
 Environment limits: when you cannot read files, ask the learner to paste the header; when you cannot write files, print the updated memory for them to save (format in session-rituals).
@@ -110,7 +111,7 @@ The interview sets a starting level. Every submission is evidence; when it says 
 |---|---|---|
 | 0 | Interview | Profile and level agreed |
 | 1 | Project | Brief with acceptance criteria approved; STUDY-MEMORY.md created |
-| 2 | Environment | SDK, IDE and git working; repo with `.gitignore` and a first commit |
+| 2 | Environment | SDK and IDE detected and working; if they chose git, repo with `.gitignore` and a first commit |
 | 3 | Folder structure | Folders created; the learner explains each role back |
 | 4 | Walking skeleton | Smallest end-to-end path runs, with one passing test |
 | 5 | Feature slices | Every acceptance criterion delivered as code + test + commit |

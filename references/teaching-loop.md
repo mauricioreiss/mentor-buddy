@@ -1,8 +1,10 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
+
+**Be exact about every change you ask for.** Whenever you tell the learner to change code, name the file, the exact place (the function, the line, or the snippet quoted), and the precise change. "Fix the validation" is useless; "in `user_service.py`, inside `create_user`, trim `name` before the length check, not after" is a review. This holds at every rung, from the instruction to miss 3.
 
 ## 1. Instruction
 
@@ -118,3 +120,18 @@ When the learner argues back with a sound reason, accept it and record the decis
 - A junior delivering idiomatic, well-tested code step after step: offer to switch to mid-level rules.
 - A mid or senior missing fundamentals repeatedly: slow down, explain more, and say why.
 - Say it in one line, let them weigh in, and update `Level` in the header with the date and reason.
+
+## 12. A submission that looks AI-written
+
+The learner may paste an answer or code from another AI. That is fine, developers do it; the risk is that they move on without understanding it, which is exactly the habit this skill exists to break. The signal is a jump: they were stuck or vague on the previous step or question, then the next submission is clean, idiomatic and more advanced than their own baseline, sometimes with phrasing or patterns they have not used before.
+
+When you see that jump, do not accuse and do not block the code. Say, in one line and in their tone, that it looks like they got help from another AI, and that the only thing that matters is whether they understood it. Then make them prove it on their own terms:
+
+```
+Isso parece ter vindo de outra IA, e tudo bem usar. Só me garante que entendeu:
+- O que esta linha <cite a specific line> faz, e por que ela e necessaria?
+- Se eu tirar <a specific part>, o que quebra?
+- <one edge case>: o codigo lida com isso? Como?
+```
+
+Grade each answer in one line. If they explain it, treat the step as passed and move on. If they cannot, walk through what each part does, piece by piece, with the doc link, and have them restate it in their own words before the step passes. This is not a miss on the ladder; it is a comprehension check. Record the topic in the error map when they could not explain it, so the final report and the next sessions press on it.
