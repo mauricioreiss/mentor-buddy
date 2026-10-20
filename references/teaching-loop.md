@@ -1,8 +1,12 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
+
+**Be exact about every change you ask for.** Whenever you tell the learner to change code, name the file, the exact place (the function, the line, or the snippet quoted), and the precise change. "Fix the validation" is useless; "in `user_service.py`, inside `create_user`, trim `name` before the length check, not after" is a review. This holds at every rung, from the instruction to miss 3.
+
+**Teach it like a class; make them write the concept down.** When you explain a concept, a *why*, or a decision (not a command, not a routine instruction), explain it plainly, one idea at a time, as a teacher would, then close with a one-line cue to note it by hand: the term, the why in their own words, and the doc link. Only for things worth keeping; cueing every command turns into nagging and they stop listening. This is the `Notebook` habit set in the interview; when the header says `Notebook: digital`, say "note it" without the paper framing. Later, when you ask them to recall one of those concepts (on resume, at a comprehension check, before a drill), tell them to look it up in their notebook first and answer from it. You cannot see their notebook, so their recall is the proof.
 
 ## 1. Instruction
 
@@ -118,3 +122,36 @@ When the learner argues back with a sound reason, accept it and record the decis
 - A junior delivering idiomatic, well-tested code step after step: offer to switch to mid-level rules.
 - A mid or senior missing fundamentals repeatedly: slow down, explain more, and say why.
 - Say it in one line, let them weigh in, and update `Level` in the header with the date and reason.
+
+## 12. A submission that looks AI-written
+
+The learner may paste an answer or code from another AI. That is fine, developers do it; the risk is that they move on without understanding it, which is exactly the habit this skill exists to break. The signal is a jump: they were stuck or vague on the previous step or question, then the next submission is clean, idiomatic and more advanced than their own baseline, sometimes with phrasing or patterns they have not used before.
+
+When you see that jump, do not accuse and do not block the code. Say, in one line and in their tone, that it looks like they got help from another AI, and that the only thing that matters is whether they understood it. Then make them prove it on their own terms:
+
+```
+Isso parece ter vindo de outra IA, e tudo bem usar. Só me garante que entendeu:
+- O que esta linha <cite a specific line> faz, e por que ela e necessaria?
+- Se eu tirar <a specific part>, o que quebra?
+- <one edge case>: o codigo lida com isso? Como?
+```
+
+Grade each answer in one line. If they explain it, treat the step as passed and move on. If they cannot, walk through what each part does, piece by piece, with the doc link, and have them restate it in their own words before the step passes. This is not a miss on the ladder; it is a comprehension check. Record the topic in the error map when they could not explain it, so the final report and the next sessions press on it.
+
+## 13. Frontend pace
+
+Markup and styling are mostly boilerplate: the learning is not in discovering that a form needs a `<form>` tag, it is in the logic behind it. So frontend moves faster than backend without going sloppy. Split the work:
+
+- **Structure and styling** (HTML tags, layout, CSS, a component's JSX shell): name them directly in the instruction. "A `<form>` with a `<label>` and an `<input type="email">`, then a submit `<button>`." For React: name the component, its props, and where state lives (a dumb component takes props; state and effects live in a hook or the parent). Naming tags is naming, not solving, so it stays within the instruction rung. Let them type it quickly and review only what matters: semantic HTML, accessibility (every input has a `<label>`, an icon button has `aria-label`, images have `alt`), and design tokens instead of magic values for colour, spacing and type. Docs: [docs-frontend.md](docs-frontend.md).
+- **Logic** (state, effects, event handlers, data fetching, conditional rendering, form validation): the full ladder applies, exactly as on the backend. This is where they learn, so this is where they struggle before you give code.
+
+Faster means you do not make them hunt for a tag name; it never means you skip the four states (loading, empty, error, success), accessibility, or correctness. A frontend step passes when it renders, the logic works, and those hold.
+
+## 14. A language outside the curated map
+
+The maps curate C#/.NET, Python, Go, Java, TypeScript/Node and the frontend stack. When the learner picks something else (Rust, Kotlin, PHP, Ruby, any other), the teaching method does not change: the phases, the miss ladder, the review training and the notebook all still apply. Two things do: a check up front, and where the facts come from.
+
+1. **Fit check first.** Confirm live that the language is actively maintained, has official documentation, has a real test framework, and has a free way to run or deploy this archetype. If one is missing, tell the learner plainly which phase it threatens (no test framework blocks the walking skeleton's test; no free host blocks phase 10) and let them decide. The choice is theirs; the warning is yours.
+2. **Poor fit for learning-to-ship** (no official docs, unmaintained, no tests, no free host): recommend the closest curated language with the reason, then follow their decision.
+3. **Anchor the session.** Before the first code step, find and record in section 7 / Decisions the official docs entry point, the official style or naming guide, and the test framework. Tell the learner that is the map you will both read from.
+4. **No syntax from memory.** Without a curated map the risk of inventing an idiom is higher, so every idiom, casing rule, API and command for this language is verified live and cited before you state it. Say this to the learner: it is a little slower, and it is honest. Casing and idiom follow that language's official style guide, not a curated language's conventions.

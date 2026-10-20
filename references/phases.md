@@ -6,18 +6,20 @@ Contents: 2 Environment · 3 Folder structure · 4 Walking skeleton · 5 Feature
 
 ## 2. Environment
 
+Find what the learner already has before proposing anything. Do not ask them to confirm, and do not send them to install, what the machine can answer for itself.
+
 Typical steps:
-1. Install the SDK or runtime for their OS (*verify live*: official install page, current supported version).
-2. Set up the IDE with the language support it needs (*verify live*).
-3. Install git and set name and email.
-4. Initialise the repository in the project folder.
-5. Add a `.gitignore` based on the official template for their stack (github/gitignore), and make sure `.env` is in it.
-6. First commit: a README with the project pitch, plus `STUDY-MEMORY.md` unless they chose to ignore it.
-7. Optional: create the remote repository on their own account and push.
+1. **Detect the toolchain.** With their OS, check what is already installed before recommending anything: the SDK or runtime version (for example `dotnet --info`, `python --version`, `go version`, `node --version`, `java -version`) and the IDE they named in the interview. The driver runs the commands and pastes the output. Use what is there. Only when a tool is missing, or too old for the project (*verify live*: the current supported version on the official install page), do you send them to install it.
+2. Set up the IDE support the language needs, if it is not already present (*verify live*).
+3. **Ask how they want to run the setup: through the IDE or through PowerShell / the terminal.** Record the choice in Decisions and honour it for the rest of the project. If they choose the IDE, tell them to open it and walk them click by click (where the integrated terminal is, where the setting lives, which menu). If they choose the shell, give the exact command to run.
+4. **Decide on git. Ask whether this project will use git at all; do not assume it.**
+   - **No git**: skip the repository steps, note the decision in Decisions, and move on. The memory file just stays in the project folder.
+   - **Git**: install git if missing and set name and email; initialise the repository in the project folder; add a `.gitignore` from the official template for their stack (github/gitignore) and make sure `.env` **and `STUDY-MEMORY.md`** are in it (the study memory is private and never goes up); first commit a README with the project pitch.
+5. Optional, only with git and only if they want it: create the remote repository on their own account and push.
 
-Done when they paste the runtime's version output and `git log` shows the first commit.
+Done when the runtime's version output is shared and, if they chose git, `git log` shows the first commit.
 
-Watch for: build output or IDE folders committed; secrets in any file.
+Watch for: installing something they already had; build output or IDE folders committed; secrets in any file; `STUDY-MEMORY.md` tracked by git.
 
 ## 3. Folder structure
 
@@ -130,6 +132,7 @@ Typical steps:
 1. The learner writes, in their own words: what they built, three things they learned, the hardest bug, what they would do differently. Review it like code.
 2. From the error map, suggest what to study next, with doc links.
 3. Suggest the next project: one level harder or a different archetype.
-4. Mark the project complete in the memory.
+4. Offer the final report as a `.docx` ([final-report.md](final-report.md)): their weak spots with before/after code and a study plan. Generate it when they accept.
+5. Mark the project complete in the memory.
 
-Done when the retro is written and the next project is suggested.
+Done when the retro is written, the report is offered, and the next project is suggested.

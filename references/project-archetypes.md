@@ -8,10 +8,13 @@ Archetypes guarantee the project crosses every phase, from folders to deploy, at
 |---|---|---|---|---|
 | REST API with a database | HTTP, validation, data access, tests | junior to senior | yes | container web service |
 | CLI tool | argument parsing, file I/O, error handling, packaging | junior | file or embedded database | published release artifact |
+| Frontend app (SPA or static site) | components, state, forms, the four states, accessibility, design tokens | junior to senior | optional (a public API or none) | static site |
 | Full-stack web app | API plus a simple frontend, CORS, forms | mid to senior | yes | web service plus static site |
 | Background worker with a queue | async processing, retries, idempotency | mid to senior | yes | container worker plus a queue |
 | Integration service | consuming a public API, webhooks, resilience, caching | mid to senior | optional | container web service |
 | Real-time app | WebSockets, broadcast, connection state | senior | optional | container web service |
+
+A learner who wants offensive security, ethical hacking or CTF practice instead of building an app does not use this catalog: route them to the cybersecurity track in [cybersec-track.md](cybersec-track.md), which has its own journey and lab-safety gate.
 
 ## Scope by level (REST API example; scale the others the same way)
 

@@ -35,6 +35,10 @@ State the estimate in one line with the reason and invite a correction. Done whe
 
 ## Exchange 3: project
 
+If the learner wants cybersecurity, ethical hacking, pentesting or CTF practice rather than building an app, switch to the **cybersecurity track**: follow [cybersec-track.md](cybersec-track.md) from here. The lab contract there is the first gate, and the phase plan in the memory comes from that file instead of the app phases. The rest of this interview (profile, level, tone, memory creation) still applies.
+
+For an app project:
+
 - **No idea**: offer three options from [project-archetypes.md](project-archetypes.md) that fit the level, the language and the time available, each themed on what they enjoy. For each: name, one-line pitch, what they will practice, rough size. They pick.
 - **Own idea**: cut it to the smallest version that still crosses every phase up to the deploy within their time. Explain what was cut and why; the rest goes to a "Later" list in the brief.
 
@@ -56,10 +60,11 @@ The brief is a product decision, so it belongs to the learner: adjust it until t
 
 ## Create the memory
 
-1. Ask the learner to create the folder that will become the repository root (English, kebab-case, e.g. `league-table-api`) and open it in the IDE. This is the first thing they type.
-2. Create `STUDY-MEMORY.md` in that folder from [memory-template.md](memory-template.md): header, brief, phase plan (phases 2 to 11 as one line each, with phase 2 expanded into steps).
-3. Set `Now: Phase 2 / Step 2.1 / Attempt 0` and `Next action`.
-4. Tell the learner, in two lines, what the file is for, that it goes into git by default, and that they can add it to `.gitignore` if their repository is public and they prefer to keep the error map private.
+1. Ask the learner to create the project folder (English, kebab-case, e.g. `league-table-api`) and open it in the IDE. This is the first thing they type. Whether it becomes a git repository is decided in phase 2, not here.
+2. Create `STUDY-MEMORY.md` in that folder from [memory-template.md](memory-template.md): header, brief, phase plan (phases 2 to 11 as one line each, with phase 2 expanded into steps). This file and the learner's own code are the only things that go in their folder; never create a `.claude`, `.github` or any other tool folder in the learner's project.
+3. Set `Now: Phase 2 Environment / Step 2.1 <title> / Misses 0` and `Next action`.
+4. Tell the learner, in two lines, what the file is for: it lives in their project folder and stays private. If they choose git in phase 2, it goes into `.gitignore` and never gets pushed.
+5. **Set up the notebook.** Tell them to keep a paper notebook next to them: this works like a class, and when you explain a concept they write it down by hand, because writing it out fixes it better than typing and they will review from it later. Recommend paper; if they say they retain better digitally, let them, but say once why paper is the recommendation. Record `Notebook: paper` or `Notebook: digital` in the header.
 
 Where you cannot write files, print the full memory for them to save under that name.
 
