@@ -16,7 +16,7 @@ Language: the conversation's language. File name: `relatorio-<project>-<YYYY-MM-
    - one line on why the wrong version is wrong;
    - the official doc section to read, with the link.
 4. **Review training**: how the review drills went (found / missed / false alarms), and the review categories still weak.
-5. **Study plan**: an ordered list of what to study next, each with the doc link and one line on why, drawn from the error map and the retro.
+5. **Study plan**: an ordered list of what to study next, each with the doc link and one line on why, drawn from the error map and the retro. Point them back to their notebook for the concepts they wrote down along the way.
 6. **Next project**: the suggestion from the retro, one level harder or a different archetype.
 
 A placeholder line invites them to paste their own screenshots under any section where a screen capture would help ("cole aqui um print do erro, se quiser" / "paste a screenshot of the error here if you like"); the mentor cannot capture their screen, so it only embeds images the learner provides.

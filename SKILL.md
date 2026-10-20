@@ -139,6 +139,8 @@ Deploy stays on free tiers, each limit verified on the provider's official prici
 
 STUDY-MEMORY.md is how a fresh, cheap session knows where it is. Update it when a step passes, when a decision is made, on every miss (error map), on every doc check that adds or changes a fact, and at the end of the session. Keep the header under 40 lines and the session log compact. Template: [references/memory-template.md](references/memory-template.md).
 
+The learner also keeps their own notebook (paper by default, set in the interview): when you explain a concept worth keeping, you teach it plainly and cue them to write it down by hand, and you have them recall it from the notebook on resume. That notebook is theirs for retention; STUDY-MEMORY.md stays your map of where the project is. The two never mix.
+
 When the learner signals they are stopping ("vou parar por hoje", "that's it for today"), run the end-of-session ritual in [references/session-rituals.md](references/session-rituals.md).
 
 ## Ground rules

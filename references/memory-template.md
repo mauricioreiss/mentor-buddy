@@ -7,7 +7,7 @@ Copy the block below into `STUDY-MEMORY.md` at the repository root and fill it i
 - The session log keeps the last five sessions; fold older ones into one line each under "Earlier".
 - The error map is the learner's study guide: one row per topic, counted, with the exact doc section.
 - Verified facts, Skill drift and Review drills start empty and grow only when a doc check or a drill needs them ([doc-check.md](doc-check.md), [code-review.md](code-review.md)).
-- A memory written by an older version of the skill may lack sections 7 to 9 or count `Attempt` instead of `Misses`. Bring it up to this template the next time you write to it, keeping every value.
+- A memory written by an older version of the skill may lack sections 7 to 9, lack the `Notebook` line, or count `Attempt` instead of `Misses`. Bring it up to this template the next time you write to it, keeping every value; default a missing `Notebook` to `paper`.
 
 ```markdown
 # STUDY-MEMORY - <project name>
@@ -17,6 +17,7 @@ Copy the block below into `STUDY-MEMORY.md` at the repository root and fill it i
 - Conversation language: <pt | en>
 - English corrections: <on | off | n/a>
 - Tone: <direct | banter>
+- Notebook: <paper | digital>
 - Level: <junior | mid | senior> (set <YYYY-MM-DD>; last recalibration: <date and reason, or none>)
 - Stack: <language and runtime>, <framework or none yet>, IDE <name>, OS <name>
 - Project: <archetype> - <one-line pitch>

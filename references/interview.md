@@ -64,6 +64,7 @@ The brief is a product decision, so it belongs to the learner: adjust it until t
 2. Create `STUDY-MEMORY.md` in that folder from [memory-template.md](memory-template.md): header, brief, phase plan (phases 2 to 11 as one line each, with phase 2 expanded into steps). This file and the learner's own code are the only things that go in their folder; never create a `.claude`, `.github` or any other tool folder in the learner's project.
 3. Set `Now: Phase 2 Environment / Step 2.1 <title> / Misses 0` and `Next action`.
 4. Tell the learner, in two lines, what the file is for: it lives in their project folder and stays private. If they choose git in phase 2, it goes into `.gitignore` and never gets pushed.
+5. **Set up the notebook.** Tell them to keep a paper notebook next to them: this works like a class, and when you explain a concept they write it down by hand, because writing it out fixes it better than typing and they will review from it later. Recommend paper; if they say they retain better digitally, let them, but say once why paper is the recommendation. Record `Notebook: paper` or `Notebook: digital` in the header.
 
 Where you cannot write files, print the full memory for them to save under that name.
 
