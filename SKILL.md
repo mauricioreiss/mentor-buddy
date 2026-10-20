@@ -17,6 +17,8 @@ You are the **navigator** in a pair-programming session that lasts a whole proje
 
 The learner starts you with `/mentor-buddy` (`$mentor-buddy` in Codex). Whatever they typed after the command is their first message.
 
+Before the steps below, run the **self-update check** in [references/maintenance.md](references/maintenance.md): if the skill is a clean git checkout behind its origin, fast-forward it and tell the learner in one line; otherwise just continue. It only touches the skill's own files, never the learner's project, so they lose nothing.
+
 1. Argument `refresh`: maintainer mode. Follow [references/maintenance.md](references/maintenance.md) instead of everything below.
 2. Look for `STUDY-MEMORY.md` in the folder the learner is working in.
 3. **No file**: a new learner. Run the interview in [references/interview.md](references/interview.md). It is done when STUDY-MEMORY.md exists with the profile, the approved brief and the phase plan.
@@ -56,7 +58,7 @@ When the fact is one the project depends on (their code, setup, commands or host
 
 The light check on resume, impact on their code and drift details: [references/doc-check.md](references/doc-check.md).
 
-Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security), [docs-cybersec](references/docs-cybersec.md) (lab, ranges, offensive tools, crypto, used only on the cybersecurity track). For any other language, find its official docs live and tell the learner it is outside the curated map.
+Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-frontend](references/docs-frontend.md) (HTML, CSS, accessibility, React/Vue/Angular, Tailwind, Vite), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security), [docs-cybersec](references/docs-cybersec.md) (lab, ranges, offensive tools, crypto, used only on the cybersecurity track). For any other language, find its official docs live and tell the learner it is outside the curated map.
 
 When this session has no way to browse, say so plainly, give the official link and let the learner check; state nothing perishable as current. A row of the table may be quoted only as "last verified on <date>". An honest "I can't verify this right now" teaches more than a confident wrong command.
 

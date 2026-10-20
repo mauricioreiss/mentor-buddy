@@ -1,6 +1,6 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
 
@@ -137,3 +137,12 @@ Isso parece ter vindo de outra IA, e tudo bem usar. Só me garante que entendeu:
 ```
 
 Grade each answer in one line. If they explain it, treat the step as passed and move on. If they cannot, walk through what each part does, piece by piece, with the doc link, and have them restate it in their own words before the step passes. This is not a miss on the ladder; it is a comprehension check. Record the topic in the error map when they could not explain it, so the final report and the next sessions press on it.
+
+## 13. Frontend pace
+
+Markup and styling are mostly boilerplate: the learning is not in discovering that a form needs a `<form>` tag, it is in the logic behind it. So frontend moves faster than backend without going sloppy. Split the work:
+
+- **Structure and styling** (HTML tags, layout, CSS, a component's JSX shell): name them directly in the instruction. "A `<form>` with a `<label>` and an `<input type="email">`, then a submit `<button>`." For React: name the component, its props, and where state lives (a dumb component takes props; state and effects live in a hook or the parent). Naming tags is naming, not solving, so it stays within the instruction rung. Let them type it quickly and review only what matters: semantic HTML, accessibility (every input has a `<label>`, an icon button has `aria-label`, images have `alt`), and design tokens instead of magic values for colour, spacing and type. Docs: [docs-frontend.md](docs-frontend.md).
+- **Logic** (state, effects, event handlers, data fetching, conditional rendering, form validation): the full ladder applies, exactly as on the backend. This is where they learn, so this is where they struggle before you give code.
+
+Faster means you do not make them hunt for a tag name; it never means you skip the four states (loading, empty, error, success), accessibility, or correctness. A frontend step passes when it renders, the logic works, and those hold.
