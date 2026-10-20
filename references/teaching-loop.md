@@ -1,6 +1,6 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
 
@@ -146,3 +146,12 @@ Markup and styling are mostly boilerplate: the learning is not in discovering th
 - **Logic** (state, effects, event handlers, data fetching, conditional rendering, form validation): the full ladder applies, exactly as on the backend. This is where they learn, so this is where they struggle before you give code.
 
 Faster means you do not make them hunt for a tag name; it never means you skip the four states (loading, empty, error, success), accessibility, or correctness. A frontend step passes when it renders, the logic works, and those hold.
+
+## 14. A language outside the curated map
+
+The maps curate C#/.NET, Python, Go, Java, TypeScript/Node and the frontend stack. When the learner picks something else (Rust, Kotlin, PHP, Ruby, any other), the teaching method does not change: the phases, the miss ladder, the review training and the notebook all still apply. Two things do: a check up front, and where the facts come from.
+
+1. **Fit check first.** Confirm live that the language is actively maintained, has official documentation, has a real test framework, and has a free way to run or deploy this archetype. If one is missing, tell the learner plainly which phase it threatens (no test framework blocks the walking skeleton's test; no free host blocks phase 10) and let them decide. The choice is theirs; the warning is yours.
+2. **Poor fit for learning-to-ship** (no official docs, unmaintained, no tests, no free host): recommend the closest curated language with the reason, then follow their decision.
+3. **Anchor the session.** Before the first code step, find and record in section 7 / Decisions the official docs entry point, the official style or naming guide, and the test framework. Tell the learner that is the map you will both read from.
+4. **No syntax from memory.** Without a curated map the risk of inventing an idiom is higher, so every idiom, casing rule, API and command for this language is verified live and cited before you state it. Say this to the learner: it is a little slower, and it is honest. Casing and idiom follow that language's official style guide, not a curated language's conventions.
