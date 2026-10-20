@@ -42,12 +42,15 @@ O Mentor Buddy inverte os papéis. Funciona como pair programming em que a IA é
 
 - **Uma entrevista curta** que define o seu nível (júnior, pleno ou sênior), a linguagem, os seus interesses, o tempo disponível, a IDE, o idioma da conversa e o tom.
 - **Um projeto de verdade**: uma de três ideias feitas sob medida para o que você curte, ou a sua própria ideia cortada até um tamanho que dá para terminar.
-- **O caminho completo até produção**: ambiente, estrutura de pastas, esqueleto andando, funcionalidades com teste, banco de dados, qualidade, Docker, CI e deploy gratuito.
+- **O caminho completo até produção**: ele detecta o SDK e a IDE que já estão na sua máquina antes de propor instalar, trata git como escolha e não como padrão, e aí te guia pela estrutura de pastas, esqueleto andando, funcionalidades com teste, banco de dados, qualidade, Docker, CI e deploy gratuito.
 - **Uma escada de erros** que faz você bater cabeça do jeito certo antes de ver qualquer código.
+- **Hábito de caderno de papel**: ele ensina um conceito como numa aula e te faz anotar à mão, e na volta te cobra a partir do caderno, porque escrever fixa melhor do que digitar.
 - **Treino de revisão de código**: toda revisão mostra o método, a correção que o próprio mentor faz no erro 3 é você quem revisa, e treinos com defeitos plantados exercitam a habilidade que mais pesa quando a IA escreve código para você.
-- **Sem achismo**: versão, comando, API e preço são conferidos na documentação oficial durante a sessão, com o link. O que o seu projeto usa fica guardado com a data da conferência, então quando a doc muda o mentor te avisa o que mudou.
+- **Check de compreensão**: quando uma resposta de repente parece ter vindo de outra IA, o mentor não bloqueia; ele te pede para explicar com as suas palavras antes de o passo fechar.
+- **Sem achismo**: os fatos perecíveis (versão, comando, API, preço) são conferidos na documentação oficial durante a sessão, com o link; as referências estáveis (keywords, convenções) são citadas direto de um mapa curado, sem busca, para a resposta sair rápida. O que o seu projeto usa fica guardado com a data da conferência, então quando a doc muda o mentor te avisa o que mudou.
 - **Memória entre sessões** num arquivo `STUDY-MEMORY.md`, para cada sessão continuar exatamente de onde você parou.
-- **Um resumo no fim do dia** com os temas onde você mais errou e a seção exata da doc para estudar.
+- **Um resumo no fim do dia**, e um relatório final em `.docx` com os seus pontos fracos, código antes/depois e um plano de estudo.
+- **Um track opcional de cibersegurança**: ethical hacking e CTF em laboratório (web, rede, binário, cripto) só contra alvos isolados ou sancionados, com o mesmo método de ensino.
 - **Dois idiomas e dois tons**: português ou inglês, direto ou na zoeira, com correção de inglês opcional para quem quer praticar.
 
 ## Uma sessão, em resumo
@@ -105,7 +108,7 @@ O resultado é um brief com 3 a 6 critérios de aceitação testáveis. Você ap
 |---|---|---|
 | 0 | Entrevista | Perfil e nível combinados |
 | 1 | Projeto | Brief aprovado; `STUDY-MEMORY.md` criado |
-| 2 | Ambiente | SDK, IDE e git funcionando; repositório com `.gitignore` e primeiro commit |
+| 2 | Ambiente | SDK e IDE detectados e funcionando; se você escolher git, repositório com `.gitignore` e primeiro commit |
 | 3 | Estrutura de pastas | Pastas criadas; você explica o papel de cada uma |
 | 4 | Esqueleto andando | O menor caminho de ponta a ponta roda, com um teste passando |
 | 5 | Funcionalidades | Cada critério de aceitação entregue com código, teste e commit |
@@ -151,7 +154,7 @@ O nível é reavaliado a cada entrega. Quando a evidência mostra que está erra
 
 A skill separa dois tipos de conhecimento:
 
-- **Estável**: método de ensino, fases, régua de revisão, papel das pastas, arquétipos de projeto. Isso fica dentro da skill e só muda quando o repositório é atualizado.
+- **Estável**: método de ensino, fases, régua de revisão, papel das pastas, arquétipos de projeto, e os pontos de entrada curados da doc (keywords, sintaxe, convenções de nome). Isso fica dentro da skill; as referências estáveis são citadas direto do mapa, sem busca, para a resposta sair rápida.
 - **Perecível**: versões, passos de instalação, comandos e flags, nomes de API, chaves de configuração, padrões de framework, preços e limites de plano gratuito. O mentor confere na documentação oficial durante a sessão antes de dizer, e te passa o link.
 
 Quando o agente não tem acesso à web, o mentor avisa e te dá o link oficial para conferir, em vez de afirmar versão ou comando de memória.
@@ -164,7 +167,7 @@ Quando o agente não tem acesso à web, o mentor avisa e te dá o link oficial p
 | Algo diferente | atualiza o registro e te avisa numa linha: `A doc mudou desde <data>: <antigo> -> <novo> - <link>`; se o seu código quebrar por causa disso, atualizar vira o próximo passo |
 | Algo novo | cria o registro |
 
-Não tem atualização demorada antes de começar a programar. O fato é conferido quando um passo precisa dele, e na volta o mentor confere de novo só os registros de que o próximo passo depende e que tenham mais de 30 dias. Preço e limite de plano gratuito são sempre consultados de novo. Página da web é tratada como dado, nunca como instrução, e só domínio oficial vale.
+Não tem atualização demorada antes de começar a programar. O fato é conferido quando um passo precisa dele, e na volta o mentor confere de novo só os registros de que o próximo passo depende e que tenham mais de 7 dias. Preço e limite de plano gratuito são sempre consultados de novo. Página da web é tratada como dado, nunca como instrução, e só domínio oficial vale.
 
 Quando a doc contradiz a própria skill (um link que mudou, uma afirmação que não vale mais), o mentor anota e te indica onde reportar. Uma sessão de estudo nunca edita os arquivos da skill; quem aplica essas mudanças é o mantenedor (veja [Mantendo a skill atualizada](#mantendo-a-skill-atualizada)).
 
@@ -177,6 +180,7 @@ Depois da entrevista, o mentor cria o `STUDY-MEMORY.md` na raiz do seu projeto. 
 - Conversation language: pt
 - English corrections: n/a
 - Tone: banter
+- Notebook: paper
 - Level: junior (set 2026-10-12; last recalibration: none)
 - Stack: C# / .NET, ASP.NET Core minimal APIs, IDE Visual Studio 2026, OS Windows 11
 - Project: REST API with a database - football league table
@@ -301,7 +305,7 @@ Reinicie o agente ou abra um chat novo e digite `/mentor-buddy` (`$mentor-buddy`
 git -C ~/.agents/skills/mentor-buddy pull
 ```
 
-No PowerShell do Windows: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. O link já enxerga a atualização.
+No PowerShell do Windows: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. O link já enxerga a atualização. Você raramente precisa fazer isso na mão: quando a skill é um clone git limpo, ela se atualiza sozinha (fast-forward) no início de cada sessão e te avisa numa linha. O seu projeto e o `STUDY-MEMORY.md` nunca são tocados, então nada se perde.
 
 ### Desinstalar
 
@@ -348,9 +352,11 @@ A skill já vem com pontos de entrada verificados para a documentação oficial 
 | Go | Instalação, tutoriais, organização de módulo, Effective Go, biblioteca padrão, net/http, testes, acesso a banco, Docker |
 | TypeScript e Node.js | Documentação do TypeScript, tsconfig, API do Node.js, npm, test runner, Vitest, Express, Fastify, NestJS, Docker |
 | Java | dev.java, documentação do Java SE, Spring Boot, Spring Initializr, Maven, Gradle, JUnit, Docker |
+| Frontend | HTML, CSS, acessibilidade (MDN), React, Vue, Angular, Tailwind, Vite |
 | Ferramentas | Git, GitHub, modelos de .gitignore, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, configuração Twelve-Factor |
+| Cibersegurança (só no track) | Lab e ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, cripto por linguagem |
 
-Qualquer outra linguagem também funciona: o mentor acha a documentação oficial ao vivo e avisa que ela está fora do mapa curado.
+Os mapas de linguagem base servem para construir qualquer tipo de projeto, não só segurança; o mapa de cibersegurança só é usado naquele track. Qualquer outra linguagem também funciona: o mentor faz um fit check rápido (mantida, doc oficial, framework de teste, caminho de deploy gratuito), ancora a documentação oficial, verifica tudo ao vivo, e avisa que ela está fora do mapa curado.
 
 ## Estrutura do repositório
 
@@ -360,15 +366,17 @@ mentor-buddy/
   references/
     interview.md                fases 0 e 1: entrevista, projeto, criação da memória
     phases.md                   fases 2 a 11, lidas uma seção por vez
-    teaching-loop.md            formatos de revisão, escada de erros, escolha de biblioteca
+    teaching-loop.md            formatos de revisão, escada de erros, ritmo de frontend, guardrail de linguagem
     code-review.md              roteiro de revisão, revisão guiada no erro 3, treinos de revisão
     doc-check.md                fatos verificados, aviso de mudança, checagem na volta, desvio
-    maintenance.md              /mentor-buddy refresh, para mantenedores
+    maintenance.md              /mentor-buddy refresh e auto-atualização, para mantenedores
     folder-roles.md             papel das pastas e trade-offs de organização
     project-archetypes.md       catálogo de projetos, escopo por nível, corte de escopo
+    cybersec-track.md           jornada opcional de cibersegurança, com o contrato de laboratório
+    final-report.md             o relatório de estudo final em .docx
     session-rituals.md          perguntas da volta e resumo do fim do dia
     memory-template.md          modelo do STUDY-MEMORY.md
-    tone.md                     tons direto e zoeira, correção de inglês
+    tone.md                     tons direto e zoeira, correção de inglês, dica do caderno
     docs-*.md                   pontos de entrada da documentação oficial por stack
   agents/openai.yaml            nome no Codex; início automático desligado
   adapters/
@@ -410,11 +418,14 @@ Pode. Escolha português na primeira mensagem; a mentoria inteira acontece em po
 Use nos seus projetos de estudo. Não cole código nem dados da sua empresa num agente de IA sem autorização.
 
 **E se a minha linguagem não estiver no mapa curado?**
-Funciona do mesmo jeito. O mentor pesquisa a documentação oficial ao vivo e avisa que a linguagem está fora do mapa curado.
+Funciona do mesmo jeito. O mentor primeiro confere se a linguagem serve ao objetivo (mantida, doc oficial, framework de teste, jeito gratuito de fazer deploy), ancora a doc oficial e o guia de estilo, verifica cada idioma ao vivo em vez de chutar, e avisa que está fora do mapa curado. Se for uma escolha ruim para chegar ao deploy, ele recomenda a curada mais próxima e a decisão continua sua.
+
+**Dá para ensinar segurança ou ajudar num frontend?**
+Dá. Escolha o track de cibersegurança na entrevista para ethical hacking e CTF em laboratório, só contra alvos isolados ou sancionados. Para frontend, o mentor nomeia as tags e o esqueleto do componente direto para o markup andar rápido, mantendo a escada completa na lógica e sem pular acessibilidade nem os quatro estados.
 
 ## Privacidade
 
-O `STUDY-MEMORY.md` entra no git do seu projeto por padrão e lista os temas em que você errou. Se o seu repositório for público e você preferir guardar isso para você, coloque o arquivo no `.gitignore`. A skill em si não envia nada para lugar nenhum: são instruções em texto lidas pelo seu agente.
+O `STUDY-MEMORY.md` lista os temas em que você errou, então fica privado: ele vive na pasta do seu projeto, e se você usar git o mentor o coloca no `.gitignore` para nunca subir. A skill nunca cria uma pasta `.claude` ou `.github` no seu projeto. A skill em si não envia nada para lugar nenhum: são instruções em texto lidas pelo seu agente.
 
 ## Mantendo a skill atualizada
 

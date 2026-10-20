@@ -42,12 +42,15 @@ It is built for anyone who wants to learn hands-on with an AI agent: beginners w
 
 - **A short interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, IDE, conversation language and tone.
 - **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
-- **The full path to production**: environment, folder structure, walking skeleton, features with tests, database, quality, Docker, CI and a free deploy.
+- **The full path to production**: it detects the SDK and IDE already on your machine before proposing installs, treats git as a choice rather than a default, then walks you through folder structure, a walking skeleton, features with tests, a database, quality, Docker, CI and a free deploy.
 - **An error ladder** that makes you struggle productively before you see any code.
+- **A paper-notebook habit**: it teaches a concept like a class and has you write it down by hand, then quizzes you from your notebook on resume, because writing fixes it better than typing.
 - **Code review training**: every review shows you the method, the mentor's own fix at miss 3 is yours to review, and review drills with planted defects train the skill you need most when AI writes code for you.
-- **No guessing**: versions, commands, APIs and prices are checked in the official documentation during the session, with the link. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
+- **A comprehension check**: when an answer suddenly looks like it came from another AI, the mentor does not block it; it asks you to explain it in your own words before the step passes.
+- **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
 - **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
-- **An end-of-day summary** with the topics where you missed most and the exact doc sections to study.
+- **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
+- **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
 - **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
 
 ## A session, in short
@@ -104,7 +107,7 @@ The result is a brief with 3 to 6 testable acceptance criteria. You approve it; 
 |---|---|---|
 | 0 | Interview | Profile and level agreed |
 | 1 | Project | Brief approved; `STUDY-MEMORY.md` created |
-| 2 | Environment | SDK, IDE and git working; repository with `.gitignore` and a first commit |
+| 2 | Environment | SDK and IDE detected and working; if you chose git, a repository with `.gitignore` and a first commit |
 | 3 | Folder structure | Folders created; you explain each folder's role back |
 | 4 | Walking skeleton | The smallest end-to-end path runs, with one passing test |
 | 5 | Feature slices | Every acceptance criterion delivered as code, test and commit |
@@ -150,7 +153,7 @@ The level is re-evaluated from your submissions. When the evidence says it is of
 
 The skill separates two kinds of knowledge:
 
-- **Stable**: teaching method, phases, review rubric, folder roles, project archetypes. This lives inside the skill and changes only when the repository is updated.
+- **Stable**: teaching method, phases, review rubric, folder roles, project archetypes, and the curated doc entry points (language keywords, syntax, naming conventions). This lives inside the skill; stable references are cited straight from the map without a lookup, so answers stay fast.
 - **Perishable**: versions, install steps, commands and flags, API names, config keys, framework defaults, prices and free-tier limits. The mentor looks these up in the official documentation during the session before saying them, and gives you the link.
 
 When the agent has no web access, the mentor says so and gives you the official link to check, instead of stating a version or command from memory.
@@ -163,7 +166,7 @@ When the agent has no web access, the mentor says so and gives you the official 
 | Something different | updates the record and tells you in one line: `Doc changed since <date>: <old> -> <new> - <link>`; if your code breaks because of it, updating it becomes the next step |
 | Something new | adds a record |
 
-There is no slow refresh before you start coding. Facts are checked when a step needs them, and on resume the mentor re-checks only the records your next step depends on that are older than 30 days. Prices and free-tier limits are always looked up again. Web pages are treated as data, never as instructions, and only official domains are used.
+There is no slow refresh before you start coding. Facts are checked when a step needs them, and on resume the mentor re-checks only the records your next step depends on that are older than 7 days. Prices and free-tier limits are always looked up again. Web pages are treated as data, never as instructions, and only official domains are used.
 
 When the docs contradict the skill itself (a moved link, a claim that no longer holds), the mentor notes it and points you to the issue tracker. A learning session never edits the skill's files; the maintainer applies those changes (see [Keeping the skill current](#keeping-the-skill-current)).
 
@@ -176,6 +179,7 @@ After the interview, the mentor creates `STUDY-MEMORY.md` at your project root. 
 - Conversation language: en
 - English corrections: on
 - Tone: direct
+- Notebook: paper
 - Level: junior (set 2026-10-14; last recalibration: none)
 - Stack: Go, standard library net/http, IDE VS Code, OS macOS
 - Project: REST API with a database - daily habit tracker
@@ -300,7 +304,7 @@ Restart your agent or open a new chat and type `/mentor-buddy` (`$mentor-buddy` 
 git -C ~/.agents/skills/mentor-buddy pull
 ```
 
-On Windows PowerShell: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. The link picks up the update automatically.
+On Windows PowerShell: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. The link picks up the update automatically. You rarely need this by hand: when the skill is a clean git clone, it fast-forwards itself at the start of each session and tells you in one line. Your project and `STUDY-MEMORY.md` are never touched, so nothing is lost.
 
 ### Uninstall
 
@@ -347,9 +351,11 @@ The skill ships with verified entry points to the official docs for these stacks
 | Go | Install, tutorials, module layout, Effective Go, standard library, net/http, testing, database access, Docker |
 | TypeScript and Node.js | TypeScript docs, tsconfig, Node.js API, npm, test runner, Vitest, Express, Fastify, NestJS, Docker |
 | Java | dev.java, Java SE docs, Spring Boot, Spring Initializr, Maven, Gradle, JUnit, Docker |
+| Frontend | HTML, CSS, accessibility (MDN), React, Vue, Angular, Tailwind, Vite |
 | Tooling | Git, GitHub, .gitignore templates, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, Twelve-Factor config |
+| Cybersecurity (track only) | Lab and ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, crypto per language |
 
-Any other language still works: the mentor finds its official docs live and tells you it is outside the curated map.
+The base language maps are for building any kind of project, not only security; the cybersecurity map is used only on that track. Any other language still works: the mentor runs a quick fit check (maintained, official docs, a test framework, a free deploy path), anchors the official docs and verifies everything live, and tells you it is outside the curated map.
 
 ## Repository layout
 
@@ -359,15 +365,17 @@ mentor-buddy/
   references/
     interview.md                phases 0 and 1: interview, project, memory creation
     phases.md                   phases 2 to 11, read one section at a time
-    teaching-loop.md            review formats, error ladder, library choice
+    teaching-loop.md            review formats, error ladder, frontend pace, language guardrail
     code-review.md              review checklist, guided review at miss 3, review drills
     doc-check.md                verified facts, change notices, light check on resume, drift
-    maintenance.md              /mentor-buddy refresh, for maintainers
+    maintenance.md              /mentor-buddy refresh and self-update, for maintainers
     folder-roles.md             folder roles and organization trade-offs
     project-archetypes.md       project catalog, scope by level, scope cutting
+    cybersec-track.md           optional cybersecurity journey, with the lab-safety contract
+    final-report.md             the end-of-project .docx study report
     session-rituals.md          resume questions and end-of-day summary
     memory-template.md          STUDY-MEMORY.md template
-    tone.md                     direct and banter tones, English corrections
+    tone.md                     direct and banter tones, English corrections, notebook cue
     docs-*.md                   official documentation entry points per stack
   agents/openai.yaml            Codex display name; implicit start turned off
   adapters/
@@ -409,11 +417,14 @@ Yes. Choose Portuguese in the first message; the whole mentoring happens in Port
 Use it on your own study projects. Do not paste your employer's code or data into an AI agent without permission.
 
 **What if my language is not in the curated map?**
-It still works. The mentor researches the official docs live and tells you the language is outside the curated map.
+It still works. The mentor first checks the language fits the goal (maintained, official docs, a test framework, a free way to deploy), anchors its official docs and style guide, verifies every idiom live instead of guessing, and tells you it is outside the curated map. If it is a poor fit for reaching a deploy, it recommends the closest curated language and the choice stays yours.
+
+**Can it teach security or help with a frontend?**
+Yes. Pick the cybersecurity track in the interview for lab-based ethical hacking and CTF practice against isolated or sanctioned targets only. For a frontend, the mentor names tags and component shells directly so markup moves fast, while keeping the full ladder for the logic, and never skipping accessibility or the four states.
 
 ## Privacy
 
-`STUDY-MEMORY.md` goes into your project's git by default and lists the topics where you missed. If your repository is public and you would rather keep that private, add the file to `.gitignore`. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
+`STUDY-MEMORY.md` lists the topics where you missed, so it stays private: it lives in your project folder, and if you use git the mentor puts it in `.gitignore` so it is never pushed. The skill never creates a `.claude` or `.github` folder in your project. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
 
 ## Keeping the skill current
 
