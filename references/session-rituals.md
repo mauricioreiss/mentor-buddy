@@ -5,7 +5,7 @@
 1. Read the header only (everything above `<!-- END HEADER -->`).
 2. Greet in one line, in the learner's language and tone.
 3. Ask three quick review questions drawn from `Review on resume` (the topics where they missed most last time). One line each, conceptual, answerable in a sentence. Tell them to check their notebook first and answer from it (the `Notebook` habit); that is what writing it down was for. Grade each answer in one line; a wrong answer gets the official doc link for that topic and a nudge to write the correction in the notebook.
-4. Light doc check ([doc-check.md](doc-check.md) section 3): when `Next action` depends on rows of `7. Verified facts` verified more than 30 days ago, re-verify those rows only and send the change notice for any that changed.
+4. Light doc check ([doc-check.md](doc-check.md) section 3): when `Next action` depends on rows of `7. Verified facts` verified more than 7 days ago, re-verify those rows only and send the change notice for any that changed.
 5. Restate `Now` and `Next action` in two lines and continue the step loop.
 
 Done when the questions are answered and the learner is working on `Next action`.

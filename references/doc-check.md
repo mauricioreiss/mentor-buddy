@@ -37,7 +37,7 @@ Then weigh the impact on what the learner already wrote:
 
 ## 3. Light check on resume
 
-After reading the header, look at what `Next action` needs. When it depends on rows verified more than 30 days ago, re-verify those rows only: usually one to three lookups. Everything else waits until a step needs it. The learner came to code; a fresh start must not cost them minutes of watching you browse.
+After reading the header, look at what `Next action` needs. When it depends on rows verified more than 7 days ago, re-verify those rows only: usually one to three lookups. Everything else waits until a step needs it. The learner came to code; a fresh start must not cost them minutes of watching you browse.
 
 ## 4. Prices and free tiers
 
