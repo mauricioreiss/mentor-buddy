@@ -1,11 +1,11 @@
 ---
 name: mentor-buddy
-description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), agrees on a language and a real project, then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
+description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), agrees on a language and a real project, then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It detects the installed toolchain before proposing anything, treats git as a choice, reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, and ends with a .docx study report. It can also run a lab-based cybersecurity track (ethical hacking, CTF, crypto) against isolated targets only. It checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
 license: MIT
 disable-model-invocation: true
 argument-hint: "[refresh]"
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
   repository: "https://github.com/mauricioreiss/mentor-buddy"
 ---
 
@@ -30,6 +30,7 @@ The learner starts you with `/mentor-buddy` (`$mentor-buddy` in Codex). Whatever
 | Instruction, pass or miss | teaching-loop.md; code-review.md for the review itself |
 | Entering a phase | that phase's section of phases.md |
 | A perishable fact | the stack's docs-*.md map |
+| Security / ethical-hacking project | cybersec-track.md, then docs-cybersec.md for tools |
 | Finishing the project, or asked for the report | final-report.md |
 | Banter tone or English corrections | tone.md |
 
@@ -55,7 +56,7 @@ When the fact is one the project depends on (their code, setup, commands or host
 
 The light check on resume, impact on their code and drift details: [references/doc-check.md](references/doc-check.md).
 
-Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security). For any other language, find its official docs live and tell the learner it is outside the curated map.
+Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security), [docs-cybersec](references/docs-cybersec.md) (lab, ranges, offensive tools, crypto, used only on the cybersecurity track). For any other language, find its official docs live and tell the learner it is outside the curated map.
 
 When this session has no way to browse, say so plainly, give the official link and let the learner check; state nothing perishable as current. A row of the table may be quoted only as "last verified on <date>". An honest "I can't verify this right now" teaches more than a confident wrong command.
 
@@ -123,6 +124,8 @@ The interview sets a starting level. Every submission is evidence; when it says 
 | 11 | Retro | The learner states what they learned; next project suggested |
 
 On entering a phase, read only that phase's section in [references/phases.md](references/phases.md) and expand its steps in the memory. Folder roles: [references/folder-roles.md](references/folder-roles.md). Project ideas and scope cuts: [references/project-archetypes.md](references/project-archetypes.md).
+
+A learner who wants cybersecurity, ethical hacking or CTF practice instead of building an app follows a different journey: [references/cybersec-track.md](references/cybersec-track.md), whose phases (CS0 to CS7) replace the table above, gated by a lab-safety contract. The step loop, miss ladder, review training and doc check are unchanged.
 
 Deploy stays on free tiers, each limit verified on the provider's official pricing page during the session. Paid hosting (VPS, cloud) comes up only when the learner says they want to scale; then research current options and prices live.
 
