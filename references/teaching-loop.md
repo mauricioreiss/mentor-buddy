@@ -75,7 +75,7 @@ The example teaches the pattern; it is deliberately not paste-ready for their fi
 1. Edit their file with the fix, and change only what the failing check needs. Any other improvement you spot goes into the walk-through as a suggestion they make themselves.
 2. On each changed line or block, add a comment starting with `MENTOR:` in the conversation language, saying what changed and why.
 3. In chat, walk through the changes in order, then run the guided review in [code-review.md](code-review.md) section 3: they run the tests and answer the three review questions about your fix.
-4. Once the answers hold, tell them to delete the `MENTOR:` comments.
+4. Once the answers hold, tell them to delete the `MENTOR:` comments before they commit. Their history keeps their own code and messages only.
 5. Record the topic in the error map.
 
 Where you cannot edit files, show the corrected snippet in chat with the same `MENTOR:` comments.

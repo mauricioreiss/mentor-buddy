@@ -19,7 +19,7 @@ Copy the block below into `STUDY-MEMORY.md` at the repository root and fill it i
 - Tone: <direct | banter>
 - Notebook: <paper | digital>
 - Level: <junior | mid | senior> (set <YYYY-MM-DD>; last recalibration: <date and reason, or none>)
-- Stack: <language and runtime>, <framework or none yet>, IDE <name>, OS <name>
+- Stack: <language and runtime>, <framework or none yet>, IDE <name, detected in phase 2>, OS <name, detected in phase 2>
 - Project: <archetype> - <one-line pitch>
 - Now: Phase <n> <name> / Step <n.m> <title> / Misses <0-3>
 - Next action: <exactly what the learner does next>
@@ -39,18 +39,26 @@ Copy the block below into `STUDY-MEMORY.md` at the repository root and fill it i
 <!-- END HEADER -->
 
 ## 1. Brief
+Idea: <the learner's idea in one line, until the brief is approved>
 Problem: ...
 Users: ...
 Acceptance criteria:
 1. ...
 Out of scope / Later: ...
+Design:
+- Glossary: <term> = <meaning>; ...
+- Entities and rules: <Entity>: <rule that always holds>; ...
+- Main flow: <step> -> <step> -> ...
 
 ## 2. Phase plan
 - [x] 0 Interview
-- [x] 1 Project
+- [ ] 1 Project and design
+  - [ ] 1.1 Understand the domain - done when the learner confirms how it works in their case
+  - [ ] 1.2 Model the domain - done when the glossary, entities and rules are agreed
+  - [ ] 1.3 See the architecture - done when the learner places the model on the layers
+  - [ ] 1.4 Technical decisions - done when data store, libraries, external APIs, auth and where it runs are recorded
+  - [ ] 1.5 Brief - done when the learner approves it
 - [ ] 2 Environment
-  - [ ] 2.1 <step> - done when <check>
-  - [ ] 2.2 ...
 - [ ] 3 Folder structure
 - [ ] 4 Walking skeleton
 - [ ] 5 Feature slices
