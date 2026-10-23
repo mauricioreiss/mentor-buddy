@@ -42,7 +42,7 @@ Observability grows with the level: a junior logs tokens, cost and latency per r
 
 ## Explain it back
 
-The track exists so the learner can explain and build an agent, not just run one. After AI4, and again in the retro, the learner explains in their own words, without notes: what a token is and what it costs; what the model decides and what their code decides; how a tool call travels from the model to their function and back; why the loop needs a limit; why retrieved text is untrusted. Grade it like review answers: a wrong answer gets the explanation and the question again, and it is never a miss.
+The track exists so the learner can explain and build an agent, not just run one. After AI4, and again in the retro, the learner explains in their own words, without notes: what a token is and what it costs; what the model decides and what their code decides; how a tool call travels from the model to their function and back; why the loop needs a limit; why retrieved text is untrusted. A wrong or hesitant answer gets the numbered flow from [teaching-loop.md](teaching-loop.md) section 15 and the question again; it is never a miss.
 
 ## Archetypes
 

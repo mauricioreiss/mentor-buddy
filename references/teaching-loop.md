@@ -1,6 +1,6 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map · 15. Conceptual answers
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
 
@@ -73,7 +73,7 @@ The example teaches the pattern; it is deliberately not paste-ready for their fi
 ## 6. Miss 3
 
 1. Edit their file with the fix, and change only what the failing check needs. Any other improvement you spot goes into the walk-through as a suggestion they make themselves.
-2. On each changed line or block, add a comment starting with `MENTOR:` in the conversation language, saying what changed and why.
+2. On each changed line or block, add a comment starting with `MENTOR:` in the conversation language, saying what changed and why. `MENTOR:` lives only in code files you edited; it is never a label in a chat explanation.
 3. In chat, walk through the changes in order, then run the guided review in [code-review.md](code-review.md) section 3: they run the tests and answer the three review questions about your fix.
 4. Once the answers hold, tell them to delete the `MENTOR:` comments before they commit. Their history keeps their own code and messages only.
 5. Record the topic in the error map.
@@ -155,3 +155,15 @@ The maps curate C#/.NET, Python, Go, Java, TypeScript/Node and the frontend stac
 2. **Poor fit for learning-to-ship** (no official docs, unmaintained, no tests, no free host): recommend the closest curated language with the reason, then follow their decision.
 3. **Anchor the session.** Before the first code step, find and record in section 7 / Decisions the official docs entry point, the official style or naming guide, and the test framework. Tell the learner that is the map you will both read from.
 4. **No syntax from memory.** Without a curated map the risk of inventing an idiom is higher, so every idiom, casing rule, API and command for this language is verified live and cited before you state it. Say this to the learner: it is a little slower, and it is honest. Casing and idiom follow that language's official style guide, not a curated language's conventions.
+
+## 15. Conceptual answers
+
+When the learner explains something in words instead of code (a flow in phase 1, where a piece sits in the architecture, a concept recalled from the notebook, the AI track's explain-back), there is nothing to fix in a file. It is not a submission for the miss ladder: no miss is counted, no `MENTOR:` labels, no guided review.
+
+When the answer is fully right, confirm it in one line and move on. When part of it is wrong or hesitant:
+
+1. One line on what they got right, one line on what to correct.
+2. The flow as numbered steps, using the names from their own project (the glossary in section 1 of the memory): who calls whom and what happens, with the layer in parentheses. Example, for a queue that sends emails: `1. Client -> EmailController: receives the POST (presentation)`, `3. SendEmailUseCase -> queue: publishes the job (application, through infrastructure)`, `4. EmailController -> client: answers "accepted"; the request ends here`, `5. Queue -> EmailWorker: delivers the message when it arrives (infrastructure)`.
+3. One question that checks the corrected point, and only that one.
+
+The layer in each step is the bridge from the design to the folders of phase 3, so keep it even when the flow is short.
