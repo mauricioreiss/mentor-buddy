@@ -14,6 +14,8 @@ Archetypes guarantee the project crosses every phase, from folders to deploy, at
 | Integration service | consuming a public API, webhooks, resilience, caching | mid to senior | optional | container web service |
 | Real-time app | WebSockets, broadcast, connection state | senior | optional | container web service |
 
+A learner on the AI track (LLM apps, RAG, agents) picks from the archetypes in [ai-track.md](ai-track.md), which cross the same phases.
+
 A learner who wants offensive security, ethical hacking or CTF practice instead of building an app does not use this catalog: route them to the cybersecurity track in [cybersec-track.md](cybersec-track.md), which has its own journey and lab-safety gate.
 
 ## Scope by level (REST API example; scale the others the same way)

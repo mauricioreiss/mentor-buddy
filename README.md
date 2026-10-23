@@ -136,6 +136,7 @@ Outros jeitos de instalar (um agente só, instalador de skills, Gemini CLI, Visu
 - **Um resumo no fim do dia**, e um relatório final em `.docx` com os seus pontos fracos, código antes/depois e um plano de estudo.
 - **Um certificado de conclusão** em `.docx`, com o seu nome, o projeto, a linguagem, o nível, quanto tempo levou, o que você construiu e o link do app no ar, quando a trilha inteira fecha. É a prova de que você levou um projeto até produção; não é uma certificação oficial.
 - **Um track opcional de cibersegurança**: ethical hacking e CTF em laboratório (web, rede, binário, cripto) só contra alvos isolados ou sancionados, com o mesmo método de ensino.
+- **Uma trilha de IA**, estudada como uma linguagem nova: chamar modelos (Claude, GPT, Gemini ou um modelo local e gratuito com Ollama), resposta estruturada, ferramentas, RAG, MCP, custo, observabilidade e segurança, até você construir do zero, explicar e colocar no ar um agente autônomo. A documentação oficial é consultada na hora, porque nessa área tudo muda rápido.
 - **Dois idiomas e dois tons**: português ou inglês, direto ou na zoeira, com correção de inglês opcional para quem quer praticar.
 
 ## Como funciona
@@ -410,8 +411,9 @@ A skill já vem com pontos de entrada verificados para a documentação oficial 
 | Frontend | HTML, CSS, acessibilidade (MDN), React, Vue, Angular, Tailwind, Vite |
 | Ferramentas | Git, GitHub, modelos de .gitignore, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, configuração Twelve-Factor |
 | Cibersegurança (só no track) | Lab e ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, cripto por linguagem |
+| IA (só na trilha) | APIs do Claude, da OpenAI e do Gemini, Ollama, resposta estruturada, ferramentas e agentes, MCP, RAG (pgvector, Qdrant), evals, fine-tuning (Hugging Face), OpenTelemetry, Prometheus, Jaeger, Grafana, OWASP Top 10 para LLM, OPA |
 
-Os mapas de linguagem base servem para construir qualquer tipo de projeto, não só segurança; o mapa de cibersegurança só é usado naquele track. Qualquer outra linguagem também funciona: o mentor faz um fit check rápido (mantida, doc oficial, framework de teste, caminho de deploy gratuito), ancora a documentação oficial, verifica tudo ao vivo, e avisa que ela está fora do mapa curado.
+Os mapas de linguagem base servem para construir qualquer tipo de projeto, não só segurança; o mapa de cibersegurança só é usado naquele track, e o de IA, na trilha de IA. Qualquer outra linguagem também funciona: o mentor faz um fit check rápido (mantida, doc oficial, framework de teste, caminho de deploy gratuito), ancora a documentação oficial, verifica tudo ao vivo, e avisa que ela está fora do mapa curado.
 
 </details>
 
@@ -433,6 +435,8 @@ mentor-buddy/
     folder-roles.md             papel das pastas e trade-offs de organização
     project-archetypes.md       catálogo de projetos, escopo por nível, corte de escopo
     cybersec-track.md           jornada opcional de cibersegurança, com o contrato de laboratório
+    ai-track.md                 trilha de IA: a escada até o agente autônomo, as regras e os arquétipos
+    design.md                   fase 1: domínio, modelo, arquitetura e decisões técnicas
     final-report.md             o relatório de estudo final em .docx
     certificate.md              o certificado de conclusão em .docx, com a régua para emitir
     session-rituals.md          perguntas da volta e resumo do fim do dia
@@ -488,6 +492,9 @@ Use nos seus projetos de estudo. Não cole código nem dados da sua empresa num 
 
 **E se a minha linguagem não estiver no mapa curado?**
 Funciona do mesmo jeito. O mentor primeiro confere se a linguagem serve ao objetivo (mantida, doc oficial, framework de teste, jeito gratuito de fazer deploy), ancora a doc oficial e o guia de estilo, verifica cada idioma ao vivo em vez de chutar, e avisa que está fora do mapa curado. Se for uma escolha ruim para chegar ao deploy, ele recomenda a curada mais próxima e a decisão continua sua.
+
+**Dá para estudar IA?**
+Dá. Escolha a trilha de IA na entrevista. O projeto segue as mesmas fases, com uma escada de IA na fase 5: chamar o modelo, resposta estruturada, ferramentas, o laço do agente escrito à mão e RAG. O objetivo é você construir, explicar e colocar no ar um agente autônomo do zero. Primeiro sem framework; framework só depois que você entende cada parte. Modelo, preço e limite são sempre conferidos na documentação oficial na hora.
 
 **Dá para ensinar segurança ou ajudar num frontend?**
 Dá. Escolha o track de cibersegurança na entrevista para ethical hacking e CTF em laboratório, só contra alvos isolados ou sancionados. Para frontend, o mentor nomeia as tags e o esqueleto do componente direto para o markup andar rápido, mantendo a escada completa na lógica e sem pular acessibilidade nem os quatro estados.
