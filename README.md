@@ -72,7 +72,7 @@ Não precisa ser iniciante. O mentor estima o seu nível (júnior, pleno ou sên
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/trail-pt-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/trail-pt-light.svg">
-  <img src=".github/assets/trail-pt-light.svg" width="100%" alt="A trilha, da pasta vazia ao deploy: 0 Entrevista, 1 Projeto, 2 Ambiente, 3 Pastas, 4 Esqueleto, 5 Features, 6 Banco, 7 Qualidade, 8 Docker, 9 CI, 10 Deploy, 11 Retro, e depois o próximo projeto.">
+  <img src=".github/assets/trail-pt-light.svg" width="100%" alt="A trilha, da pasta vazia ao deploy: 0 Entrevista, 1 Projeto, 2 Ambiente, 3 Pastas, 4 Esqueleto, 5 Features, 6 Banco, 7 Qualidade, 8 Docker, 9 CI, 10 Deploy, 11 Retro, com o certificado, e depois o próximo projeto.">
 </picture>
 
 São 12 paradas, cada uma quebrada em passos pequenos com um critério de pronto. Tudo fica anotado no `STUDY-MEMORY.md`, então a próxima sessão começa exatamente de onde você parou. Os detalhes de cada fase estão em [Como funciona](#como-funciona).
@@ -133,6 +133,7 @@ Outros jeitos de instalar (um agente só, instalador de skills, Gemini CLI, Visu
 - **Sem achismo**: os fatos perecíveis (versão, comando, API, preço) são conferidos na documentação oficial durante a sessão, com o link; as referências estáveis (keywords, convenções) são citadas direto de um mapa curado, sem busca, para a resposta sair rápida. O que o seu projeto usa fica guardado com a data da conferência, então quando a doc muda o mentor te avisa o que mudou.
 - **Memória entre sessões** num arquivo `STUDY-MEMORY.md`, para cada sessão continuar exatamente de onde você parou.
 - **Um resumo no fim do dia**, e um relatório final em `.docx` com os seus pontos fracos, código antes/depois e um plano de estudo.
+- **Um certificado de conclusão** em `.docx`, com o seu nome, o projeto e o link do app no ar, quando a trilha inteira fecha. É a prova de que você levou um projeto até produção; não é uma certificação oficial.
 - **Um track opcional de cibersegurança**: ethical hacking e CTF em laboratório (web, rede, binário, cripto) só contra alvos isolados ou sancionados, com o mesmo método de ensino.
 - **Dois idiomas e dois tons**: português ou inglês, direto ou na zoeira, com correção de inglês opcional para quem quer praticar.
 
@@ -177,7 +178,7 @@ O resultado é um brief com 3 a 6 critérios de aceitação testáveis. Você ap
 | 8 | Docker | A aplicação e as dependências sobem com compose a partir de um clone limpo |
 | 9 | CI | Um pipeline faz build e teste a cada push |
 | 10 | Deploy | No ar num plano gratuito, configurado por variáveis de ambiente |
-| 11 | Retrospectiva | Você escreve o que aprendeu; o próximo projeto é sugerido |
+| 11 | Retrospectiva | Você escreve o que aprendeu; com o app no ar e todos os critérios entregues, sai o seu certificado; o próximo projeto é sugerido |
 
 A estrutura de pastas é escolhida com você e fica proporcional ao problema: por funcionalidade em aplicações com muito CRUD, por camada quando as regras de negócio são pesadas, ou um meio-termo.
 
@@ -426,10 +427,12 @@ mentor-buddy/
     project-archetypes.md       catálogo de projetos, escopo por nível, corte de escopo
     cybersec-track.md           jornada opcional de cibersegurança, com o contrato de laboratório
     final-report.md             o relatório de estudo final em .docx
+    certificate.md              o certificado de conclusão em .docx, com a régua para emitir
     session-rituals.md          perguntas da volta e resumo do fim do dia
     memory-template.md          modelo do STUDY-MEMORY.md
     tone.md                     tons direto e zoeira, correção de inglês, dica do caderno
     docs-*.md                   pontos de entrada da documentação oficial por stack
+  assets/certificate-header-*.png   arte do cabeçalho do certificado, PT e EN
   agents/openai.yaml            nome no Codex; início automático desligado
   adapters/
     gemini/mentor-buddy.toml    comando /mentor-buddy para o Gemini CLI
@@ -466,6 +469,9 @@ Para confirmar versão, comando e preço na documentação oficial, sim. Sem int
 **Custa alguma coisa?**
 A skill é gratuita. Você precisa do plano do seu agente, e a fase de deploy usa planos gratuitos, conferidos na página oficial de preços de cada provedor durante a sessão.
 
+**Tem certificado?**
+Tem, quando o projeto termina de verdade: app no ar, todos os critérios de aceitação entregues e o retro escrito. Só aí o mentor pergunta o nome que vai no certificado, e esse nome vai só para o arquivo `.docx`. É um certificado de conclusão de projeto emitido pela skill, não uma certificação oficial.
+
 **Posso usar em português?**
 Pode. Escolha português na primeira mensagem; a mentoria inteira acontece em português, com o código em inglês.
 
@@ -480,7 +486,7 @@ Dá. Escolha o track de cibersegurança na entrevista para ethical hacking e CTF
 
 ## Privacidade
 
-O `STUDY-MEMORY.md` lista os temas em que você errou, então fica privado: ele vive na pasta do seu projeto, e se você usar git o mentor o coloca no `.gitignore` para nunca subir. A skill nunca cria uma pasta `.claude` ou `.github` no seu projeto. A skill em si não envia nada para lugar nenhum: são instruções em texto lidas pelo seu agente.
+O `STUDY-MEMORY.md` lista os temas em que você errou, então fica privado: ele vive na pasta do seu projeto, e se você usar git o mentor o coloca no `.gitignore` para nunca subir. O nome que você dá para o certificado vai só para o arquivo do certificado, que também entra no `.gitignore`. A skill nunca cria uma pasta `.claude` ou `.github` no seu projeto. A skill em si não envia nada para lugar nenhum: são instruções em texto lidas pelo seu agente.
 
 ## Mantendo a skill atualizada
 
