@@ -346,36 +346,53 @@ def styles_xml(language: str) -> str:
             '<w:qFormat/></w:style></w:styles>')
 
 
+OFFICE_RELATIONSHIP = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+PACKAGE_RELATIONSHIPS = "http://schemas.openxmlformats.org/package/2006/relationships"
+WORDPROCESSING = "application/vnd.openxmlformats-officedocument.wordprocessingml"
+
+CONTENT_TYPES_XML = (
+    f'{XML_DECLARATION}<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+    '<Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>'
+    f'<Override PartName="/word/document.xml" ContentType="{WORDPROCESSING}.document.main+xml"/>'
+    f'<Override PartName="/word/styles.xml" ContentType="{WORDPROCESSING}.styles+xml"/>'
+    f'<Override PartName="/word/footer1.xml" ContentType="{WORDPROCESSING}.footer+xml"/>'
+    '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>'
+    '</Types>'
+)
+
+PACKAGE_RELATIONSHIPS_XML = (
+    f'{XML_DECLARATION}<Relationships xmlns="{PACKAGE_RELATIONSHIPS}">'
+    f'<Relationship Id="rId1" Type="{OFFICE_RELATIONSHIP}/officeDocument" Target="word/document.xml"/>'
+    f'<Relationship Id="rId2" Type="{PACKAGE_RELATIONSHIPS}/metadata/core-properties" Target="docProps/core.xml"/>'
+    '</Relationships>'
+)
+
+
+def core_properties_xml(title: str) -> str:
+    return (f'{XML_DECLARATION}<cp:coreProperties '
+            'xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" '
+            'xmlns:dc="http://purl.org/dc/elements/1.1/">'
+            f'<dc:title>{escape(title)}</dc:title><dc:creator>Mentor Buddy</dc:creator></cp:coreProperties>')
+
+
+def document_relationships_xml(live_url: str) -> str:
+    link = (f'<Relationship Id="rIdLiveUrl" Type="{OFFICE_RELATIONSHIP}/hyperlink" '
+            f'Target="{escape(live_url, {chr(34): "&quot;"})}" TargetMode="External"/>') if live_url else ""
+    return (f'{XML_DECLARATION}<Relationships xmlns="{PACKAGE_RELATIONSHIPS}">'
+            f'<Relationship Id="rIdStyles" Type="{OFFICE_RELATIONSHIP}/styles" Target="styles.xml"/>'
+            f'<Relationship Id="rIdFooter" Type="{OFFICE_RELATIONSHIP}/footer" Target="footer1.xml"/>'
+            f'<Relationship Id="rIdHeaderImage" Type="{OFFICE_RELATIONSHIP}/image" Target="media/certificate-header.png"/>'
+            f'{link}</Relationships>')
+
+
 def package_parts(certificate: Certificate, header_png: bytes) -> dict[str, bytes | str]:
     labels = LABELS[certificate.language]
-    relationship = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
-    link = (f'<Relationship Id="rIdLiveUrl" Type="{relationship}/hyperlink" Target="{escape(certificate.live_url, {chr(34): "&quot;"})}" '
-            'TargetMode="External"/>') if certificate.live_url else ""
     return {
-        "[Content_Types].xml": (
-            f'{XML_DECLARATION}<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
-            '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
-            '<Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>'
-            '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
-            '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>'
-            '<Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>'
-            '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>'
-            '</Types>'),
-        "_rels/.rels": (
-            f'{XML_DECLARATION}<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
-            f'<Relationship Id="rId1" Type="{relationship}/officeDocument" Target="word/document.xml"/>'
-            '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" '
-            'Target="docProps/core.xml"/></Relationships>'),
-        "docProps/core.xml": (
-            f'{XML_DECLARATION}<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" '
-            'xmlns:dc="http://purl.org/dc/elements/1.1/">'
-            f'<dc:title>{escape(labels["title"])}</dc:title><dc:creator>Mentor Buddy</dc:creator></cp:coreProperties>'),
-        "word/_rels/document.xml.rels": (
-            f'{XML_DECLARATION}<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
-            f'<Relationship Id="rIdStyles" Type="{relationship}/styles" Target="styles.xml"/>'
-            f'<Relationship Id="rIdFooter" Type="{relationship}/footer" Target="footer1.xml"/>'
-            f'<Relationship Id="rIdHeaderImage" Type="{relationship}/image" Target="media/certificate-header.png"/>'
-            f'{link}</Relationships>'),
+        "[Content_Types].xml": CONTENT_TYPES_XML,
+        "_rels/.rels": PACKAGE_RELATIONSHIPS_XML,
+        "docProps/core.xml": core_properties_xml(labels["title"]),
+        "word/_rels/document.xml.rels": document_relationships_xml(certificate.live_url),
         "word/document.xml": document_xml(certificate, image_extent(header_png)),
         "word/styles.xml": styles_xml(certificate.language),
         "word/footer1.xml": footer_xml(labels),
