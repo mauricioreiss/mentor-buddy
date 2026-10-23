@@ -133,7 +133,7 @@ Outros jeitos de instalar (um agente só, instalador de skills, Gemini CLI, Visu
 - **Sem achismo**: os fatos perecíveis (versão, comando, API, preço) são conferidos na documentação oficial durante a sessão, com o link; as referências estáveis (keywords, convenções) são citadas direto de um mapa curado, sem busca, para a resposta sair rápida. O que o seu projeto usa fica guardado com a data da conferência, então quando a doc muda o mentor te avisa o que mudou.
 - **Memória entre sessões** num arquivo `STUDY-MEMORY.md`, para cada sessão continuar exatamente de onde você parou.
 - **Um resumo no fim do dia**, e um relatório final em `.docx` com os seus pontos fracos, código antes/depois e um plano de estudo.
-- **Um certificado de conclusão** em `.docx`, com o seu nome, o projeto e o link do app no ar, quando a trilha inteira fecha. É a prova de que você levou um projeto até produção; não é uma certificação oficial.
+- **Um certificado de conclusão** em `.docx`, com o seu nome, o projeto, a linguagem, o nível, quanto tempo levou, o que você construiu e o link do app no ar, quando a trilha inteira fecha. É a prova de que você levou um projeto até produção; não é uma certificação oficial.
 - **Um track opcional de cibersegurança**: ethical hacking e CTF em laboratório (web, rede, binário, cripto) só contra alvos isolados ou sancionados, com o mesmo método de ensino.
 - **Dois idiomas e dois tons**: português ou inglês, direto ou na zoeira, com correção de inglês opcional para quem quer praticar.
 
@@ -438,6 +438,7 @@ mentor-buddy/
     gemini/mentor-buddy.toml    comando /mentor-buddy para o Gemini CLI
     visual-studio/mentor-buddy.prompt.md   prompt file /mentor-buddy para o Visual Studio
   scripts/check_links.py        confere todos os links da skill (Python, só biblioteca padrão)
+  scripts/make_certificate.py   monta o certificado em .docx (Python, só biblioteca padrão)
   .github/workflows/check-links.yml   checagem semanal de links que abre uma issue quando falha
   .github/assets/               desenhos do README, em versão clara e escura, PT e EN
   README.md

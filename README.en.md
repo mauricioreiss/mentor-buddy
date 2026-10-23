@@ -132,7 +132,7 @@ Other ways to install (a single agent, the skills installer, Gemini CLI, Visual 
 - **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
 - **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
 - **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
-- **A completion certificate** as a `.docx`, with your name, the project and the link to the live app, once the whole trail is done. It proves you took a project to production; it is not an official certification.
+- **A completion certificate** as a `.docx`, with your name, the project, the language, your level, how long it took, what you built and the link to the live app, once the whole trail is done. It proves you took a project to production; it is not an official certification.
 - **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
 - **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
 
@@ -437,6 +437,7 @@ mentor-buddy/
     gemini/mentor-buddy.toml    /mentor-buddy command for Gemini CLI
     visual-studio/mentor-buddy.prompt.md   /mentor-buddy prompt file for Visual Studio
   scripts/check_links.py        checks every link in the skill (standard library Python)
+  scripts/make_certificate.py   builds the .docx completion certificate (standard library Python)
   .github/workflows/check-links.yml   weekly link check that opens an issue on failure
   .github/assets/               README drawings, light and dark, English and Portuguese
   README.md

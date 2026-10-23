@@ -20,26 +20,36 @@ Ask one question when the checks pass: "Qual nome vai no certificado?" / "What n
 
 ## What goes in
 
-One A4 page, landscape, in the conversation's language.
+The layout is fixed in `scripts/make_certificate.py`, so every certificate looks the same whatever agent builds it: one A4 landscape page with the header drawing from `assets/`, the name and the project centred, four highlights (language, level, duration, sessions), what was built next to the live address and the full trail, the Mentor Buddy signature, and the disclaimer in the page footer. You only gather the data, from the memory and the conversation:
 
-1. **Header image**, full width at the top: `assets/certificate-header-pt.png` or `assets/certificate-header-en.png` from this skill's folder. It carries the title, so do not repeat the title as text.
-2. "Certificamos que" / "This certifies that", then the **name**, large and bold.
-3. "construiu do zero e colocou no ar o projeto" / "built from scratch and shipped the project", then the **project name** and the one-line problem from the brief.
-4. A small two-column table: Stack; Nível / Level; Período / Period (first to last session date); Sessões / Sessions (counted from the session log); No ar em / Live at (the live address, as a link).
-5. "Trilha completa: 12 de 12 paradas" / "Full trail: 12 of 12 stops", then the twelve phase names on one line, separated by " · ".
-6. Signature block: "Mentor Buddy" and the issue date.
-7. Footer in small grey type: "Certificado de conclusão de projeto emitido pela skill Mentor Buddy (github.com/mauricioreiss/mentor-buddy). Não é uma certificação oficial." / "Project-completion certificate issued by the Mentor Buddy skill (github.com/mauricioreiss/mentor-buddy). It is not an official certification."
+| Field | Where it comes from |
+|---|---|
+| `language` | the conversation language: `pt` or `en` |
+| `name` | the learner's answer, exactly as typed (`""` leaves the line blank) |
+| `project`, `problem` | the brief: the project name and its one-line problem |
+| `programming_language` | the header's Stack, the language only (`C#`, `Python`, `Go`) |
+| `stack_detail` | the rest of the Stack: framework and version |
+| `level` | the header's Level, in the conversation language (`Júnior`, `Pleno`, `Sênior` / `Junior`, `Mid`, `Senior`) |
+| `first_session` | the oldest date in the session log |
+| `issued_on` | today |
+| `sessions` | the number of entries in the session log |
+| `built` | the acceptance criteria as delivered, rewritten as up to six short lines in plain words |
+| `live_url` | the live address in Decisions (left out on the cybersecurity track) |
+| `stops` | only on the cybersecurity track: the CS phase names |
 
-Typography: a serif such as Georgia for the name and the project, a sans such as Calibri or Arial for the rest. Do not depend on a handwritten font being installed; the handwriting lives in the header image.
+The script works out the duration itself, from the first session to today counting both days, so do not compute it.
 
 File name: `certificado-<project>-<YYYY-MM-DD>.docx` (`certificate-...` in English), in the learner's project folder. If they use git, add it to `.gitignore`: it carries their name, and publishing it is their call. Tell them it is theirs to print or share.
 
 ## How to assemble it
 
 1. Run the three checks; ask for the name only once they pass.
-2. Read the brief, the phase plan, the decisions (for the live address) and the session log from the memory.
-3. Invoke the `docx` skill with the layout above, embedding the header image from this skill's `assets/` folder.
-4. Add one line to the session log: certificate issued, with the date and without the name.
-5. Tell the learner where the file is in one line, in their tone.
+2. Read the brief, the header, the decisions and the session log from the memory, and fill the fields above.
+3. Write them as UTF-8 JSON to `certificate-data.json` in the project folder, then run this skill's script with whatever Python 3 the machine has (`python`, `python3` or `py -3`):
+   `python <skill folder>/scripts/make_certificate.py --data certificate-data.json --out certificado-<project>-<YYYY-MM-DD>.docx`
+   Pass the data as a file, never through a pipe: on Windows, PowerShell pipes text as ASCII and the accents in the name would be lost.
+4. Delete `certificate-data.json` right away: it holds the learner's name.
+5. Add one line to the session log: certificate issued, with the date and without the name.
+6. Tell the learner where the file is in one line, in their tone.
 
-Where this session cannot write files or cannot run the `docx` skill, say so, put the certificate text in chat, and point them to the header image so they can assemble it in Word or Google Docs. Do not hand over a half-built file.
+When the script stops with a message about the data, fix that field and run it again. Where the machine has no Python, build the same page with the `docx` skill, embedding `assets/certificate-header-<pt|en>.png`. Where this session cannot write files at all, say so, put the certificate text in chat and point them to the header image. Do not hand over a half-built file.
