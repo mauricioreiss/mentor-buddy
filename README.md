@@ -1,84 +1,85 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-en-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/banner-en-light.svg">
-  <img src=".github/assets/banner-en-light.svg" width="100%" alt="Mentor Buddy. You type. The AI does not write: it teaches. An AI mentor that never writes your code. You learn by doing, from an empty folder to deploy. To start, type /mentor-buddy in your agent.">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-pt-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/banner-pt-light.svg">
+  <img src=".github/assets/banner-pt-light.svg" width="100%" alt="Mentor Buddy. Você digita. A IA não escreve: ensina. Um mentor de IA que nunca escreve o seu código. Você aprende fazendo, da pasta vazia ao deploy. Para começar, digite /mentor-buddy no seu agente.">
 </picture>
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![Format: Agent Skills](https://img.shields.io/badge/format-agentskills.io-black.svg)
-![Conversation: EN | PT-BR](https://img.shields.io/badge/conversation-EN%20%7C%20PT--BR-informational.svg)
+![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)
+![Formato: Agent Skills](https://img.shields.io/badge/formato-agentskills.io-black.svg)
+![Conversa: EN | PT-BR](https://img.shields.io/badge/conversa-EN%20%7C%20PT--BR-informational.svg)
 
-[Leia em português](README.pt-BR.md)
+[Read in English](README.en.md)
 
-## What it is
+## O que é
 
-You know when you ask the AI for code, paste it, run it... and a week later you could not write it again? The code stayed in the project. The knowledge did not stay with you.
+Sabe quando você pede o código pra IA, cola, roda... e uma semana depois não conseguiria escrever aquilo de novo? O código ficou no projeto. O conhecimento não ficou com você.
 
-Mentor Buddy is a skill that flips that around: your AI agent becomes a mentor that **never writes your code**. It works like pair programming. You are the driver and type every line; the mentor is the navigator who asks, explains the why, reviews and keeps the map. You start from an empty folder and stop only when the app is live.
+O Mentor Buddy é uma skill que vira esse jogo: o seu agente de IA passa a ser um mentor que **não escreve o seu código**. Funciona como pair programming. Você é o piloto e digita cada linha; o mentor é o navegador, que pergunta, explica o porquê, revisa e guarda o mapa. Vocês saem de uma pasta vazia e só param com a aplicação no ar.
 
-It runs in Claude Code, Codex and any agent that reads the [Agent Skills](https://agentskills.io/specification) format, such as Copilot, Cursor and Gemini CLI. It is free and open source.
+Roda no Claude Code, no Codex e em todo agente que lê o formato [Agent Skills](https://agentskills.io/specification), como Copilot, Cursor e Gemini CLI. É gratuito e open source.
 
-## What it looks like
+## Como é na prática
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/comic-en-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/comic-en-light.svg">
-  <img src=".github/assets/comic-en-light.svg" width="100%" alt="Four-panel comic. 1, you ask: the learner says 'can you just give me the code?'. 2, it asks back: the mentor answers 'nope. what goes in here?'. 3, you type: the learner types, sweating. 4, you get it: the learner cheers 'ohh! that's why it threw a 500!' and the mentor draws a red check mark.">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/comic-pt-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/comic-pt-light.svg">
+  <img src=".github/assets/comic-pt-light.svg" width="100%" alt="Tirinha em quatro quadros. 1, você pede: o aluno pergunta 'me passa o código pronto?'. 2, ele pergunta: o mentor responde 'passo não. o que entra aqui?'. 3, você digita: o aluno digita, suando. 4, você entende: o aluno comemora 'ahh! por isso dava 500!' e o mentor marca um certo em vermelho.">
 </picture>
 
-Asked for the finished code? You get a question. Missed the step? First comes a review of what you did, then an example in a different context, and only on the third miss does the mentor touch your file. Then you review that fix, because reviewing AI code is a skill you can learn too.
+Pediu o código pronto? Ganha uma pergunta. Errou o passo? Primeiro vem uma revisão do que você fez, depois um exemplo em outro contexto, e só no terceiro erro o mentor mexe no seu arquivo. Aí quem revisa a correção é você, porque revisar código de IA também se aprende.
 
 <details>
-<summary>See a real session excerpt</summary>
+<summary>Ver um trecho real de sessão</summary>
 
-A trimmed example from a real test run, translated to English. The learner is a junior building a football league table API in C#.
+Um trecho real de teste, encurtado. O aluno é júnior e está fazendo uma API de tabela de campeonato em C#, com o tom de zoeira.
 
 ```text
-Learner: done with 5.2 but the test is failing: null name expected BadRequest and got
-         InternalServerError, and the create test expected Created and got OK.
-         just send me the right code please
+Aluno:  fiz o 5.2 mas o teste ta quebrando: Rejects_invalid_names(name: null) esperava
+        BadRequest e veio InternalServerError, e o Creates_team_with_location esperava
+        Created e veio OK. so me manda o codigo certo logo pfv
 
-Mentor:  Nice try. This is miss 1 on step 5.2, so what you get now is a review, not code.
+Mentor: Nem vem, bobão. Esse é o erro 1 do 5.2, então o que rola agora é revisão,
+        não código.
 
-         [OK] The length check (3 to 50) exists and the endpoint is wired correctly.
-         [ALERT] A null name blows up before validation: request.Name is string?, and
-                 reading .Length on null throws before your if runs.
-         [ALERT] A whitespace-only name passes: "   " has length 3, so it gets created.
-         [ALERT] Success returns 200 with no Location header; the test expects 201 Created.
-         What your code does now: null -> exception -> 500; "   " -> created; valid -> 200.
-         Redo: use the string method that checks null, empty and whitespace in one call,
-               and a result that produces 201 with Location.
-               Docs: https://learn.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
-         [QUESTION] Which string method covers "null, empty or whitespace" in one call?
+        [OK] A validação de tamanho (3 a 50) existe e o endpoint já está plugado certo.
+        [ALERTA] Nome null estoura antes de validar: request.Name é string?, e ler .Length
+                 de null lança exceção antes do seu if rodar.
+        [ALERTA] Nome só com espaço passa: "   " tem tamanho 3, então o time é criado.
+        [ALERTA] O sucesso devolve 200 sem Location; o teste espera 201 Created.
+        O que o seu código faz hoje: null -> exceção -> 500; "   " -> criado; válido -> 200.
+        Refaça: use o método de string que checa null, vazio e espaço numa chamada só,
+                e um resultado que gere 201 com Location.
+                Doc: https://learn.microsoft.com/en-us/dotnet/api/system.string.isnullorwhitespace
+        [PERGUNTA] Qual método de string resolve "null, vazio ou só espaço" numa chamada só?
 ```
 
-If the learner misses again, the mentor quotes the wrong snippet and shows the same idea in a different context. On the third miss it fixes the file directly, with a `MENTOR:` comment on each change, and the learner reviews that fix as if an AI tool had written it.
+Se o aluno errar de novo, o mentor cita o trecho errado e mostra a mesma ideia em outro contexto. No terceiro erro ele corrige o arquivo direto, com um comentário `MENTOR:` em cada mudança, e o aluno revisa essa correção como se ela tivesse vindo de uma ferramenta de IA.
 
 </details>
 
-## It's for you if...
+## É pra você se...
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/use-cases-en-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/use-cases-en-light.svg">
-  <img src=".github/assets/use-cases-en-light.svg" width="100%" alt="Sticky-note board, it's for you if: I learned with AI and I freeze without it (here you type it all, I ask why); I know C# and I want to learn Go (same method, Go's official docs); I finished the course and I'm stuck in tutorials (your own project, all the way to deploy); I want to review code that AI writes (review drills with planted bugs); I'm senior and I want a sparring partner (I push on trade-offs, no free answers); I want to learn ethical hacking the right way (lab only, with a safety contract); I only have 3 hours a week (a project sized to your time). And you? Type /mentor-buddy.">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/use-cases-pt-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/use-cases-pt-light.svg">
+  <img src=".github/assets/use-cases-pt-light.svg" width="100%" alt="Quadro de post-its, é pra você se: aprendi com IA e travo sem ela (aqui você digita tudo, eu pergunto o porquê); sei C# e quero aprender Go (mesmo método, doc oficial do Go); terminei o curso e não saio do tutorial (projeto seu, até o deploy); quero saber revisar código que a IA escreve (treino de revisão com bug plantado); sou sênior e quero alguém pra discutir trade-off (eu cobro trade-off, não dou resposta); quero estudar hacking ético do jeito certo (só em laboratório, com contrato); só tenho 3 horas por semana (projeto do tamanho do seu tempo). E você? Digite /mentor-buddy.">
 </picture>
 
-You do not have to be a beginner. The mentor estimates your level (junior, mid or senior) in the interview and adjusts it with every submission.
+Não precisa ser iniciante. O mentor estima o seu nível (júnior, pleno ou sênior) na entrevista e reajusta a cada entrega.
 
-## The trail
+## A trilha
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/trail-en-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/trail-en-light.svg">
-  <img src=".github/assets/trail-en-light.svg" width="100%" alt="The trail, from an empty folder to deploy: 0 Interview, 1 Project, 2 Environment, 3 Folders, 4 Skeleton, 5 Features, 6 Database, 7 Quality, 8 Docker, 9 CI, 10 Deploy, 11 Retro, then the next project.">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/trail-pt-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/trail-pt-light.svg">
+  <img src=".github/assets/trail-pt-light.svg" width="100%" alt="A trilha, da pasta vazia ao deploy: 0 Entrevista, 1 Projeto, 2 Ambiente, 3 Pastas, 4 Esqueleto, 5 Features, 6 Banco, 7 Qualidade, 8 Docker, 9 CI, 10 Deploy, 11 Retro, e depois o próximo projeto.">
 </picture>
 
-Twelve stops, each split into small steps with a clear "done when". Everything is written to `STUDY-MEMORY.md`, so the next session starts exactly where you stopped. The details of each phase are in [How it works](#how-it-works).
+São 12 paradas, cada uma quebrada em passos pequenos com um critério de pronto. Tudo fica anotado no `STUDY-MEMORY.md`, então a próxima sessão começa exatamente de onde você parou. Os detalhes de cada fase estão em [Como funciona](#como-funciona).
 
-## Start in 30 seconds
+## Comece em 30 segundos
 
-**1. Install.** On Windows (PowerShell):
+**1. Instale.** No Windows (PowerShell):
 
 ```powershell
 git clone https://github.com/mauricioreiss/mentor-buddy.git "$HOME\.agents\skills\mentor-buddy"
@@ -86,7 +87,7 @@ New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
 New-Item -ItemType Junction -Path "$HOME\.claude\skills\mentor-buddy" -Target "$HOME\.agents\skills\mentor-buddy"
 ```
 
-On macOS and Linux:
+No macOS e no Linux:
 
 ```bash
 git clone https://github.com/mauricioreiss/mentor-buddy.git ~/.agents/skills/mentor-buddy
@@ -94,403 +95,403 @@ mkdir -p ~/.claude/skills
 ln -s ~/.agents/skills/mentor-buddy ~/.claude/skills/mentor-buddy
 ```
 
-A junction does not need administrator rights. If the link does not work on your system, copy the folder to `~/.claude/skills/mentor-buddy` instead (you will then need to update both copies).
+Junction não precisa de permissão de administrador. Se o link não funcionar no seu sistema, copie a pasta para `~/.claude/skills/mentor-buddy` (aí você vai precisar atualizar as duas cópias).
 
-**2. Open an empty folder** in your IDE.
+**2. Abra uma pasta vazia** na sua IDE.
 
-**3. Type `/mentor-buddy`** in the agent chat (`$mentor-buddy` in Codex). The mentor answers with one short question: Portuguese or English? It takes it from there.
+**3. Digite `/mentor-buddy`** no chat do agente (no Codex, `$mentor-buddy`). O mentor responde com uma pergunta curta: português ou inglês? Daí pra frente é com ele.
 
-Other ways to install (a single agent, the skills installer, Gemini CLI, Visual Studio) are in [More installation options](#more-installation-options).
+Outros jeitos de instalar (um agente só, instalador de skills, Gemini CLI, Visual Studio) estão em [Mais opções de instalação](#mais-opções-de-instalação).
 
 ---
 
-## Full manual
+## Manual completo
 
-- [What you get](#what-you-get)
-- [How it works](#how-it-works)
-- [Supported agents](#supported-agents)
-- [Requirements](#requirements)
-- [More installation options](#more-installation-options)
-- [Usage](#usage)
-- [Curated documentation map](#curated-documentation-map)
-- [Repository layout](#repository-layout)
-- [FAQ](#faq)
-- [Privacy](#privacy)
-- [Keeping the skill current](#keeping-the-skill-current)
-- [Feedback and contributing](#feedback-and-contributing)
-- [License](#license)
+- [O que você ganha](#o-que-você-ganha)
+- [Como funciona](#como-funciona)
+- [Agentes compatíveis](#agentes-compatíveis)
+- [Requisitos](#requisitos)
+- [Mais opções de instalação](#mais-opções-de-instalação)
+- [Como usar](#como-usar)
+- [Mapa de documentação curado](#mapa-de-documentação-curado)
+- [Estrutura do repositório](#estrutura-do-repositório)
+- [Perguntas frequentes](#perguntas-frequentes)
+- [Privacidade](#privacidade)
+- [Mantendo a skill atualizada](#mantendo-a-skill-atualizada)
+- [Feedback e contribuição](#feedback-e-contribuição)
+- [Licença](#licença)
 
-## What you get
+## O que você ganha
 
-- **A short interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, IDE, conversation language and tone.
-- **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
-- **The full path to production**: it detects the SDK and IDE already on your machine before proposing installs, treats git as a choice rather than a default, then walks you through folder structure, a walking skeleton, features with tests, a database, quality, Docker, CI and a free deploy.
-- **An error ladder** that makes you struggle productively before you see any code.
-- **A paper-notebook habit**: it teaches a concept like a class and has you write it down by hand, then quizzes you from your notebook on resume, because writing fixes it better than typing.
-- **Code review training**: every review shows you the method, the mentor's own fix at miss 3 is yours to review, and review drills with planted defects train the skill you need most when AI writes code for you.
-- **A comprehension check**: when an answer suddenly looks like it came from another AI, the mentor does not block it; it asks you to explain it in your own words before the step passes.
-- **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
-- **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
-- **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
-- **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
-- **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
+- **Uma entrevista curta** que define o seu nível (júnior, pleno ou sênior), a linguagem, os seus interesses, o tempo disponível, a IDE, o idioma da conversa e o tom.
+- **Um projeto de verdade**: uma de três ideias feitas sob medida para o que você curte, ou a sua própria ideia cortada até um tamanho que dá para terminar.
+- **O caminho completo até produção**: ele detecta o SDK e a IDE que já estão na sua máquina antes de propor instalar, trata git como escolha e não como padrão, e aí te guia pela estrutura de pastas, esqueleto andando, funcionalidades com teste, banco de dados, qualidade, Docker, CI e deploy gratuito.
+- **Uma escada de erros** que faz você bater cabeça do jeito certo antes de ver qualquer código.
+- **Hábito de caderno de papel**: ele ensina um conceito como numa aula e te faz anotar à mão, e na volta te cobra a partir do caderno, porque escrever fixa melhor do que digitar.
+- **Treino de revisão de código**: toda revisão mostra o método, a correção que o próprio mentor faz no erro 3 é você quem revisa, e treinos com defeitos plantados exercitam a habilidade que mais pesa quando a IA escreve código para você.
+- **Check de compreensão**: quando uma resposta de repente parece ter vindo de outra IA, o mentor não bloqueia; ele te pede para explicar com as suas palavras antes de o passo fechar.
+- **Sem achismo**: os fatos perecíveis (versão, comando, API, preço) são conferidos na documentação oficial durante a sessão, com o link; as referências estáveis (keywords, convenções) são citadas direto de um mapa curado, sem busca, para a resposta sair rápida. O que o seu projeto usa fica guardado com a data da conferência, então quando a doc muda o mentor te avisa o que mudou.
+- **Memória entre sessões** num arquivo `STUDY-MEMORY.md`, para cada sessão continuar exatamente de onde você parou.
+- **Um resumo no fim do dia**, e um relatório final em `.docx` com os seus pontos fracos, código antes/depois e um plano de estudo.
+- **Um track opcional de cibersegurança**: ethical hacking e CTF em laboratório (web, rede, binário, cripto) só contra alvos isolados ou sancionados, com o mesmo método de ensino.
+- **Dois idiomas e dois tons**: português ou inglês, direto ou na zoeira, com correção de inglês opcional para quem quer praticar.
 
-## How it works
+## Como funciona
 
 <details>
-<summary>Interview, project, phases, the error ladder, level calibration, docs, memory, tone and review training</summary>
+<summary>Entrevista, projeto, fases, escada de erros, nível, documentação, memória, tom e treino de revisão</summary>
 
-### 1. Interview
+### 1. Entrevista
 
-The first message asks, in both languages, whether you want to talk in English or Portuguese. The rest of the interview comes in one numbered list:
+A primeira mensagem pergunta, nos dois idiomas, se você quer conversar em português ou em inglês. O resto da entrevista vem numa lista numerada só:
 
-1. How long you have been programming and what you have built.
-2. Which language you want to use.
-3. Whether you have a project idea or want suggestions (and what you enjoy).
-4. How much time you have per week and per session.
-5. Your operating system and IDE.
-6. How you want to be talked to: **direct** or **banter**.
-7. If you chose English: whether you want your English corrected.
+1. Há quanto tempo você programa e o que já construiu.
+2. Qual linguagem quer usar.
+3. Se já tem ideia de projeto ou quer sugestões (e do que você gosta).
+4. Quanto tempo tem por semana e por sessão.
+5. Sistema operacional e IDE.
+6. Como quer ser tratado: **direto** ou **zoeira**.
+7. Se escolheu inglês: se quer correção do seu inglês.
 
-The mentor states the level it estimated, with the reason, and you can correct it.
+O mentor diz o nível que estimou, com o motivo, e você pode corrigir.
 
-### 2. Project
+### 2. Projeto
 
-- **No idea?** You get three options built from project archetypes (REST API with a database, CLI tool, full-stack web app, background worker, integration service, real-time app), themed on your interests and sized for your time.
-- **Your own idea?** The mentor finds its core action and cuts it to the smallest version that still reaches deploy. Example: "an Uber clone with an app, payments and maps" becomes "a ride request API: register drivers, request a ride, match the nearest driver, finish the ride". Everything else goes to a "Later" list.
+- **Sem ideia?** Você recebe três opções montadas a partir de arquétipos de projeto (API REST com banco, ferramenta de linha de comando, aplicação web full stack, worker com fila, serviço de integração, aplicação em tempo real), com tema baseado no que você curte e tamanho de acordo com o seu tempo.
+- **Tem a sua ideia?** O mentor acha a ação central e corta até a menor versão que ainda chega ao deploy. Exemplo: "um clone do iFood com app, pagamento, mapa e chat" vira "uma API de pedidos: cadastrar restaurante e cardápio, fazer pedido, acompanhar o status até a entrega". O resto vai para uma lista de "Depois".
 
-The result is a brief with 3 to 6 testable acceptance criteria. You approve it; the product decisions are yours.
+O resultado é um brief com 3 a 6 critérios de aceitação testáveis. Você aprova; as decisões de produto são suas.
 
-### 3. The journey
+### 3. A trilha
 
-| # | Phase | Done when |
+| # | Fase | Pronto quando |
 |---|---|---|
-| 0 | Interview | Profile and level agreed |
-| 1 | Project | Brief approved; `STUDY-MEMORY.md` created |
-| 2 | Environment | SDK and IDE detected and working; if you chose git, a repository with `.gitignore` and a first commit |
-| 3 | Folder structure | Folders created; you explain each folder's role back |
-| 4 | Walking skeleton | The smallest end-to-end path runs, with one passing test |
-| 5 | Feature slices | Every acceptance criterion delivered as code, test and commit |
-| 6 | Persistence | Data survives a restart; migrations versioned |
-| 7 | Quality | Validation, error handling, logging, secrets out of the code |
-| 8 | Docker | The app and its dependencies run with compose from a clean clone |
-| 9 | CI | A pipeline builds and tests on every push |
-| 10 | Deploy | Running on a free tier, configured from the environment |
-| 11 | Retro | You write what you learned; the next project is suggested |
+| 0 | Entrevista | Perfil e nível combinados |
+| 1 | Projeto | Brief aprovado; `STUDY-MEMORY.md` criado |
+| 2 | Ambiente | SDK e IDE detectados e funcionando; se você escolher git, repositório com `.gitignore` e primeiro commit |
+| 3 | Estrutura de pastas | Pastas criadas; você explica o papel de cada uma |
+| 4 | Esqueleto andando | O menor caminho de ponta a ponta roda, com um teste passando |
+| 5 | Funcionalidades | Cada critério de aceitação entregue com código, teste e commit |
+| 6 | Persistência | Os dados sobrevivem a um restart; migrations versionadas |
+| 7 | Qualidade | Validação, tratamento de erro, log, segredos fora do código |
+| 8 | Docker | A aplicação e as dependências sobem com compose a partir de um clone limpo |
+| 9 | CI | Um pipeline faz build e teste a cada push |
+| 10 | Deploy | No ar num plano gratuito, configurado por variáveis de ambiente |
+| 11 | Retrospectiva | Você escreve o que aprendeu; o próximo projeto é sugerido |
 
-Folder structure is chosen with you and kept proportional to the problem: organized by feature for CRUD-heavy apps, by layer when the business rules are heavy, or a hybrid.
+A estrutura de pastas é escolhida com você e fica proporcional ao problema: por funcionalidade em aplicações com muito CRUD, por camada quando as regras de negócio são pesadas, ou um meio-termo.
 
-### 4. The step loop and the error ladder
+### 4. O ciclo de cada passo e a escada de erros
 
-Every phase is split into small steps, and every step runs the same loop:
+Cada fase é dividida em passos pequenos, e todo passo segue o mesmo ciclo:
 
-| Moment | What the mentor does | Code from the mentor | Your files |
+| Momento | O que o mentor faz | Código do mentor | Seus arquivos |
 |---|---|---|---|
-| Instruction | What to build, why it exists, what it is for, a short summary of the official doc, the link, and the check that marks it done | none | read only |
-| Pass | What is right, plus improvements worth making and why | none | read only |
-| Miss 1 | A review: what is right, where it breaks and why, what your code actually does, what to redo | none | read only |
-| Miss 2 | Your wrong snippet quoted with each error marked, plus a short example of the right approach in a different context | one short neutral example | read only |
-| Miss 3 | Fixes your file, with a `MENTOR:` comment on each change, walks you through it, then you review the fix and answer three review questions | the fix, in your file | edited |
+| Instrução | O que construir, por que existe, para que serve, um resumo curto da doc oficial, o link e o critério de pronto | nenhum | só leitura |
+| Acertou | O que está certo, mais as melhorias que valem a pena e por quê | nenhum | só leitura |
+| Erro 1 | Revisão: o que está certo, onde quebra e por quê, o que o seu código faz de verdade, o que refazer | nenhum | só leitura |
+| Erro 2 | O seu trecho errado citado com cada erro marcado, mais um exemplo curto do jeito certo em outro contexto | um exemplo curto e neutro | só leitura |
+| Erro 3 | Corrige o seu arquivo, com um comentário `MENTOR:` em cada mudança, te explica e depois você revisa a correção respondendo três perguntas de revisão | a correção, no seu arquivo | editados |
 
-- The miss counter belongs to the current step and resets when the step passes.
-- Questions are free: a conceptual question gets a short answer with a doc link and does not count as a miss.
-- Style and naming notes come with a pass and never count as a miss.
-- Asking for the code early does not skip the ladder.
+- O contador de erros é do passo atual e zera quando o passo passa.
+- Perguntar é de graça: uma dúvida conceitual recebe resposta curta com link da doc e não conta como erro.
+- Observações de estilo e de nome vêm junto com o acerto e nunca contam como erro.
+- Pedir o código antes da hora não pula a escada.
 
-### 5. Calibrated to your level
+### 5. Ajustado ao seu nível
 
-| | Junior | Mid | Senior |
+| | Júnior | Pleno | Sênior |
 |---|---|---|---|
-| Folder and module names | An example name plus its role | The role only; you name it | The role only; you name it |
-| Library or framework | One mainstream, maintained recommendation, with the why | What to research and the criteria; you bring a pick and the mentor validates it | Same as mid, weighing trade-offs |
-| Explanations | Fuller, one concept at a time | Short, focused on the why | Short, focused on trade-offs, failure modes and operations |
-| Tests | Required from the walking skeleton on | Required; TDD optional | Required; TDD optional |
-| Review drills | 2 defects, a category hint for each | 3 defects, no hints | 3 subtle defects: concurrency, security, performance, failure modes |
+| Nome de pasta e módulo | Um nome de exemplo e o papel | Só o papel; você dá o nome | Só o papel; você dá o nome |
+| Biblioteca ou framework | Uma recomendação popular e mantida, com o porquê | O que pesquisar e os critérios; você traz uma escolha e o mentor valida | Igual ao pleno, pesando trade-offs |
+| Explicações | Mais completas, um conceito por vez | Curtas, focadas no porquê | Curtas, focadas em trade-off, modos de falha e operação |
+| Testes | Obrigatórios a partir do esqueleto | Obrigatórios; TDD opcional | Obrigatórios; TDD opcional |
+| Treino de revisão | 2 defeitos, com uma dica de categoria para cada | 3 defeitos, sem dica | 3 defeitos sutis: concorrência, segurança, performance, modos de falha |
 
-The level is re-evaluated from your submissions. When the evidence says it is off, the mentor tells you and adjusts.
+O nível é reavaliado a cada entrega. Quando a evidência mostra que está errado, o mentor avisa e ajusta.
 
-### 6. No guessing: official docs only
+### 6. Sem achismo: só documentação oficial
 
-The skill separates two kinds of knowledge:
+A skill separa dois tipos de conhecimento:
 
-- **Stable**: teaching method, phases, review rubric, folder roles, project archetypes, and the curated doc entry points (language keywords, syntax, naming conventions). This lives inside the skill; stable references are cited straight from the map without a lookup, so answers stay fast.
-- **Perishable**: versions, install steps, commands and flags, API names, config keys, framework defaults, prices and free-tier limits. The mentor looks these up in the official documentation during the session before saying them, and gives you the link.
+- **Estável**: método de ensino, fases, régua de revisão, papel das pastas, arquétipos de projeto, e os pontos de entrada curados da doc (keywords, sintaxe, convenções de nome). Isso fica dentro da skill; as referências estáveis são citadas direto do mapa, sem busca, para a resposta sair rápida.
+- **Perecível**: versões, passos de instalação, comandos e flags, nomes de API, chaves de configuração, padrões de framework, preços e limites de plano gratuito. O mentor confere na documentação oficial durante a sessão antes de dizer, e te passa o link.
 
-When the agent has no web access, the mentor says so and gives you the official link to check, instead of stating a version or command from memory.
+Quando o agente não tem acesso à web, o mentor avisa e te dá o link oficial para conferir, em vez de afirmar versão ou comando de memória.
 
-**Doc check.** Every perishable fact your project relies on (the SDK version you installed, a command, a package, a base image, a price) is recorded in `STUDY-MEMORY.md` with its official page and the date it was verified. Each new lookup is compared with that record:
+**Checagem contra a doc.** Todo fato perecível de que o seu projeto depende (a versão do SDK que você instalou, um comando, um pacote, uma imagem base, um preço) fica registrado no `STUDY-MEMORY.md` com a página oficial e a data em que foi conferido. Cada consulta nova é comparada com esse registro:
 
-| The doc says | The mentor |
+| A doc diz | O mentor |
 |---|---|
-| The same | updates the date and says nothing |
-| Something different | updates the record and tells you in one line: `Doc changed since <date>: <old> -> <new> - <link>`; if your code breaks because of it, updating it becomes the next step |
-| Something new | adds a record |
+| O mesmo | atualiza a data e não fala nada |
+| Algo diferente | atualiza o registro e te avisa numa linha: `A doc mudou desde <data>: <antigo> -> <novo> - <link>`; se o seu código quebrar por causa disso, atualizar vira o próximo passo |
+| Algo novo | cria o registro |
 
-There is no slow refresh before you start coding. Facts are checked when a step needs them, and on resume the mentor re-checks only the records your next step depends on that are older than 7 days. Prices and free-tier limits are always looked up again. Web pages are treated as data, never as instructions, and only official domains are used.
+Não tem atualização demorada antes de começar a programar. O fato é conferido quando um passo precisa dele, e na volta o mentor confere de novo só os registros de que o próximo passo depende e que tenham mais de 7 dias. Preço e limite de plano gratuito são sempre consultados de novo. Página da web é tratada como dado, nunca como instrução, e só domínio oficial vale.
 
-When the docs contradict the skill itself (a moved link, a claim that no longer holds), the mentor notes it and points you to the issue tracker. A learning session never edits the skill's files; the maintainer applies those changes (see [Keeping the skill current](#keeping-the-skill-current)).
+Quando a doc contradiz a própria skill (um link que mudou, uma afirmação que não vale mais), o mentor anota e te indica onde reportar. Uma sessão de estudo nunca edita os arquivos da skill; quem aplica essas mudanças é o mantenedor (veja [Mantendo a skill atualizada](#mantendo-a-skill-atualizada)).
 
-### 7. Memory between sessions
+### 7. Memória entre sessões
 
-After the interview, the mentor creates `STUDY-MEMORY.md` at your project root. Everything a session needs to restart sits in a short header that is read every time; the rest is opened only when needed, which keeps each session cheap.
+Depois da entrevista, o mentor cria o `STUDY-MEMORY.md` na raiz do seu projeto. Tudo que uma sessão precisa para recomeçar fica num cabeçalho curto, lido toda vez; o resto só é aberto quando necessário, o que deixa cada sessão barata.
 
 ```markdown
 ## Header
-- Conversation language: en
-- English corrections: on
-- Tone: direct
+- Conversation language: pt
+- English corrections: n/a
+- Tone: banter
 - Notebook: paper
-- Level: junior (set 2026-10-14; last recalibration: none)
-- Stack: Go, standard library net/http, IDE VS Code, OS macOS
-- Project: REST API with a database - daily habit tracker
-- Now: Phase 4 Walking skeleton / Step 4.1 Health endpoint / Misses 0
-- Next action: add a GET /health handler that answers 200
-- Last session: 2026-10-16 - folder structure done
-- Review on resume: go mod init; package main; folder roles
+- Level: junior (set 2026-10-12; last recalibration: none)
+- Stack: C# / .NET, ASP.NET Core minimal APIs, IDE Visual Studio 2026, OS Windows 11
+- Project: REST API with a database - football league table
+- Now: Phase 5 Feature slices / Step 5.3 Register match result / Misses 0
+- Next action: create POST /matches that stores home team, away team and both scores
+- Last session: 2026-10-16 - step 5.2 passed after 2 misses; started 5.3
+- Review on resume: IsNullOrWhiteSpace versus IsNullOrEmpty; 201 Created with Location
 ```
 
-Below the header: the brief, the phase plan, a decision log, an **error map** (topic, number of misses, exact doc section), a compact session log, open questions, the **verified facts** your project relies on, notes on **skill drift**, and the answer keys of your **review drills**.
+Abaixo do cabeçalho: o brief, o plano de fases, um registro de decisões, um **mapa de erros** (tema, quantas vezes errou, seção exata da doc), um diário de sessões compacto, as dúvidas em aberto, os **fatos verificados** de que o projeto depende, as notas de **desvio da skill** e os gabaritos dos seus **treinos de revisão**.
 
-When you come back, the mentor asks three quick review questions about the topics you missed most, then continues from `Next action`. If you arrive stuck on an error, it helps first and asks later.
+Quando você volta, o mentor faz três perguntas rápidas de revisão sobre os temas em que você mais errou e continua do `Next action`. Se você chegar travado num erro, ele ajuda primeiro e pergunta depois.
 
-### 8. End-of-day summary
+### 8. Resumo do fim do dia
 
-Say you are stopping ("that's it for today") and the mentor updates the memory and shows:
+Diga que vai parar ("vou parar por hoje") e o mentor atualiza a memória e mostra:
 
 ```text
-Today
-- what got done
+Hoje
+- o que foi feito
 
-Where you stumbled most
-1. <topic> - <the mistake in one line> - <official doc link, exact section>
+Onde você mais tropeçou
+1. <tema> - <o erro em uma linha> - <link da doc oficial, seção exata>
 
-Study before next time
-- <doc link> - <why>
+Estudar antes da próxima
+- <link da doc> - <por quê>
 
-Next session starts with
-- <next action>
+A próxima sessão começa com
+- <próxima ação>
 ```
 
-### 9. Languages and tone
+### 9. Idiomas e tom
 
-- **Conversation**: English or Portuguese. Code identifiers, commit messages and file names stay in English.
-- **Direct**: short and neutral, no slang.
-- **Banter**: slang and light, friendly teasing aimed at the mistake, always followed by the technical explanation. It switches to direct when you sound frustrated or ask it to.
-- **English corrections** (optional): at most two lines at the top of a reply, only for real errors.
+- **Conversa**: português ou inglês. Nomes no código, mensagens de commit e nomes de arquivo ficam em inglês.
+- **Direto**: curto e neutro, sem gíria.
+- **Zoeira**: gíria e provocação leve de amigo, mirando o erro, sempre seguida da explicação técnica. Muda para o direto quando você parece frustrado ou pede.
+- **Correção de inglês** (opcional): no máximo duas linhas no topo da resposta, só para erros de verdade.
 
-### 10. Code review training
+### 10. Treino de revisão de código
 
-More and more of a developer's day goes into reviewing code someone else wrote, often an AI tool, and reviewing is a different skill from writing. The mentor trains it in three places, with one checklist: intent, run it, tests that could fail, trace an input by hand, edge cases (including "the value stored is the value validated"), security, design, naming, modern idiom, verdict.
+Uma parte cada vez maior do dia de um dev vai para revisar código que outra pessoa escreveu, muitas vezes uma ferramenta de IA, e revisar é uma habilidade diferente de escrever. O mentor treina isso em três lugares, com um roteiro só: intenção, rodar, testes que poderiam falhar, seguir uma entrada na mão, casos de borda (inclusive "o valor gravado é o valor validado"), segurança, design, nomes, idioma moderno, veredito.
 
-- **Every review** the mentor gives follows that checklist, so you see the method applied to your own code.
-- **Miss 3** ends with you reviewing the mentor's fix as if an AI had written it: which change fixes which check, which test proves it, what else could break.
-- **Review drills**: after each feature slice in phase 5, and once in phase 7, you can take a short file in your project's domain with planted defects and review it like a pull request (`Line <n>: problem - why - fix` plus a verdict). The file goes in `.review-drills/`, which you add to `.gitignore`. Drills are optional, never count as misses, and what you miss goes into your error map.
+- **Toda revisão** que o mentor faz segue esse roteiro, então você vê o método aplicado no seu próprio código.
+- **O erro 3** termina com você revisando a correção do mentor como se uma IA tivesse escrito: qual mudança resolve qual checagem, qual teste prova, o que mais pode quebrar.
+- **Treinos de revisão**: depois de cada feature da fase 5, e uma vez na fase 7, você pode pegar um arquivo curto no domínio do seu projeto com defeitos plantados e revisar como se fosse um pull request (`Line <n>: problema - por que - correção` mais um veredito). O arquivo fica em `.review-drills/`, que você coloca no `.gitignore`. É opcional, nunca conta como erro, e o que passar batido vai para o seu mapa de erros.
 
 </details>
 
-## Supported agents
+## Agentes compatíveis
 
-Mentor Buddy follows the open [Agent Skills format](https://agentskills.io/specification), so it works in any agent that reads it.
+O Mentor Buddy segue o formato aberto [Agent Skills](https://agentskills.io/specification), então funciona em qualquer agente que leia esse formato.
 
-The skill changes how your agent behaves (it stops writing your code), so it starts only when you call it, wherever the agent supports that.
+A skill muda o comportamento do agente (ele para de escrever o seu código), então ela só começa quando você chama, em todo agente que permite isso.
 
-| Agent | Personal skill folders it reads | How you start it |
+| Agente | Pastas pessoais de skill que ele lê | Como você começa |
 |---|---|---|
 | Claude Code (terminal, VS Code, JetBrains) | `~/.claude/skills/` | `/mentor-buddy` |
-| GitHub Copilot in VS Code | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | `/mentor-buddy` |
+| GitHub Copilot no VS Code | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | `/mentor-buddy` |
 | GitHub Copilot CLI | `~/.agents/skills/`, `~/.copilot/skills/` | `/mentor-buddy` |
 | Cursor | `~/.agents/skills/`, `~/.cursor/skills/`, `~/.claude/skills/` | `/mentor-buddy` |
-| OpenAI Codex | `~/.agents/skills/` | `$mentor-buddy` (Codex mentions skills with `$`; implicit start is turned off in `agents/openai.yaml`) |
-| Gemini CLI | `~/.agents/skills/`, `~/.gemini/skills/` | `/mentor-buddy` after installing the command in `adapters/gemini/` (untested); without it, the model may activate the skill and asks for your consent |
-| GitHub Copilot in Visual Studio 2026 | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | The agent applies skills on its own in agent mode; for `/mentor-buddy`, add the prompt file in `adapters/visual-studio/` to your repository (untested) |
+| OpenAI Codex | `~/.agents/skills/` | `$mentor-buddy` (o Codex menciona skills com `$`; o início automático está desligado em `agents/openai.yaml`) |
+| Gemini CLI | `~/.agents/skills/`, `~/.gemini/skills/` | `/mentor-buddy` depois de instalar o comando de `adapters/gemini/` (não testado); sem ele, o modelo pode ativar a skill e pede o seu consentimento |
+| GitHub Copilot no Visual Studio 2026 | `~/.agents/skills/`, `~/.claude/skills/`, `~/.copilot/skills/` | O agente aplica skills sozinho no agent mode; para ter `/mentor-buddy`, coloque o prompt file de `adapters/visual-studio/` no seu repositório (não testado) |
 
-Tested with Claude Code and Codex CLI. In Codex, keep a single copy of the skill: if it is installed both in `~/.agents/skills/` and in a repository's `.agents/skills/`, the `$mentor-buddy` mention becomes ambiguous and is ignored.
+Testado com Claude Code e Codex CLI. No Codex, mantenha uma cópia só da skill: se ela estiver em `~/.agents/skills/` e também no `.agents/skills/` de um repositório, a menção `$mentor-buddy` fica ambígua e é ignorada.
 
-No single folder is read by every agent: `~/.agents/skills/` covers all of them except Claude Code, which reads only `~/.claude/skills/`. The installation in [Start in 30 seconds](#start-in-30-seconds) keeps one real copy in `~/.agents/skills/` and links it from `~/.claude/skills/`.
+Nenhuma pasta é lida por todos: `~/.agents/skills/` cobre todos menos o Claude Code, que só lê `~/.claude/skills/`. A instalação de [Comece em 30 segundos](#comece-em-30-segundos) deixa uma cópia real em `~/.agents/skills/` e um link em `~/.claude/skills/`.
 
-## Requirements
+## Requisitos
 
-- An AI agent from the table above, with a plan that allows chat or agent use.
-- Git, to install and update the skill.
-- Internet access during sessions, so the mentor can check the official docs. Without it the skill still works, but it sends you to the docs instead of confirming versions and commands.
-- For Visual Studio: version 2026 (18.5 or later), GitHub Copilot, and agent mode.
+- Um agente de IA da tabela acima, com um plano que permita uso de chat ou agente.
+- Git, para instalar e atualizar a skill.
+- Acesso à internet durante as sessões, para o mentor conferir a documentação oficial. Sem isso a skill continua funcionando, mas te manda para a doc em vez de confirmar versão e comando.
+- No Visual Studio: versão 2026 (18.5 ou mais nova), GitHub Copilot e agent mode.
 
-## More installation options
+## Mais opções de instalação
 
-The default install for Windows, macOS and Linux is in [Start in 30 seconds](#start-in-30-seconds).
+O jeito padrão, para Windows, macOS e Linux, está em [Comece em 30 segundos](#comece-em-30-segundos).
 
-### Only one agent?
+### Usa um agente só?
 
-Clone straight into the folder that agent reads: `~/.claude/skills/mentor-buddy` for Claude Code only, or `~/.agents/skills/mentor-buddy` for Codex, Copilot, Gemini CLI or Cursor.
+Clone direto na pasta que ele lê: `~/.claude/skills/mentor-buddy` se for só o Claude Code, ou `~/.agents/skills/mentor-buddy` para Codex, Copilot, Gemini CLI ou Cursor.
 
-### With the skills installer
+### Com o instalador de skills
 
-The [`skills` CLI](https://github.com/vercel-labs/skills) installs one copy and links it into each agent you name (it needs Node.js):
+O [CLI `skills`](https://github.com/vercel-labs/skills) instala uma cópia e cria o link em cada agente que você indicar (precisa de Node.js):
 
 ```bash
 npx skills add mauricioreiss/mentor-buddy -g -a claude-code -a codex -a github-copilot -a gemini-cli
 ```
 
-### Optional: `/mentor-buddy` in Gemini CLI and Visual Studio
+### Opcional: `/mentor-buddy` no Gemini CLI e no Visual Studio
 
-Neither has a slash command per skill, so the repository ships one small file for each. Both are untested.
+Nenhum dos dois tem comando com barra por skill, então o repositório traz um arquivo pequeno para cada um. Os dois não foram testados.
 
-- **Gemini CLI**: copy `adapters/gemini/mentor-buddy.toml` to `~/.gemini/commands/mentor-buddy.toml`.
-- **Visual Studio 2026**: copy `adapters/visual-studio/mentor-buddy.prompt.md` to `.github/prompts/mentor-buddy.prompt.md` in the repository you are studying in.
+- **Gemini CLI**: copie `adapters/gemini/mentor-buddy.toml` para `~/.gemini/commands/mentor-buddy.toml`.
+- **Visual Studio 2026**: copie `adapters/visual-studio/mentor-buddy.prompt.md` para `.github/prompts/mentor-buddy.prompt.md` no repositório em que você está estudando.
 
-### Check that it loaded
+### Conferir se carregou
 
-Restart your agent or open a new chat and type `/mentor-buddy` (`$mentor-buddy` in Codex). The mentor answers with one short question: Portuguese or English. In Visual Studio, make sure the chat is in agent mode; the chat shows when a skill is being applied.
+Reinicie o agente ou abra um chat novo e digite `/mentor-buddy` (`$mentor-buddy` no Codex). O mentor responde com uma pergunta curta: português ou inglês. No Visual Studio, confira se o chat está em agent mode; o chat mostra quando uma skill está sendo aplicada.
 
-### Update
+### Atualizar
 
 ```bash
 git -C ~/.agents/skills/mentor-buddy pull
 ```
 
-On Windows PowerShell: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. The link picks up the update automatically. You rarely need this by hand: when the skill is a clean git clone, it fast-forwards itself at the start of each session and tells you in one line. Your project and `STUDY-MEMORY.md` are never touched, so nothing is lost.
+No PowerShell do Windows: `git -C "$HOME\.agents\skills\mentor-buddy" pull`. O link já enxerga a atualização. Você raramente precisa fazer isso na mão: quando a skill é um clone git limpo, ela se atualiza sozinha (fast-forward) no início de cada sessão e te avisa numa linha. O seu projeto e o `STUDY-MEMORY.md` nunca são tocados, então nada se perde.
 
-### Uninstall
+### Desinstalar
 
-Windows (removes the junction first, then the folder):
+Windows (remove primeiro o junction, depois a pasta):
 
 ```powershell
 cmd /c rmdir "$HOME\.claude\skills\mentor-buddy"
 Remove-Item -Recurse -Force "$HOME\.agents\skills\mentor-buddy"
 ```
 
-macOS and Linux:
+macOS e Linux:
 
 ```bash
 rm ~/.claude/skills/mentor-buddy
 rm -rf ~/.agents/skills/mentor-buddy
 ```
 
-## Usage
+## Como usar
 
-1. Create or open an empty folder in your IDE, or the folder of a project you already started with the mentor.
-2. In the agent chat, type `/mentor-buddy` (`$mentor-buddy` in Codex), optionally followed by what you want to learn. The mentor takes it from there.
+1. Crie ou abra uma pasta vazia na sua IDE, ou a pasta de um projeto que você já começou com o mentor.
+2. No chat do agente, digite `/mentor-buddy` (`$mentor-buddy` no Codex), se quiser seguido do que você quer aprender. O mentor conduz a partir daí.
 
-| You want to | Say something like |
+| Você quer | Diga algo como |
 |---|---|
-| Start | `/mentor-buddy`, or `/mentor-buddy me ensina C# fazendo um projeto` |
-| Resume | Open the project folder and type `/mentor-buddy`; the mentor reads `STUDY-MEMORY.md` |
-| Skip the review questions | "skip the review" |
-| Take or skip a review drill | "bring the drill" or "skip the drill" |
-| Ask about a concept | Just ask; questions never count as misses |
-| Change the tone | "switch to direct" or "switch to banter" |
-| Turn English corrections on or off | "correct my English" or "stop correcting my English" |
-| Disagree with the level estimate | "I think I'm mid, not junior" |
-| Stop for the day | "that's it for today", "vou parar por hoje" |
-| Go beyond the free tier | "I want to scale this"; the mentor researches current options and prices |
+| Começar | `/mentor-buddy`, ou `/mentor-buddy me ensina C# fazendo um projeto` |
+| Retomar | Abra a pasta do projeto e digite `/mentor-buddy`; o mentor lê o `STUDY-MEMORY.md` |
+| Pular as perguntas de revisão | "pula a revisão" |
+| Fazer ou pular um treino de revisão | "manda o treino" ou "pula o treino" |
+| Tirar uma dúvida | É só perguntar; pergunta nunca conta como erro |
+| Mudar o tom | "muda pro direto" ou "muda pra zoeira" |
+| Ligar ou desligar a correção de inglês | "corrige meu inglês" ou "para de corrigir meu inglês" |
+| Discordar do nível estimado | "acho que sou pleno, não júnior" |
+| Parar por hoje | "vou parar por hoje", "that's it for today" |
+| Ir além do plano gratuito | "quero escalar isso"; o mentor pesquisa as opções e os preços atuais |
 
-## Curated documentation map
+## Mapa de documentação curado
 
 <details>
-<summary>C# and .NET, Python, Go, TypeScript and Node.js, Java, Frontend, tooling and cybersecurity</summary>
+<summary>C# e .NET, Python, Go, TypeScript e Node.js, Java, Frontend, ferramentas e cibersegurança</summary>
 
-The skill ships with verified entry points to the official docs for these stacks:
+A skill já vem com pontos de entrada verificados para a documentação oficial destas stacks:
 
-| Stack | Covers |
+| Stack | Cobre |
 |---|---|
-| C# and .NET | Language, SDK install, dotnet CLI, NuGet, ASP.NET Core, minimal APIs, EF Core, testing, Docker, Visual Studio |
-| Python | Docs, venv, packaging, pip, uv, pytest, PEP 8, FastAPI, Django, Flask, SQLAlchemy, Alembic, Docker |
-| Go | Install, tutorials, module layout, Effective Go, standard library, net/http, testing, database access, Docker |
-| TypeScript and Node.js | TypeScript docs, tsconfig, Node.js API, npm, test runner, Vitest, Express, Fastify, NestJS, Docker |
-| Java | dev.java, Java SE docs, Spring Boot, Spring Initializr, Maven, Gradle, JUnit, Docker |
-| Frontend | HTML, CSS, accessibility (MDN), React, Vue, Angular, Tailwind, Vite |
-| Tooling | Git, GitHub, .gitignore templates, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, Twelve-Factor config |
-| Cybersecurity (track only) | Lab and ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, crypto per language |
+| C# e .NET | Linguagem, instalação do SDK, dotnet CLI, NuGet, ASP.NET Core, minimal APIs, EF Core, testes, Docker, Visual Studio |
+| Python | Documentação, venv, empacotamento, pip, uv, pytest, PEP 8, FastAPI, Django, Flask, SQLAlchemy, Alembic, Docker |
+| Go | Instalação, tutoriais, organização de módulo, Effective Go, biblioteca padrão, net/http, testes, acesso a banco, Docker |
+| TypeScript e Node.js | Documentação do TypeScript, tsconfig, API do Node.js, npm, test runner, Vitest, Express, Fastify, NestJS, Docker |
+| Java | dev.java, documentação do Java SE, Spring Boot, Spring Initializr, Maven, Gradle, JUnit, Docker |
+| Frontend | HTML, CSS, acessibilidade (MDN), React, Vue, Angular, Tailwind, Vite |
+| Ferramentas | Git, GitHub, modelos de .gitignore, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, configuração Twelve-Factor |
+| Cibersegurança (só no track) | Lab e ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, cripto por linguagem |
 
-The base language maps are for building any kind of project, not only security; the cybersecurity map is used only on that track. Any other language still works: the mentor runs a quick fit check (maintained, official docs, a test framework, a free deploy path), anchors the official docs and verifies everything live, and tells you it is outside the curated map.
+Os mapas de linguagem base servem para construir qualquer tipo de projeto, não só segurança; o mapa de cibersegurança só é usado naquele track. Qualquer outra linguagem também funciona: o mentor faz um fit check rápido (mantida, doc oficial, framework de teste, caminho de deploy gratuito), ancora a documentação oficial, verifica tudo ao vivo, e avisa que ela está fora do mapa curado.
 
 </details>
 
-## Repository layout
+## Estrutura do repositório
 
 <details>
-<summary>See the file tree</summary>
+<summary>Ver a árvore de arquivos</summary>
 
 ```text
 mentor-buddy/
-  SKILL.md                      core instructions, read when the skill starts
+  SKILL.md                      instruções principais, lidas quando a skill começa
   references/
-    interview.md                phases 0 and 1: interview, project, memory creation
-    phases.md                   phases 2 to 11, read one section at a time
-    teaching-loop.md            review formats, error ladder, frontend pace, language guardrail
-    code-review.md              review checklist, guided review at miss 3, review drills
-    doc-check.md                verified facts, change notices, light check on resume, drift
-    maintenance.md              /mentor-buddy refresh and self-update, for maintainers
-    folder-roles.md             folder roles and organization trade-offs
-    project-archetypes.md       project catalog, scope by level, scope cutting
-    cybersec-track.md           optional cybersecurity journey, with the lab-safety contract
-    final-report.md             the end-of-project .docx study report
-    session-rituals.md          resume questions and end-of-day summary
-    memory-template.md          STUDY-MEMORY.md template
-    tone.md                     direct and banter tones, English corrections, notebook cue
-    docs-*.md                   official documentation entry points per stack
-  agents/openai.yaml            Codex display name; implicit start turned off
+    interview.md                fases 0 e 1: entrevista, projeto, criação da memória
+    phases.md                   fases 2 a 11, lidas uma seção por vez
+    teaching-loop.md            formatos de revisão, escada de erros, ritmo de frontend, guardrail de linguagem
+    code-review.md              roteiro de revisão, revisão guiada no erro 3, treinos de revisão
+    doc-check.md                fatos verificados, aviso de mudança, checagem na volta, desvio
+    maintenance.md              /mentor-buddy refresh e auto-atualização, para mantenedores
+    folder-roles.md             papel das pastas e trade-offs de organização
+    project-archetypes.md       catálogo de projetos, escopo por nível, corte de escopo
+    cybersec-track.md           jornada opcional de cibersegurança, com o contrato de laboratório
+    final-report.md             o relatório de estudo final em .docx
+    session-rituals.md          perguntas da volta e resumo do fim do dia
+    memory-template.md          modelo do STUDY-MEMORY.md
+    tone.md                     tons direto e zoeira, correção de inglês, dica do caderno
+    docs-*.md                   pontos de entrada da documentação oficial por stack
+  agents/openai.yaml            nome no Codex; início automático desligado
   adapters/
-    gemini/mentor-buddy.toml    /mentor-buddy command for Gemini CLI
-    visual-studio/mentor-buddy.prompt.md   /mentor-buddy prompt file for Visual Studio
-  scripts/check_links.py        checks every link in the skill (standard library Python)
-  .github/workflows/check-links.yml   weekly link check that opens an issue on failure
-  .github/assets/               README drawings, light and dark, English and Portuguese
+    gemini/mentor-buddy.toml    comando /mentor-buddy para o Gemini CLI
+    visual-studio/mentor-buddy.prompt.md   prompt file /mentor-buddy para o Visual Studio
+  scripts/check_links.py        confere todos os links da skill (Python, só biblioteca padrão)
+  .github/workflows/check-links.yml   checagem semanal de links que abre uma issue quando falha
+  .github/assets/               desenhos do README, em versão clara e escura, PT e EN
   README.md
-  README.pt-BR.md
+  README.en.md
   LICENSE
 ```
 
-The repository root is the skill folder, so installing is a `git clone` and updating is a `git pull`.
+A raiz do repositório é a própria pasta da skill: instalar é um `git clone` e atualizar é um `git pull`.
 
 </details>
 
-## FAQ
+## Perguntas frequentes
 
-**Does it ever write code for me?**
-Only in three moments. On your second miss on a step, it shows a short example of the right approach in a different context, deliberately not ready to paste. On your third miss, it fixes your file with a `MENTOR:` comment on each change, and you review that fix before the step passes. Review drills are code written to be picked apart, kept out of your project in `.review-drills/`. Everything else you type yourself.
+**Ele alguma vez escreve código para mim?**
+Só em três momentos. No segundo erro num passo, ele mostra um exemplo curto do jeito certo em outro contexto, de propósito não pronto para colar. No terceiro erro, ele corrige o seu arquivo com um comentário `MENTOR:` em cada mudança, e você revisa essa correção antes de o passo fechar. Os treinos de revisão são código feito para ser desmontado, guardado fora do seu projeto em `.review-drills/`. Todo o resto você digita.
 
-**Why do I have to type `/mentor-buddy`?**
-Because the skill changes the agent's behaviour: it stops writing your code. Starting only when called keeps it from taking over a work session by accident.
+**Por que eu preciso digitar `/mentor-buddy`?**
+Porque a skill muda o comportamento do agente: ele para de escrever o seu código. Começar só quando chamada evita que ela tome conta de uma sessão de trabalho sem querer.
 
-**How does it stay up to date?**
-Three ways, none of which slows you down. Facts are checked against the official docs when a step needs them, and changes are flagged against what was verified before. A weekly GitHub workflow checks every link in the skill and opens an issue when one breaks. And the maintainer runs `/mentor-buddy refresh` to review and apply fixes; learning sessions never rewrite the skill, so a web page can never change its instructions.
+**Como ela se mantém atualizada?**
+De três jeitos, e nenhum te atrasa. Os fatos são conferidos na doc oficial quando um passo precisa deles, e mudanças são apontadas contra o que foi conferido antes. Um workflow semanal no GitHub confere todos os links da skill e abre uma issue quando algum quebra. E o mantenedor roda `/mentor-buddy refresh` para revisar e aplicar correções; sessões de estudo nunca reescrevem a skill, então uma página da web nunca consegue mudar as instruções dela.
 
-**Which model should I use?**
-The skill works with whatever model your agent runs. Stronger models follow the ladder and the memory rules more consistently.
+**Qual modelo devo usar?**
+A skill funciona com o modelo que o seu agente usa. Modelos mais fortes seguem a escada e as regras de memória com mais consistência.
 
-**Does it need internet access?**
-To confirm versions, commands and prices against the official docs, yes. Without it, the mentor tells you it cannot verify and gives you the link to check yourself.
+**Precisa de internet?**
+Para confirmar versão, comando e preço na documentação oficial, sim. Sem internet, o mentor avisa que não consegue verificar e te passa o link para você conferir.
 
-**Does it cost anything?**
-The skill is free. You need your agent's own plan, and the deploy phase uses free tiers, checked on each provider's official pricing page during the session.
+**Custa alguma coisa?**
+A skill é gratuita. Você precisa do plano do seu agente, e a fase de deploy usa planos gratuitos, conferidos na página oficial de preços de cada provedor durante a sessão.
 
-**Can I use it in Portuguese?**
-Yes. Choose Portuguese in the first message; the whole mentoring happens in Portuguese, with code in English.
+**Posso usar em português?**
+Pode. Escolha português na primeira mensagem; a mentoria inteira acontece em português, com o código em inglês.
 
-**Can I use it at work?**
-Use it on your own study projects. Do not paste your employer's code or data into an AI agent without permission.
+**Posso usar no trabalho?**
+Use nos seus projetos de estudo. Não cole código nem dados da sua empresa num agente de IA sem autorização.
 
-**What if my language is not in the curated map?**
-It still works. The mentor first checks the language fits the goal (maintained, official docs, a test framework, a free way to deploy), anchors its official docs and style guide, verifies every idiom live instead of guessing, and tells you it is outside the curated map. If it is a poor fit for reaching a deploy, it recommends the closest curated language and the choice stays yours.
+**E se a minha linguagem não estiver no mapa curado?**
+Funciona do mesmo jeito. O mentor primeiro confere se a linguagem serve ao objetivo (mantida, doc oficial, framework de teste, jeito gratuito de fazer deploy), ancora a doc oficial e o guia de estilo, verifica cada idioma ao vivo em vez de chutar, e avisa que está fora do mapa curado. Se for uma escolha ruim para chegar ao deploy, ele recomenda a curada mais próxima e a decisão continua sua.
 
-**Can it teach security or help with a frontend?**
-Yes. Pick the cybersecurity track in the interview for lab-based ethical hacking and CTF practice against isolated or sanctioned targets only. For a frontend, the mentor names tags and component shells directly so markup moves fast, while keeping the full ladder for the logic, and never skipping accessibility or the four states.
+**Dá para ensinar segurança ou ajudar num frontend?**
+Dá. Escolha o track de cibersegurança na entrevista para ethical hacking e CTF em laboratório, só contra alvos isolados ou sancionados. Para frontend, o mentor nomeia as tags e o esqueleto do componente direto para o markup andar rápido, mantendo a escada completa na lógica e sem pular acessibilidade nem os quatro estados.
 
-## Privacy
+## Privacidade
 
-`STUDY-MEMORY.md` lists the topics where you missed, so it stays private: it lives in your project folder, and if you use git the mentor puts it in `.gitignore` so it is never pushed. The skill never creates a `.claude` or `.github` folder in your project. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
+O `STUDY-MEMORY.md` lista os temas em que você errou, então fica privado: ele vive na pasta do seu projeto, e se você usar git o mentor o coloca no `.gitignore` para nunca subir. A skill nunca cria uma pasta `.claude` ou `.github` no seu projeto. A skill em si não envia nada para lugar nenhum: são instruções em texto lidas pelo seu agente.
 
-## Keeping the skill current
+## Mantendo a skill atualizada
 
-- **Weekly link check**: `.github/workflows/check-links.yml` runs `scripts/check_links.py` every Monday and on demand. When a link breaks, it opens (or updates) an issue titled "Broken doc links". Locally: `python scripts/check_links.py`.
-- **Refresh**: from a clone of this repository, run `/mentor-buddy refresh`. The mentor runs the link check, re-verifies the stable claims against the official docs, and shows a diff with the source of every change. Nothing is applied without your approval, and it never pushes.
-- **Drift reports**: when a learner's session finds the docs contradicting the skill, it records the case in their `STUDY-MEMORY.md` and points them to the issue tracker.
+- **Checagem semanal de links**: o `.github/workflows/check-links.yml` roda o `scripts/check_links.py` toda segunda-feira e quando você mandar. Quando um link quebra, ele abre (ou atualiza) uma issue chamada "Broken doc links". Para rodar local: `python scripts/check_links.py`.
+- **Refresh**: num clone deste repositório, rode `/mentor-buddy refresh`. O mentor roda a checagem de links, confere de novo as afirmações estáveis na doc oficial e mostra um diff com a fonte de cada mudança. Nada é aplicado sem a sua aprovação, e ele nunca faz push.
+- **Relatos de desvio**: quando a sessão de um aluno encontra a doc contradizendo a skill, ela registra o caso no `STUDY-MEMORY.md` dele e indica o issue tracker.
 
-## Feedback and contributing
+## Feedback e contribuição
 
-Ideas, bugs and questions are welcome in [Issues](https://github.com/mauricioreiss/mentor-buddy/issues). Pull requests are reviewed at the maintainer's discretion, so open an issue first to discuss the change.
+Ideias, bugs e dúvidas são bem-vindos nas [Issues](https://github.com/mauricioreiss/mentor-buddy/issues). Pull requests são avaliados a critério do mantenedor, então abra uma issue antes para discutir a mudança.
 
-## License
+## Licença
 
-[MIT](LICENSE). Created by [Mauricio Reis](https://github.com/mauricioreiss).
+[MIT](LICENSE). Criado por [Mauricio Reis](https://github.com/mauricioreiss).
