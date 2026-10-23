@@ -1,6 +1,8 @@
-# Mentor Buddy
-
-**An AI agent skill that turns your coding assistant into a mentor who never writes your code.** You type every line. It interviews you, plans a real project with you, and guides you step by step from an empty folder to a deployed app.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/banner-en-light.svg">
+  <img src=".github/assets/banner-en-light.svg" width="100%" alt="Mentor Buddy. You type. The AI does not write: it teaches. An AI mentor that never writes your code. You learn by doing, from an empty folder to deploy. To start, type /mentor-buddy in your agent.">
+</picture>
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Format: Agent Skills](https://img.shields.io/badge/format-agentskills.io-black.svg)
@@ -8,52 +10,26 @@
 
 [Leia em português](README.pt-BR.md)
 
----
+## What it is
 
-## Contents
+You know when you ask the AI for code, paste it, run it... and a week later you could not write it again? The code stayed in the project. The knowledge did not stay with you.
 
-- [Why this exists](#why-this-exists)
-- [What you get](#what-you-get)
-- [A session, in short](#a-session-in-short)
-- [How it works](#how-it-works)
-- [Supported agents](#supported-agents)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Curated documentation map](#curated-documentation-map)
-- [Repository layout](#repository-layout)
-- [FAQ](#faq)
-- [Privacy](#privacy)
-- [Keeping the skill current](#keeping-the-skill-current)
-- [Feedback and contributing](#feedback-and-contributing)
-- [License](#license)
+Mentor Buddy is a skill that flips that around: your AI agent becomes a mentor that **never writes your code**. It works like pair programming. You are the driver and type every line; the mentor is the navigator who asks, explains the why, reviews and keeps the map. You start from an empty folder and stop only when the app is live.
 
----
+It runs in Claude Code, Codex and any agent that reads the [Agent Skills](https://agentskills.io/specification) format, such as Copilot, Cursor and Gemini CLI. It is free and open source.
 
-## Why this exists
+## What it looks like
 
-Learning to program with AI usually turns into copy and paste: you ask, the assistant writes the code, it runs, and a week later you could not write it again. The code stays in the project; the knowledge does not stay with you.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/comic-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/comic-en-light.svg">
+  <img src=".github/assets/comic-en-light.svg" width="100%" alt="Four-panel comic. 1, you ask: the learner says 'can you just give me the code?'. 2, it asks back: the mentor answers 'nope. what goes in here?'. 3, you type: the learner types, sweating. 4, you get it: the learner cheers 'ohh! that's why it threw a 500!' and the mentor draws a red check mark.">
+</picture>
 
-Mentor Buddy flips the roles. It works like pair programming where the AI is the **navigator** and you are the **driver**: you type every line and every command, and the mentor explains, asks, reviews and keeps the map. It only touches your code after you have missed three times on the same step, and even then it explains every change.
+Asked for the finished code? You get a question. Missed the step? First comes a review of what you did, then an example in a different context, and only on the third miss does the mentor touch your file. Then you review that fix, because reviewing AI code is a skill you can learn too.
 
-It is built for anyone who wants to learn hands-on with an AI agent: beginners who know the basics, developers moving to a new language, and seniors who want a sparring partner that pushes on trade-offs instead of handing out answers.
-
-## What you get
-
-- **A short interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, IDE, conversation language and tone.
-- **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
-- **The full path to production**: it detects the SDK and IDE already on your machine before proposing installs, treats git as a choice rather than a default, then walks you through folder structure, a walking skeleton, features with tests, a database, quality, Docker, CI and a free deploy.
-- **An error ladder** that makes you struggle productively before you see any code.
-- **A paper-notebook habit**: it teaches a concept like a class and has you write it down by hand, then quizzes you from your notebook on resume, because writing fixes it better than typing.
-- **Code review training**: every review shows you the method, the mentor's own fix at miss 3 is yours to review, and review drills with planted defects train the skill you need most when AI writes code for you.
-- **A comprehension check**: when an answer suddenly looks like it came from another AI, the mentor does not block it; it asks you to explain it in your own words before the step passes.
-- **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
-- **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
-- **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
-- **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
-- **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
-
-## A session, in short
+<details>
+<summary>See a real session excerpt</summary>
 
 A trimmed example from a real test run, translated to English. The learner is a junior building a football league table API in C#.
 
@@ -78,7 +54,91 @@ Mentor:  Nice try. This is miss 1 on step 5.2, so what you get now is a review, 
 
 If the learner misses again, the mentor quotes the wrong snippet and shows the same idea in a different context. On the third miss it fixes the file directly, with a `MENTOR:` comment on each change, and the learner reviews that fix as if an AI tool had written it.
 
+</details>
+
+## It's for you if...
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/use-cases-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/use-cases-en-light.svg">
+  <img src=".github/assets/use-cases-en-light.svg" width="100%" alt="Sticky-note board, it's for you if: I learned with AI and I freeze without it (here you type it all, I ask why); I know C# and I want to learn Go (same method, Go's official docs); I finished the course and I'm stuck in tutorials (your own project, all the way to deploy); I want to review code that AI writes (review drills with planted bugs); I'm senior and I want a sparring partner (I push on trade-offs, no free answers); I want to learn ethical hacking the right way (lab only, with a safety contract); I only have 3 hours a week (a project sized to your time). And you? Type /mentor-buddy.">
+</picture>
+
+You do not have to be a beginner. The mentor estimates your level (junior, mid or senior) in the interview and adjusts it with every submission.
+
+## The trail
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/trail-en-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/trail-en-light.svg">
+  <img src=".github/assets/trail-en-light.svg" width="100%" alt="The trail, from an empty folder to deploy: 0 Interview, 1 Project, 2 Environment, 3 Folders, 4 Skeleton, 5 Features, 6 Database, 7 Quality, 8 Docker, 9 CI, 10 Deploy, 11 Retro, then the next project.">
+</picture>
+
+Twelve stops, each split into small steps with a clear "done when". Everything is written to `STUDY-MEMORY.md`, so the next session starts exactly where you stopped. The details of each phase are in [How it works](#how-it-works).
+
+## Start in 30 seconds
+
+**1. Install.** On Windows (PowerShell):
+
+```powershell
+git clone https://github.com/mauricioreiss/mentor-buddy.git "$HOME\.agents\skills\mentor-buddy"
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+New-Item -ItemType Junction -Path "$HOME\.claude\skills\mentor-buddy" -Target "$HOME\.agents\skills\mentor-buddy"
+```
+
+On macOS and Linux:
+
+```bash
+git clone https://github.com/mauricioreiss/mentor-buddy.git ~/.agents/skills/mentor-buddy
+mkdir -p ~/.claude/skills
+ln -s ~/.agents/skills/mentor-buddy ~/.claude/skills/mentor-buddy
+```
+
+A junction does not need administrator rights. If the link does not work on your system, copy the folder to `~/.claude/skills/mentor-buddy` instead (you will then need to update both copies).
+
+**2. Open an empty folder** in your IDE.
+
+**3. Type `/mentor-buddy`** in the agent chat (`$mentor-buddy` in Codex). The mentor answers with one short question: Portuguese or English? It takes it from there.
+
+Other ways to install (a single agent, the skills installer, Gemini CLI, Visual Studio) are in [More installation options](#more-installation-options).
+
+---
+
+## Full manual
+
+- [What you get](#what-you-get)
+- [How it works](#how-it-works)
+- [Supported agents](#supported-agents)
+- [Requirements](#requirements)
+- [More installation options](#more-installation-options)
+- [Usage](#usage)
+- [Curated documentation map](#curated-documentation-map)
+- [Repository layout](#repository-layout)
+- [FAQ](#faq)
+- [Privacy](#privacy)
+- [Keeping the skill current](#keeping-the-skill-current)
+- [Feedback and contributing](#feedback-and-contributing)
+- [License](#license)
+
+## What you get
+
+- **A short interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, IDE, conversation language and tone.
+- **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
+- **The full path to production**: it detects the SDK and IDE already on your machine before proposing installs, treats git as a choice rather than a default, then walks you through folder structure, a walking skeleton, features with tests, a database, quality, Docker, CI and a free deploy.
+- **An error ladder** that makes you struggle productively before you see any code.
+- **A paper-notebook habit**: it teaches a concept like a class and has you write it down by hand, then quizzes you from your notebook on resume, because writing fixes it better than typing.
+- **Code review training**: every review shows you the method, the mentor's own fix at miss 3 is yours to review, and review drills with planted defects train the skill you need most when AI writes code for you.
+- **A comprehension check**: when an answer suddenly looks like it came from another AI, the mentor does not block it; it asks you to explain it in your own words before the step passes.
+- **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
+- **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
+- **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
+- **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
+- **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
+
 ## How it works
+
+<details>
+<summary>Interview, project, phases, the error ladder, level calibration, docs, memory, tone and review training</summary>
 
 ### 1. Interview
 
@@ -226,6 +286,8 @@ More and more of a developer's day goes into reviewing code someone else wrote, 
 - **Miss 3** ends with you reviewing the mentor's fix as if an AI had written it: which change fixes which check, which test proves it, what else could break.
 - **Review drills**: after each feature slice in phase 5, and once in phase 7, you can take a short file in your project's domain with planted defects and review it like a pull request (`Line <n>: problem - why - fix` plus a verdict). The file goes in `.review-drills/`, which you add to `.gitignore`. Drills are optional, never count as misses, and what you miss goes into your error map.
 
+</details>
+
 ## Supported agents
 
 Mentor Buddy follows the open [Agent Skills format](https://agentskills.io/specification), so it works in any agent that reads it.
@@ -244,7 +306,7 @@ The skill changes how your agent behaves (it stops writing your code), so it sta
 
 Tested with Claude Code and Codex CLI. In Codex, keep a single copy of the skill: if it is installed both in `~/.agents/skills/` and in a repository's `.agents/skills/`, the `$mentor-buddy` mention becomes ambiguous and is ignored.
 
-No single folder is read by every agent: `~/.agents/skills/` covers all of them except Claude Code, which reads only `~/.claude/skills/`. The installation below keeps one real copy in `~/.agents/skills/` and links it from `~/.claude/skills/`.
+No single folder is read by every agent: `~/.agents/skills/` covers all of them except Claude Code, which reads only `~/.claude/skills/`. The installation in [Start in 30 seconds](#start-in-30-seconds) keeps one real copy in `~/.agents/skills/` and links it from `~/.claude/skills/`.
 
 ## Requirements
 
@@ -253,27 +315,9 @@ No single folder is read by every agent: `~/.agents/skills/` covers all of them 
 - Internet access during sessions, so the mentor can check the official docs. Without it the skill still works, but it sends you to the docs instead of confirming versions and commands.
 - For Visual Studio: version 2026 (18.5 or later), GitHub Copilot, and agent mode.
 
-## Installation
+## More installation options
 
-### Windows (PowerShell)
-
-```powershell
-git clone https://github.com/mauricioreiss/mentor-buddy.git "$HOME\.agents\skills\mentor-buddy"
-New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
-New-Item -ItemType Junction -Path "$HOME\.claude\skills\mentor-buddy" -Target "$HOME\.agents\skills\mentor-buddy"
-```
-
-A junction does not need administrator rights.
-
-### macOS and Linux
-
-```bash
-git clone https://github.com/mauricioreiss/mentor-buddy.git ~/.agents/skills/mentor-buddy
-mkdir -p ~/.claude/skills
-ln -s ~/.agents/skills/mentor-buddy ~/.claude/skills/mentor-buddy
-```
-
-If the link does not work on your system, copy the folder to `~/.claude/skills/mentor-buddy` instead (you will then need to update both copies).
+The default install for Windows, macOS and Linux is in [Start in 30 seconds](#start-in-30-seconds).
 
 ### Only one agent?
 
@@ -342,6 +386,9 @@ rm -rf ~/.agents/skills/mentor-buddy
 
 ## Curated documentation map
 
+<details>
+<summary>C# and .NET, Python, Go, TypeScript and Node.js, Java, Frontend, tooling and cybersecurity</summary>
+
 The skill ships with verified entry points to the official docs for these stacks:
 
 | Stack | Covers |
@@ -357,7 +404,12 @@ The skill ships with verified entry points to the official docs for these stacks
 
 The base language maps are for building any kind of project, not only security; the cybersecurity map is used only on that track. Any other language still works: the mentor runs a quick fit check (maintained, official docs, a test framework, a free deploy path), anchors the official docs and verifies everything live, and tells you it is outside the curated map.
 
+</details>
+
 ## Repository layout
+
+<details>
+<summary>See the file tree</summary>
 
 ```text
 mentor-buddy/
@@ -383,12 +435,15 @@ mentor-buddy/
     visual-studio/mentor-buddy.prompt.md   /mentor-buddy prompt file for Visual Studio
   scripts/check_links.py        checks every link in the skill (standard library Python)
   .github/workflows/check-links.yml   weekly link check that opens an issue on failure
+  .github/assets/               README drawings, light and dark, English and Portuguese
   README.md
   README.pt-BR.md
   LICENSE
 ```
 
 The repository root is the skill folder, so installing is a `git clone` and updating is a `git pull`.
+
+</details>
 
 ## FAQ
 
