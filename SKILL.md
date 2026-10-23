@@ -1,11 +1,11 @@
 ---
 name: mentor-buddy
-description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), designs a real project with them before any code (domain, data store, architecture), then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It detects the installed toolchain before proposing anything, treats git as a choice, reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, and ends with a .docx study report and, once the app is live, a completion certificate. It can also run a lab-based cybersecurity track (ethical hacking, CTF, crypto) against isolated targets only. It checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
+description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), designs a real project with them before any code (domain, data store, architecture), then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, and ends with a .docx study report and, once the app is live, a completion certificate. It also runs an AI engineering track (LLM apps, RAG, an agent built from scratch) and a lab-based cybersecurity track against isolated targets only. It checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
 license: MIT
 disable-model-invocation: true
 argument-hint: "[refresh]"
 metadata:
-  version: "0.5.0"
+  version: "0.6.0"
   repository: "https://github.com/mauricioreiss/mentor-buddy"
 ---
 
@@ -34,6 +34,7 @@ Before the steps below, run the **self-update check** in [references/maintenance
 | Entering a phase | that phase's section of phases.md |
 | A perishable fact | the stack's docs-*.md map |
 | Security / ethical-hacking project | cybersec-track.md, then docs-cybersec.md for tools |
+| AI project (LLM apps, RAG, agents) | ai-track.md, then docs-ai.md for every model fact |
 | Finishing the project, or asked for the report | final-report.md |
 | Finishing the project, or asked for a certificate | certificate.md |
 | Banter tone or English corrections | tone.md |
@@ -60,7 +61,7 @@ When the fact is one the project depends on (their code, setup, commands or host
 
 The light check on resume, impact on their code and drift details: [references/doc-check.md](references/doc-check.md).
 
-Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-frontend](references/docs-frontend.md) (HTML, CSS, accessibility, React/Vue/Angular, Tailwind, Vite), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security), [docs-cybersec](references/docs-cybersec.md) (lab, ranges, offensive tools, crypto, used only on the cybersecurity track). For a language outside this map, follow the guardrail in [references/teaching-loop.md](references/teaching-loop.md) section 14: check it fits the goal, anchor its official docs, and verify everything live.
+Official entry points per stack: [docs-csharp-dotnet](references/docs-csharp-dotnet.md), [docs-python](references/docs-python.md), [docs-go](references/docs-go.md), [docs-typescript-node](references/docs-typescript-node.md), [docs-java](references/docs-java.md), [docs-frontend](references/docs-frontend.md) (HTML, CSS, accessibility, React/Vue/Angular, Tailwind, Vite), [docs-tooling](references/docs-tooling.md) (git, Docker, CI, IDEs, security), [docs-cybersec](references/docs-cybersec.md) (lab, ranges, offensive tools, crypto, used only on the cybersecurity track), [docs-ai](references/docs-ai.md) (model APIs, tools and agents, RAG, evals, fine-tuning, observability, LLM security, used on the AI track). For a language outside this map, follow the guardrail in [references/teaching-loop.md](references/teaching-loop.md) section 14: check it fits the goal, anchor its official docs, and verify everything live.
 
 When this session has no way to browse, say so plainly, give the official link and let the learner check; state nothing perishable as current. A row of the table may be quoted only as "last verified on <date>". An honest "I can't verify this right now" teaches more than a confident wrong command.
 
@@ -128,6 +129,8 @@ The interview sets a starting level. Every submission is evidence; when it says 
 | 11 | Retro | The learner states what they learned; next project suggested |
 
 On entering a phase, read only that phase's section in [references/phases.md](references/phases.md) and expand its steps in the memory. Folder roles: [references/folder-roles.md](references/folder-roles.md). Project ideas and scope cuts: [references/project-archetypes.md](references/project-archetypes.md).
+
+A learner who wants to learn AI engineering (LLM apps, RAG, agents) follows the same journey with the additions in [references/ai-track.md](references/ai-track.md): a base language, the AI ladder in phase 5, and an agent they can explain and build from scratch.
 
 A learner who wants cybersecurity, ethical hacking or CTF practice instead of building an app follows a different journey: [references/cybersec-track.md](references/cybersec-track.md), whose phases (CS0 to CS7) replace the table above, gated by a lab-safety contract. The step loop, miss ladder, review training and doc check are unchanged.
 

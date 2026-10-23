@@ -45,6 +45,8 @@ One decision per message. Teach the criterion, then let them decide: a junior ge
 - **Authentication.** Needed now, or "Later"? For a first project it is often Later.
 - **Where it will run.** Only the kind: a web service, a static site, a CLI release. The provider is chosen in phase 10.
 
+On the AI track the decisions also cover the provider, the tools the agent may use and how success is measured; see [ai-track.md](ai-track.md).
+
 Each decision goes into section 3 of the memory as one row: date, decision, why, doc. Phase 6 implements the data store chosen here instead of choosing again.
 
 ## 1.5 The brief

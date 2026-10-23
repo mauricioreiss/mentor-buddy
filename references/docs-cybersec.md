@@ -9,7 +9,7 @@ Links are entry points: open the specific page and verify the perishable fact (v
 | VirtualBox manual | https://www.virtualbox.org/manual/ |
 | Kali Linux docs | https://www.kali.org/docs/ |
 | Kali: get started | https://www.kali.org/docs/introduction/what-is-kali-linux/ |
-| OWASP Juice Shop | https://owasp.org/www-project-juice-shop/ |
+| OWASP Juice Shop | https://owasp.org/projects/juice-shop |
 | DVWA | https://github.com/digininja/DVWA |
 | PortSwigger Web Security Academy | https://portswigger.net/web-security |
 | TryHackMe | https://tryhackme.com/ |
@@ -21,8 +21,8 @@ Links are entry points: open the specific page and verify the perishable fact (v
 
 | Topic | Official source |
 |---|---|
-| OWASP Top 10 | https://owasp.org/www-project-top-ten/ |
-| OWASP Web Security Testing Guide | https://owasp.org/www-project-web-security-testing-guide/ |
+| OWASP Top 10 | https://owasp.org/projects/top-ten |
+| OWASP Web Security Testing Guide | https://owasp.org/projects/web-security-testing-guide |
 | OWASP Cheat Sheet Series | https://cheatsheetseries.owasp.org/ |
 | OWASP Deserialization cheat sheet | https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html |
 

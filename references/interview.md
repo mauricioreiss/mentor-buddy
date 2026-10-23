@@ -36,6 +36,8 @@ State the estimate in one line with the reason and invite a correction. Done whe
 
 If the learner wants cybersecurity, ethical hacking, pentesting or CTF practice rather than building an app, switch to the **cybersecurity track**: follow [cybersec-track.md](cybersec-track.md) from here. The lab contract there is the first gate, and the phase plan in the memory comes from that file instead of the app phases. The rest of this interview (profile, level, tone, memory creation) still applies.
 
+If the learner wants to learn AI (LLM apps, RAG, agents, "IA"), it is the **AI track**: the journey stays the same, with the additions in [ai-track.md](ai-track.md). Settle the base language with its recommendation, then offer its archetypes or take their idea.
+
 For an app project:
 
 - **No idea**: offer three options from [project-archetypes.md](project-archetypes.md) that fit the level, the language and the time available, each themed on what they enjoy: name, one-line pitch, what they will practice, rough size. They pick.

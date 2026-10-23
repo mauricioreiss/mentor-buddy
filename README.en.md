@@ -135,6 +135,7 @@ Other ways to install (a single agent, the skills installer, Gemini CLI, Visual 
 - **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
 - **A completion certificate** as a `.docx`, with your name, the project, the language, your level, how long it took, what you built and the link to the live app, once the whole trail is done. It proves you took a project to production; it is not an official certification.
 - **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
+- **An AI track**, studied like a new language: calling models (Claude, GPT, Gemini, or a free local model through Ollama), structured output, tools, RAG, MCP, cost, observability and security, until you can build from scratch, explain and ship an autonomous agent. The official docs are checked live, because everything in this field moves fast.
 - **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
 
 ## How it works
@@ -409,8 +410,9 @@ The skill ships with verified entry points to the official docs for these stacks
 | Frontend | HTML, CSS, accessibility (MDN), React, Vue, Angular, Tailwind, Vite |
 | Tooling | Git, GitHub, .gitignore templates, Docker, Compose, GitHub Actions, IDEs, OWASP Top 10, Twelve-Factor config |
 | Cybersecurity (track only) | Lab and ranges, Burp, nmap, Wireshark, Metasploit, pwntools, scapy, requests, crypto per language |
+| AI (track only) | Claude, OpenAI and Gemini APIs, Ollama, structured output, tools and agents, MCP, RAG (pgvector, Qdrant), evals, fine-tuning (Hugging Face), OpenTelemetry, Prometheus, Jaeger, Grafana, OWASP Top 10 for LLM, OPA |
 
-The base language maps are for building any kind of project, not only security; the cybersecurity map is used only on that track. Any other language still works: the mentor runs a quick fit check (maintained, official docs, a test framework, a free deploy path), anchors the official docs and verifies everything live, and tells you it is outside the curated map.
+The base language maps are for building any kind of project, not only security; the cybersecurity map is used only on that track, and the AI map only on the AI track. Any other language still works: the mentor runs a quick fit check (maintained, official docs, a test framework, a free deploy path), anchors the official docs and verifies everything live, and tells you it is outside the curated map.
 
 </details>
 
@@ -432,6 +434,8 @@ mentor-buddy/
     folder-roles.md             folder roles and organization trade-offs
     project-archetypes.md       project catalog, scope by level, scope cutting
     cybersec-track.md           optional cybersecurity journey, with the lab-safety contract
+    ai-track.md                 AI track: the ladder to an autonomous agent, its rules and archetypes
+    design.md                   phase 1: domain, model, architecture and technical decisions
     final-report.md             the end-of-project .docx study report
     certificate.md              the .docx completion certificate and the bar for issuing it
     session-rituals.md          resume questions and end-of-day summary
@@ -487,6 +491,9 @@ Use it on your own study projects. Do not paste your employer's code or data int
 
 **What if my language is not in the curated map?**
 It still works. The mentor first checks the language fits the goal (maintained, official docs, a test framework, a free way to deploy), anchors its official docs and style guide, verifies every idiom live instead of guessing, and tells you it is outside the curated map. If it is a poor fit for reaching a deploy, it recommends the closest curated language and the choice stays yours.
+
+**Can I study AI?**
+Yes. Pick the AI track in the interview. The project crosses the same phases, with an AI ladder in phase 5: calling the model, structured output, tools, the agent loop written by hand, and RAG. The goal is that you build, explain and ship an autonomous agent from scratch. No framework first; a framework comes only once you understand each part. Models, prices and limits are always checked in the official docs at that moment.
 
 **Can it teach security or help with a frontend?**
 Yes. Pick the cybersecurity track in the interview for lab-based ethical hacking and CTF practice against isolated or sanctioned targets only. For a frontend, the mentor names tags and component shells directly so markup moves fast, while keeping the full ladder for the logic, and never skipping accessibility or the four states.
