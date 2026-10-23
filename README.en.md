@@ -122,7 +122,8 @@ Other ways to install (a single agent, the skills installer, Gemini CLI, Visual 
 
 ## What you get
 
-- **A short interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, IDE, conversation language and tone.
+- **A short, direct interview** that sets your level (junior, mid or senior), the programming language, your interests, available time, conversation language and tone. The mentor finds out your OS, SDK and IDE on its own.
+- **The project designed before the code**: you talk through the domain in plain language, model the entities and rules (the start of DDD), see where each part sits in the architecture (Clean Architecture) and choose the database, libraries and external APIs with the criteria explained.
 - **A real project**: one of three ideas tailored to what you enjoy, or your own idea cut down to a size you can actually finish.
 - **The full path to production**: it detects the SDK and IDE already on your machine before proposing installs, treats git as a choice rather than a default, then walks you through folder structure, a walking skeleton, features with tests, a database, quality, Docker, CI and a free deploy.
 - **An error ladder** that makes you struggle productively before you see any code.
@@ -149,16 +150,22 @@ The first message asks, in both languages, whether you want to talk in English o
 2. Which language you want to use.
 3. Whether you have a project idea or want suggestions (and what you enjoy).
 4. How much time you have per week and per session.
-5. Your operating system and IDE.
-6. How you want to be talked to: **direct** or **banter**.
-7. If you chose English: whether you want your English corrected.
+5. How you want to be talked to: **direct** or **banter**.
+6. If you chose English: whether you want your English corrected.
 
 The mentor states the level it estimated, with the reason, and you can correct it.
 
-### 2. Project
+### 2. Project and design
 
 - **No idea?** You get three options built from project archetypes (REST API with a database, CLI tool, full-stack web app, background worker, integration service, real-time app), themed on your interests and sized for your time.
 - **Your own idea?** The mentor finds its core action and cuts it to the smallest version that still reaches deploy. Example: "an Uber clone with an app, payments and maps" becomes "a ride request API: register drivers, request a ride, match the nearest driver, finish the ride". Everything else goes to a "Later" list.
+
+Before any line of code, you design the project together, one topic per message:
+
+1. **Domain**: you describe the idea your way ("a patient queue for my job"); the mentor explains what such a system usually involves (who uses it, the flow, the rules, the edge cases) and asks how it works in your case.
+2. **Model**: the business glossary, the entities and the rules that always hold; for mid and senior, also value objects, aggregates and contexts.
+3. **Architecture**: where each part sits under the Clean Architecture dependency rule, proportional to the size of the project.
+4. **Technical decisions**: the database from the use case (relational when things reference each other and need consistency), libraries, external APIs, authentication and where it will run. Each decision is recorded with the why.
 
 The result is a brief with 3 to 6 testable acceptance criteria. You approve it; the product decisions are yours.
 
@@ -166,13 +173,13 @@ The result is a brief with 3 to 6 testable acceptance criteria. You approve it; 
 
 | # | Phase | Done when |
 |---|---|---|
-| 0 | Interview | Profile and level agreed |
-| 1 | Project | Brief approved; `STUDY-MEMORY.md` created |
+| 0 | Interview | Profile and level agreed; `STUDY-MEMORY.md` created |
+| 1 | Project and design | Domain understood and modelled, technical decisions recorded, brief approved |
 | 2 | Environment | SDK and IDE detected and working; if you chose git, a repository with `.gitignore` and a first commit |
 | 3 | Folder structure | Folders created; you explain each folder's role back |
 | 4 | Walking skeleton | The smallest end-to-end path runs, with one passing test |
 | 5 | Feature slices | Every acceptance criterion delivered as code, test and commit |
-| 6 | Persistence | Data survives a restart; migrations versioned |
+| 6 | Persistence | The database chosen in phase 1 works: data survives a restart; migrations versioned |
 | 7 | Quality | Validation, error handling, logging, secrets out of the code |
 | 8 | Docker | The app and its dependencies run with compose from a clean clone |
 | 9 | CI | A pipeline builds and tests on every push |

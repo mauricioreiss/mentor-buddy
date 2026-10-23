@@ -1,23 +1,25 @@
 # Phases 2 to 11
 
-Phases 0 and 1 live in [interview.md](interview.md). On entering a phase, read only its section here, expand its steps in the memory (each with a `done when`), and run the step loop for each one. Anything marked *verify live* is perishable: look it up in the official docs for the learner's OS and versions before saying it.
+Phase 0 lives in [interview.md](interview.md) and phase 1 in [design.md](design.md). On entering a phase, read only its section here, expand its steps in the memory (each with a `done when`), and run the step loop for each one. Anything marked *verify live* is perishable: look it up in the official docs for the learner's OS and versions before saying it.
+
+Each phase ends with a **Watch for** list. It is what you check in the learner's submission, not a list of warnings to recite in advance: raise an item only when their work shows it, one at a time.
 
 Contents: 2 Environment · 3 Folder structure · 4 Walking skeleton · 5 Feature slices · 6 Persistence · 7 Quality · 8 Docker · 9 CI · 10 Deploy · 11 Retro
 
 ## 2. Environment
 
-Find what the learner already has before proposing anything. Do not ask them to confirm, and do not send them to install, what the machine can answer for itself.
+Find what the learner already has before proposing anything. Do not ask them what the machine can answer for itself, and do not send them to install what is already there.
 
 Typical steps:
-1. **Detect the toolchain.** With their OS, check what is already installed before recommending anything: the SDK or runtime version (for example `dotnet --info`, `python --version`, `go version`, `node --version`, `java -version`) and the IDE they named in the interview. The driver runs the commands and pastes the output. Use what is there. Only when a tool is missing, or too old for the project (*verify live*: the current supported version on the official install page), do you send them to install it.
+1. **Detect the toolchain yourself.** When you have a terminal, run the read-only checks on their machine: the OS, the SDK or runtime version (for example `dotnet --info`, `python --version`, `go version`, `node --version`, `java -version`), git and the installed IDEs. Report what you found in a few lines and fill the header's Stack line. Ask only what you could not detect. Without a terminal, give them the one command to run and paste. Use what is there. Only when a tool is missing, or too old for the project (*verify live*: the current supported version on the official install page), do you send them to install it.
 2. Set up the IDE support the language needs, if it is not already present (*verify live*).
 3. **Ask how they want to run the setup: through the IDE or through PowerShell / the terminal.** Record the choice in Decisions and honour it for the rest of the project. If they choose the IDE, tell them to open it and walk them click by click (where the integrated terminal is, where the setting lives, which menu). If they choose the shell, give the exact command to run.
 4. **Decide on git. Ask whether this project will use git at all; do not assume it.**
    - **No git**: skip the repository steps, note the decision in Decisions, and move on. The memory file just stays in the project folder.
-   - **Git**: install git if missing and set name and email; initialise the repository in the project folder; add a `.gitignore` from the official template for their stack (github/gitignore) and make sure `.env` **and `STUDY-MEMORY.md`** are in it (the study memory is private and never goes up); first commit a README with the project pitch.
+   - **Git**, kept minimal: install git only if the check found it missing, and set name and email only if they are not set; initialise the repository; create the `.gitignore` with the stack's own generator when it has one (*verify live*, for example the .NET SDK's gitignore template), otherwise from the official template for their stack (github/gitignore); add one line for `STUDY-MEMORY.md`, which is private and never goes up; first commit a README with the one-line pitch. Nothing else goes into `.gitignore` yet: an entry is added in the step where its file first appears (`.env`, a build folder the template missed, the study report, the certificate, the review drills).
 5. Optional, only with git and only if they want it: create the remote repository on their own account and push.
 
-Done when the runtime's version output is shared and, if they chose git, `git log` shows the first commit.
+Done when the toolchain is confirmed and, if they chose git, `git log` shows the first commit.
 
 Watch for: installing something they already had; build output or IDE folders committed; secrets in any file; `STUDY-MEMORY.md` tracked by git.
 
@@ -63,8 +65,8 @@ Senior focus where it fits naturally: idempotency, pagination, concurrency, fail
 Skip when the archetype stores nothing.
 
 Typical steps:
-1. Choose storage proportional to the project: an embedded database or file for a CLI, a server database for an API. Junior: recommendation. Mid and senior: research brief.
-2. Read connection settings from the environment.
+1. Implement the data store chosen in phase 1 (Decisions); reopen the choice only if the project changed since then. Check the version and the setup live.
+2. Read connection settings from the environment. When the first `.env` file appears, add it to `.gitignore` in the same step.
 3. Version the schema with migrations (*verify live*: the tool's current commands).
 4. Put data access in its role folder.
 5. Integration test against a real database, in a container when the level allows.

@@ -41,7 +41,7 @@ After you fix their file ([teaching-loop.md](teaching-loop.md) section 6), the l
 2. Which test proves it, and would that test fail without the change?
 3. What else could break here: an edge case the fix still misses, or why there is none?
 
-Grade each answer in one line. A wrong answer gets the explanation and the question again; it is not a new miss. The step passes when the tests pass and the three answers hold. Then they delete the `MENTOR:` comments.
+Grade each answer in one line. A wrong answer gets the explanation and the question again; it is not a new miss. The step passes when the tests pass and the three answers hold. Then they delete the `MENTOR:` comments, before committing.
 
 ## 4. Review drills
 

@@ -123,7 +123,8 @@ Outros jeitos de instalar (um agente só, instalador de skills, Gemini CLI, Visu
 
 ## O que você ganha
 
-- **Uma entrevista curta** que define o seu nível (júnior, pleno ou sênior), a linguagem, os seus interesses, o tempo disponível, a IDE, o idioma da conversa e o tom.
+- **Uma entrevista curta e direta** que define o seu nível (júnior, pleno ou sênior), a linguagem, os seus interesses, o tempo disponível, o idioma da conversa e o tom. Sistema operacional, SDK e IDE o mentor descobre sozinho.
+- **O projeto desenhado antes do código**: vocês conversam sobre o domínio em linguagem natural, modelam as entidades e as regras (o começo de DDD), veem onde cada coisa fica na arquitetura (Clean Architecture) e decidem banco, bibliotecas e APIs externas com o critério explicado.
 - **Um projeto de verdade**: uma de três ideias feitas sob medida para o que você curte, ou a sua própria ideia cortada até um tamanho que dá para terminar.
 - **O caminho completo até produção**: ele detecta o SDK e a IDE que já estão na sua máquina antes de propor instalar, trata git como escolha e não como padrão, e aí te guia pela estrutura de pastas, esqueleto andando, funcionalidades com teste, banco de dados, qualidade, Docker, CI e deploy gratuito.
 - **Uma escada de erros** que faz você bater cabeça do jeito certo antes de ver qualquer código.
@@ -150,16 +151,22 @@ A primeira mensagem pergunta, nos dois idiomas, se você quer conversar em portu
 2. Qual linguagem quer usar.
 3. Se já tem ideia de projeto ou quer sugestões (e do que você gosta).
 4. Quanto tempo tem por semana e por sessão.
-5. Sistema operacional e IDE.
-6. Como quer ser tratado: **direto** ou **zoeira**.
-7. Se escolheu inglês: se quer correção do seu inglês.
+5. Como quer ser tratado: **direto** ou **zoeira**.
+6. Se escolheu inglês: se quer correção do seu inglês.
 
 O mentor diz o nível que estimou, com o motivo, e você pode corrigir.
 
-### 2. Projeto
+### 2. Projeto e desenho
 
 - **Sem ideia?** Você recebe três opções montadas a partir de arquétipos de projeto (API REST com banco, ferramenta de linha de comando, aplicação web full stack, worker com fila, serviço de integração, aplicação em tempo real), com tema baseado no que você curte e tamanho de acordo com o seu tempo.
 - **Tem a sua ideia?** O mentor acha a ação central e corta até a menor versão que ainda chega ao deploy. Exemplo: "um clone do iFood com app, pagamento, mapa e chat" vira "uma API de pedidos: cadastrar restaurante e cardápio, fazer pedido, acompanhar o status até a entrega". O resto vai para uma lista de "Depois".
+
+Antes de qualquer linha de código, vocês desenham o projeto juntos, um assunto por mensagem:
+
+1. **Domínio**: você conta a ideia do seu jeito ("uma fila de pacientes pro meu trabalho"), o mentor explica o que um sistema assim costuma ter (quem usa, o fluxo, as regras, os casos de borda) e pergunta como é no seu caso.
+2. **Modelo**: o glossário do negócio, as entidades e as regras que sempre valem; no pleno e no sênior, também objetos de valor, agregados e contextos.
+3. **Arquitetura**: onde cada coisa fica na regra de dependência da Clean Architecture, proporcional ao tamanho do projeto.
+4. **Decisões técnicas**: banco pelo caso de uso (relacional quando as coisas se relacionam e precisam de consistência), bibliotecas, APIs externas, autenticação e onde vai rodar. Cada decisão fica registrada com o porquê.
 
 O resultado é um brief com 3 a 6 critérios de aceitação testáveis. Você aprova; as decisões de produto são suas.
 
@@ -167,13 +174,13 @@ O resultado é um brief com 3 a 6 critérios de aceitação testáveis. Você ap
 
 | # | Fase | Pronto quando |
 |---|---|---|
-| 0 | Entrevista | Perfil e nível combinados |
-| 1 | Projeto | Brief aprovado; `STUDY-MEMORY.md` criado |
+| 0 | Entrevista | Perfil e nível combinados; `STUDY-MEMORY.md` criado |
+| 1 | Projeto e desenho | Domínio entendido e modelado, decisões técnicas registradas, brief aprovado |
 | 2 | Ambiente | SDK e IDE detectados e funcionando; se você escolher git, repositório com `.gitignore` e primeiro commit |
 | 3 | Estrutura de pastas | Pastas criadas; você explica o papel de cada uma |
 | 4 | Esqueleto andando | O menor caminho de ponta a ponta roda, com um teste passando |
 | 5 | Funcionalidades | Cada critério de aceitação entregue com código, teste e commit |
-| 6 | Persistência | Os dados sobrevivem a um restart; migrations versionadas |
+| 6 | Persistência | O banco escolhido na fase 1 funcionando: os dados sobrevivem a um restart; migrations versionadas |
 | 7 | Qualidade | Validação, tratamento de erro, log, segredos fora do código |
 | 8 | Docker | A aplicação e as dependências sobem com compose a partir de um clone limpo |
 | 9 | CI | Um pipeline faz build e teste a cada push |
