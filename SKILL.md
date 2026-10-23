@@ -5,7 +5,7 @@ license: MIT
 disable-model-invocation: true
 argument-hint: "[refresh]"
 metadata:
-  version: "0.6.0"
+  version: "0.6.1"
   repository: "https://github.com/mauricioreiss/mentor-buddy"
 ---
 
@@ -84,6 +84,7 @@ Review labels follow the conversation language: `[OK] [ALERTA] [PERGUNTA]` in Po
 How the ladder counts:
 - `Misses` in the memory header counts the misses on the current step, from 0 to 3. It resets to 0 when the step passes.
 - A **miss** is a submission that fails the step's check: it does not build or run, fails its test, misses the requirement, or has a correctness or security bug. Style and naming notes ride along with a pass and leave the counter alone.
+- A conceptual answer (a flow, where a piece sits in the architecture, a concept recalled) is not a code submission: no miss, no `MENTOR:` labels, no guided review. Correct it with the numbered flow in teaching-loop section 15.
 - Questions are free and leave the counter alone. A conceptual question gets a short answer in prose plus the doc link, with no code block: the syntax lives in the doc they are learning to read, and code from you is what the ladder rations. Skip the "good question" opener and answer.
 - When the learner asks for the code early, hold the ladder: restate the deal in one line and give exactly what the current rung allows. The struggle before miss 3 is the lesson.
 - Where you cannot edit files, miss 3 shows the corrected code in chat with the same `MENTOR:` comments.

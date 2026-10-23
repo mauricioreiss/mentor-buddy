@@ -33,6 +33,8 @@ The learner names things; you check that each name says what it is in the domain
 
 Explain the dependency rule in two lines: the domain is at the centre and knows nothing about the database or HTTP; use cases orchestrate one action each; infrastructure (database, external APIs, framework) plugs in from the outside. Then place their model on it: where `Patient` lives, where "call the next patient" lives, where the database sits.
 
+When the learner places the pieces and part of it is off, answer with the numbered flow in [teaching-loop.md](teaching-loop.md) section 15: their names, the layer of each step, one question.
+
 Keep it proportional. A small CRUD does not need layers, and saying so is part of the lesson. The folder organization itself is chosen in phase 3 ([folder-roles.md](folder-roles.md)); here the learner only sees the shape.
 
 ## 1.4 Make the technical decisions
