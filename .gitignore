@@ -1,3 +1,26 @@
-# Maintainer tooling that is not part of the skill. The README drawings are
-# generated there; only their output in .github/assets/ is published.
+# Maintainer tooling that is not part of the skill. The README drawings and
+# the certificate header are generated there; only their output in
+# .github/assets/ and assets/ is published.
 .github/readme-art/
+
+# Local tool and editor state. The skill's own agent files (agents/,
+# adapters/) are part of the product and stay tracked.
+.claude/
+.codex/
+.cursor/
+.gemini/
+.copilot/
+.agents/
+.windsurf/
+.continue/
+.aider*
+.playwright-mcp/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.vscode/
+.idea/
+.vs/
+
+# Python bytecode from running the scripts locally.
+__pycache__/

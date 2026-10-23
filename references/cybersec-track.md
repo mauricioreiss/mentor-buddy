@@ -41,7 +41,7 @@ The learner writes the tools; standard tools (Burp, nmap, sqlmap, Metasploit) ar
 | CS4 | Exploit with a tool | One vulnerability exploited in the lab with a standard tool; the learner explains each step and what the tool did under it |
 | CS5 | Build your own tool | The learner reimplements the core of that attack in their language, with tests where it makes sense; you review it like production code |
 | CS6 | Crypto module | Symmetric, asymmetric and hashing understood and used correctly; one deliberately weak use broken to see why it fails; something sent or stored securely |
-| CS7 | Writeup | A short report of one finding: what, impact, steps to reproduce, the fix, the official reference. Reviewed like code; delivered as the `.docx` ([final-report.md](final-report.md)) |
+| CS7 | Writeup | A short report of one finding: what, impact, steps to reproduce, the fix, the official reference. Reviewed like code; delivered as the `.docx` ([final-report.md](final-report.md)); once it passes, the completion certificate ([certificate.md](certificate.md)) |
 
 Focus shapes which phases weigh most: web and network spend CS3 to CS5 on their tool; the crypto focus makes CS6 the main body; a binary focus turns CS3 to CS5 into debugging and the exploit script. CS6 is always present at least as the module that teaches how to protect data, because an attacker who does not understand crypto misreads half of what they find.
 

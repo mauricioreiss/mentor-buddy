@@ -119,6 +119,7 @@ Typical steps:
 2. The learner creates the account and connects the repository or pushes the image.
 3. Configure environment variables and secrets on the platform.
 4. Smoke test the live address against the acceptance criteria.
+5. Record the live address (or the artifact's URL) in Decisions; the retro and the certificate read it from there.
 
 CLI archetype: deploying means publishing a release artifact (for example a release on their repository or an image in a registry; *verify live*).
 
@@ -133,6 +134,7 @@ Typical steps:
 2. From the error map, suggest what to study next, with doc links.
 3. Suggest the next project: one level harder or a different archetype.
 4. Offer the final report as a `.docx` ([final-report.md](final-report.md)): their weak spots with before/after code and a study plan. Generate it when they accept.
-5. Mark the project complete in the memory.
+5. Issue the completion certificate as a `.docx` ([certificate.md](certificate.md)) when its checks pass: the app answers, every acceptance criterion is delivered, the retro is written. Ask for the name only then. When a check fails, name what is missing instead.
+6. Mark the project complete in the memory.
 
-Done when the retro is written, the report is offered, and the next project is suggested.
+Done when the retro is written, the report is offered, the certificate is issued (or what is missing for it is named), and the next project is suggested.

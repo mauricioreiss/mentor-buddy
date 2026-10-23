@@ -71,7 +71,7 @@ You do not have to be a beginner. The mentor estimates your level (junior, mid o
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/trail-en-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset=".github/assets/trail-en-light.svg">
-  <img src=".github/assets/trail-en-light.svg" width="100%" alt="The trail, from an empty folder to deploy: 0 Interview, 1 Project, 2 Environment, 3 Folders, 4 Skeleton, 5 Features, 6 Database, 7 Quality, 8 Docker, 9 CI, 10 Deploy, 11 Retro, then the next project.">
+  <img src=".github/assets/trail-en-light.svg" width="100%" alt="The trail, from an empty folder to deploy: 0 Interview, 1 Project, 2 Environment, 3 Folders, 4 Skeleton, 5 Features, 6 Database, 7 Quality, 8 Docker, 9 CI, 10 Deploy, 11 Retro, with the certificate, then the next project.">
 </picture>
 
 Twelve stops, each split into small steps with a clear "done when". Everything is written to `STUDY-MEMORY.md`, so the next session starts exactly where you stopped. The details of each phase are in [How it works](#how-it-works).
@@ -132,6 +132,7 @@ Other ways to install (a single agent, the skills installer, Gemini CLI, Visual 
 - **No guessing**: perishable facts (versions, commands, APIs, prices) are checked in the official documentation during the session, with the link; stable references (keywords, conventions) are cited from a curated map without a lookup, to keep answers fast. What your project relies on is remembered with the date it was verified, so when the docs change the mentor tells you what changed.
 - **Memory between sessions** in a `STUDY-MEMORY.md` file, so every session resumes exactly where you stopped.
 - **An end-of-day summary**, and a final study report as a `.docx` with your weak spots, before/after code and a study plan.
+- **A completion certificate** as a `.docx`, with your name, the project, the language, your level, how long it took, what you built and the link to the live app, once the whole trail is done. It proves you took a project to production; it is not an official certification.
 - **An optional cybersecurity track**: lab-based ethical hacking and CTF practice (web, network, binary, crypto) against isolated or sanctioned targets only, with the same teaching method.
 - **Two languages and two tones**: English or Portuguese, direct or friendly banter, with optional English corrections if you want to practice.
 
@@ -176,7 +177,7 @@ The result is a brief with 3 to 6 testable acceptance criteria. You approve it; 
 | 8 | Docker | The app and its dependencies run with compose from a clean clone |
 | 9 | CI | A pipeline builds and tests on every push |
 | 10 | Deploy | Running on a free tier, configured from the environment |
-| 11 | Retro | You write what you learned; the next project is suggested |
+| 11 | Retro | You write what you learned; with the app live and every criterion delivered, you get your certificate; the next project is suggested |
 
 Folder structure is chosen with you and kept proportional to the problem: organized by feature for CRUD-heavy apps, by layer when the business rules are heavy, or a hybrid.
 
@@ -425,15 +426,18 @@ mentor-buddy/
     project-archetypes.md       project catalog, scope by level, scope cutting
     cybersec-track.md           optional cybersecurity journey, with the lab-safety contract
     final-report.md             the end-of-project .docx study report
+    certificate.md              the .docx completion certificate and the bar for issuing it
     session-rituals.md          resume questions and end-of-day summary
     memory-template.md          STUDY-MEMORY.md template
     tone.md                     direct and banter tones, English corrections, notebook cue
     docs-*.md                   official documentation entry points per stack
+  assets/certificate-header-*.png   certificate header art, Portuguese and English
   agents/openai.yaml            Codex display name; implicit start turned off
   adapters/
     gemini/mentor-buddy.toml    /mentor-buddy command for Gemini CLI
     visual-studio/mentor-buddy.prompt.md   /mentor-buddy prompt file for Visual Studio
   scripts/check_links.py        checks every link in the skill (standard library Python)
+  scripts/make_certificate.py   builds the .docx completion certificate (standard library Python)
   .github/workflows/check-links.yml   weekly link check that opens an issue on failure
   .github/assets/               README drawings, light and dark, English and Portuguese
   README.md
@@ -465,6 +469,9 @@ To confirm versions, commands and prices against the official docs, yes. Without
 **Does it cost anything?**
 The skill is free. You need your agent's own plan, and the deploy phase uses free tiers, checked on each provider's official pricing page during the session.
 
+**Is there a certificate?**
+Yes, when the project is really done: the app is live, every acceptance criterion is delivered and the retro is written. Only then does the mentor ask what name goes on it, and that name goes only into the `.docx` file. It is a project-completion certificate from the skill, not an official certification.
+
 **Can I use it in Portuguese?**
 Yes. Choose Portuguese in the first message; the whole mentoring happens in Portuguese, with code in English.
 
@@ -479,7 +486,7 @@ Yes. Pick the cybersecurity track in the interview for lab-based ethical hacking
 
 ## Privacy
 
-`STUDY-MEMORY.md` lists the topics where you missed, so it stays private: it lives in your project folder, and if you use git the mentor puts it in `.gitignore` so it is never pushed. The skill never creates a `.claude` or `.github` folder in your project. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
+`STUDY-MEMORY.md` lists the topics where you missed, so it stays private: it lives in your project folder, and if you use git the mentor puts it in `.gitignore` so it is never pushed. The name you give for the certificate goes only into the certificate file, which also goes into `.gitignore`. The skill never creates a `.claude` or `.github` folder in your project. The skill itself sends nothing anywhere: it is plain-text instructions read by your agent.
 
 ## Keeping the skill current
 

@@ -1,11 +1,11 @@
 ---
 name: mentor-buddy
-description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), agrees on a language and a real project, then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It detects the installed toolchain before proposing anything, treats git as a choice, reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, and ends with a .docx study report. It can also run a lab-based cybersecurity track (ethical hacking, CTF, crypto) against isolated targets only. It checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
+description: "Hands-on programming mentor that makes the learner write every line. Start it with /mentor-buddy ($mentor-buddy in Codex). It interviews the learner (junior, mid or senior), agrees on a language and a real project, then guides one step at a time from IDE folder structure through tests, Docker, CI and a free deploy. It detects the installed toolchain before proposing anything, treats git as a choice, reviews their code instead of writing it, trains them to review code the way they will review AI-written code at work, and ends with a .docx study report and, once the app is live, a completion certificate. It can also run a lab-based cybersecurity track (ethical hacking, CTF, crypto) against isolated targets only. It checks every version, command and price against the official docs live while tracking what changed, and keeps STUDY-MEMORY.md so the next session resumes where they stopped. Maintainers run /mentor-buddy refresh to re-verify the skill's own doc links."
 license: MIT
 disable-model-invocation: true
 argument-hint: "[refresh]"
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
   repository: "https://github.com/mauricioreiss/mentor-buddy"
 ---
 
@@ -34,6 +34,7 @@ Before the steps below, run the **self-update check** in [references/maintenance
 | A perishable fact | the stack's docs-*.md map |
 | Security / ethical-hacking project | cybersec-track.md, then docs-cybersec.md for tools |
 | Finishing the project, or asked for the report | final-report.md |
+| Finishing the project, or asked for a certificate | certificate.md |
 | Banter tone or English corrections | tone.md |
 
 Environment limits: when you cannot read files, ask the learner to paste the header; when you cannot write files, print the updated memory for them to save (format in session-rituals).
