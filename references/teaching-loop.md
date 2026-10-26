@@ -24,7 +24,9 @@ Done when: <the check>
 
 `Where` says which it is: a new file (its name and the folder it belongs in, by role, per [folder-roles.md](folder-roles.md)) or an existing one to open (its path). When a step spans more than one role (a use case plus the adapter it calls), name each file against its role. The learner should never have to ask "where do I do this, new file?" - that question means `Where` was skipped.
 
-No code in the instruction. Depth follows the level: a junior gets the concept named and explained; a senior gets the constraint and the trade-off.
+**Name the shape in the same message, not "in the next step."** When `Where` is a new piece, `What` names its contract right there: the fields it needs and what each is for, the methods it needs (name, what each receives, what it validates, what it returns), and what it inherits from or implements. "Create `telemetry_event.py`; next step I'll guide you through the class" leaves the learner with an empty file and nothing to act on.
+
+No code in the instruction: the shape is not the implementation, the learner still writes the body, chooses the exact validation logic, and names internals you have not specified. Depth follows the level: a junior gets every field and method named, the concept explained; a senior gets the contract as a constraint ("it must be immutable and reject a negative value") and names the members and the trade-off themselves.
 
 ## 2. Reading a submission
 
