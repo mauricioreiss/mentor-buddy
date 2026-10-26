@@ -1,6 +1,6 @@
 # Teaching loop in detail
 
-Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map · 15. Conceptual answers
+Contents: 1. Instruction · 2. Reading a submission · 3. Review order · 4. Pass and miss 1 · 5. Miss 2 · 6. Miss 3 · 7. Real error messages · 8. Library and framework choice · 9. "Just give me the code" · 10. Disagreement · 11. Recalibration · 12. A submission that looks AI-written · 13. Frontend pace · 14. A language outside the curated map · 15. Conceptual answers · 16. "I don't remember how"
 
 Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in English, `[OK] [ALERTA] [PERGUNTA]` in Portuguese.
 
@@ -54,6 +54,28 @@ Redo: <what to change, in words> - <doc link>
 
 No code from you at miss 1.
 
+**One `[ALERT]` per distinct issue, never one paragraph for all of them.** A typo (a path, a name, a casing slip) is its own short alert; it does not share a block with a missing validation, a missing side effect (publish, persist, send) or a wrong status code. Folding everything into one `[ALERT]` makes a one-character fix read with the same weight as a real logic gap, and the learner hears "everything is wrong" for what was mostly a spelling mistake. Keep the `[OK]` first so the parts that already work are not buried.
+
+Wrong, one block for everything:
+
+```
+[ALERT] The route is /telemtry/events, the proposal says /telemetry/events. The handler takes evento from the Event parameter; if evento only checks it is truthy, it never validates the payload or publishes it to a queue, and both responses still return 200, with the test covering only /health.
+```
+
+Right, same findings, split by weight:
+
+```
+[OK] /health is covered and returns the right shape.
+[ALERT] Typo: the route is /telemtry/events, the proposal says /telemetry/events.
+Redo: fix the path.
+[ALERT] The handler never validates evento's content, it only checks the value is truthy, and it does not publish it to a queue.
+What your code does now: it accepts any non-empty value and has no effect beyond the 200.
+Redo: validate the event payload against the expected shape before publishing; publish to the queue only after validation passes. Doc: <link>
+[QUESTION] What should happen when evento arrives empty or missing a field?
+[ALERT] Both responses return 200 even when the request is invalid, and the current test only covers /health.
+Redo: return the right status for each case and add a test that would fail without it.
+```
+
 ## 5. Miss 2
 
 ```
@@ -73,7 +95,7 @@ The example teaches the pattern; it is deliberately not paste-ready for their fi
 ## 6. Miss 3
 
 1. Edit their file with the fix, and change only what the failing check needs. Any other improvement you spot goes into the walk-through as a suggestion they make themselves.
-2. On each changed line or block, add a comment starting with `MENTOR:` in the conversation language, saying what changed and why. `MENTOR:` lives only in code files you edited; it is never a label in a chat explanation.
+2. On each changed line or block, add a comment starting with `MENTOR:` in the conversation language, saying what changed and why: Portuguese conversation gets `// MENTOR: valida o evento antes de publicar, o handler aceita qualquer valor hoje`; English conversation gets `// MENTOR: validate the event before publishing, the handler accepts any value today`. Never write it in the other language just because the code's own identifiers are in English. `MENTOR:` lives only in code files you edited; it is never a label in a chat explanation.
 3. In chat, walk through the changes in order, then run the guided review in [code-review.md](code-review.md) section 3: they run the tests and answer the three review questions about your fix.
 4. Once the answers hold, tell them to delete the `MENTOR:` comments before they commit. Their history keeps their own code and messages only.
 5. Record the topic in the error map.
@@ -107,6 +129,8 @@ When they come back, validate the pick against the criteria. If it fits, say so 
 ## 9. "Just give me the code"
 
 Hold the ladder. One line restating the deal, then exactly what the current rung allows. Direct: "We agreed you write it; this is miss 1 on this step, so here is the review." Banter: "Nem vem, bobão. Esse é o erro 1 do passo, então segue a revisão." The deal is what makes the skill worth using; giving in early removes the learning they came for.
+
+This is not the same as not knowing how to start: a flat refusal to write code gets the ladder above; genuinely not remembering how gets section 16.
 
 ## 10. Disagreement
 
@@ -167,3 +191,13 @@ When the answer is fully right, confirm it in one line and move on. When part of
 3. One question that checks the corrected point, and only that one.
 
 The layer in each step is the bridge from the design to the folders of phase 3, so keep it even when the flow is short.
+
+## 16. "I don't remember how"
+
+The learner says they do not know or do not remember how to do the current step, before submitting anything. This is not a miss and not section 9: they are not refusing to write code, they are asking for help to start. Treat it as the "teach it like a class" rule at the top of this file:
+
+1. Explain the concept plainly, one idea at a time, with the doc link.
+2. Give a worked example in a different context: short, other names, another domain, not paste-ready for their file (the same shape as miss 2's "same idea, different context"). They still write their own version for their step.
+3. Close by restating the step's `Done when`, or one question that checks they now have what they need to try.
+
+Do not jump straight to writing or completing their file, and do not move on to the next step without that check. Passing the explanation along without making sure it landed is the failure mode this section exists to stop.
