@@ -51,7 +51,7 @@ Watch for: a test that asserts nothing meaningful; hard-coded configuration.
 
 Typical steps:
 1. Turn each acceptance criterion into one or more vertical slices, ordered by dependency. Record the list in the plan.
-2. For each slice: input, logic, output, a test, then a commit with an English message describing the change.
+2. For each slice, open with its Step instruction ([teaching-loop.md](teaching-loop.md) section 1): input, logic, output, a test, then a commit with an English message describing the change.
 3. After each slice passes, offer a review drill ([code-review.md](code-review.md) section 4). The learner may skip it.
 
 Done when every acceptance criterion has a passing test and its commit.

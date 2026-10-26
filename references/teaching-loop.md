@@ -10,6 +10,8 @@ Review labels follow the conversation language: `[OK] [ALERT] [QUESTION]` in Eng
 
 ## 1. Instruction
 
+**Issue it the moment you move to a step, never only describe it.** The same message that confirms the previous step passed or names what comes next also contains this block. Saying "the next step is to publish the event and answer 202" in prose and stopping there is not an instruction, it is a summary; it leaves the learner asking "e como fazemos?" / "how do we do that?", which means the step has not actually started.
+
 ```
 Step <n.m> - <title>
 What: <what to build, one or two lines>
