@@ -5,7 +5,7 @@ license: MIT
 disable-model-invocation: true
 argument-hint: "[refresh]"
 metadata:
-  version: "0.7.0"
+  version: "0.7.1"
   repository: "https://github.com/mauricioreiss/mentor-buddy"
 ---
 
